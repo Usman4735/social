@@ -17,10 +17,10 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-thumb {
-    background-color: #ed3239;
+    background-color: #9500ff;
 }
 .top-bar {
-    background-color: #ed3239;
+    background-color: #9500ff;
     padding: 10px;
     color: #fff;
 }
@@ -58,7 +58,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .navbar-light .navbar-nav .nav-link:hover {
-    color: #ed3239;
+    color: #9500ff;
 }
 
 .sticky-top {
@@ -81,7 +81,7 @@ body::-webkit-scrollbar-thumb {
 }
 .cart-left .badge-secondary {
     color: #fff;
-    background-color: #ed3239 !important;
+    background-color: #9500ff !important;
 }
 .cart-left .badge {
     position: absolute;
@@ -103,7 +103,7 @@ body::-webkit-scrollbar-thumb {
 }
 .wishlist-left .badge-secondary {
     color: #fff;
-    background-color: #ed3239 !important;
+    background-color: #9500ff !important;
 }
 .wishlist-left .badge {
     position: absolute;
@@ -130,7 +130,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .custom-link:hover {
-    color: #ed3239;
+    color: #9500ff;
     text-decoration: none;
     cursor: pointer;
 }
@@ -194,7 +194,7 @@ body::-webkit-scrollbar-thumb {
     margin-left: -45px;
     display: block !important;
     border: 0px solid black;
-    background-color: #ed3239 !important;
+    background-color: #9500ff !important;
     color: #fff !important;
     width: 35px;
     height: 35px;
@@ -210,7 +210,7 @@ body::-webkit-scrollbar-thumb {
     right: -45px;
     display: block !important;
     border: 0px solid black;
-    background-color: #ed3239 !important;
+    background-color: #9500ff !important;
     color: #fff !important;
     width: 35px;
     height: 35px;
@@ -247,7 +247,7 @@ footer {
 }
 
 .footerUl li a:hover {
-    color: #ed3239;
+    color: #9500ff;
     text-decoration: none;
 }
 
@@ -262,12 +262,12 @@ footer {
 }
 
 .footerBottomLink {
-    color: #ed3239;
+    color: #9500ff;
     font-weight: bold;
 }
 
 .footerBottomLink:hover {
-    color: #ed3239;
+    color: #9500ff;
     cursor: pointer;
     text-decoration: none;
 }
@@ -344,16 +344,16 @@ label {
 }
 .custom-bg {
     color: #fff;
-    background-color: #ed3239 !important;
+    background-color: #9500ff !important;
 }
 .custom-btn {
     color: #fff;
-    background-color: #ed3239;
-    border-color: #ed3239;
+    background-color: #9500ff;
+    border-color: #9500ff;
     border-radius: 0;
     padding: 10px;
     cursor: pointer;
-    box-shadow: inset 0 0 0 0 #c52329;
+    box-shadow: inset 0 0 0 0 #7500de;
     -webkit-transition: ease-out 0.4s;
     -moz-transition: ease-out 0.4s;
     transition: ease-out 0.4s;
@@ -361,41 +361,41 @@ label {
 
 .custom-btn:hover {
     color: #fff;
-    background-color: #c7363b;
-    border-color: #c7363b;
+    background-color: #9500ff;
+    border-color: #9500ff;
 }
 
 .custom-btn:focus,
 .custom-btn.focus {
     color: #fff;
-    background-color: #ed3239;
-    border-color: #ed3239;
+    background-color: #9500ff;
+    border-color: #9500ff;
     box-shadow: 0 0 0 0.2rem rgba(194, 151, 92, 0.5);
 }
 
 .custom-btn.disabled,
 .custom-btn:disabled {
     color: #fff;
-    background-color: #ed3239;
-    border-color: #ed3239;
+    background-color: #9500ff;
+    border-color: #9500ff;
 }
 
 .custom-btn:not(:disabled):not(.disabled):active,
 .custom-btn:not(:disabled):not(.disabled).active,
 .show > .custom-btn.dropdown-toggle {
     color: #fff;
-    background-color: #ed3239;
-    border-color: #ed3239;
+    background-color: #9500ff;
+    border-color: #9500ff;
 }
 
 .custom-btn:not(:disabled):not(.disabled):active:focus,
 .custom-btn:not(:disabled):not(.disabled).active:focus,
 .show > .custom-btn.dropdown-toggle:focus {
-    box-shadow: 0 0 0 0.2rem #ed3239;
+    box-shadow: 0 0 0 0.2rem #9500ff;
 }
 
 .slide_down:hover {
-    box-shadow: inset 0 100px 0 0 #c52329 !important;
+    box-shadow: inset 0 100px 0 0 #7500de !important;
 }
 
 .contact-heading {
@@ -424,11 +424,11 @@ label {
 }
 
 .contact-content .contact-info li a:hover {
-    color: #ed3239;
+    color: #9500ff;
 }
 
 .contact-content .contact-info li .fa {
-    color: #ed3239;
+    color: #9500ff;
     font-size: 30px;
     width: 45px;
     display: flex;
@@ -441,7 +441,7 @@ label {
 
 #backToTop {
     display: inline-block;
-    background-color: #ed3239;
+    background-color: #9500ff;
     border: none;
     width: 40px;
     height: 40px;
@@ -454,7 +454,7 @@ label {
     visibility: hidden;
     z-index: 1000;
     cursor: pointer;
-    box-shadow: inset 0 0 0 0 #c52329;
+    box-shadow: inset 0 0 0 0 #7500de;
     -webkit-transition: ease-out 0.4s;
     -moz-transition: ease-out 0.4s;
     transition: ease-out 0.4s;
@@ -515,7 +515,7 @@ label {
 }
 
 .accordion a.active {
-    color: #ed3239;
+    color: #9500ff;
 }
 
 .accordion a::after {
@@ -525,14 +525,14 @@ label {
     float: right;
     right: 1rem;
     font-size: 1rem;
-    color: #ed3239;
+    color: #9500ff;
     padding: 3px;
     width: 30px;
     height: 30px;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
-    border: 1px solid #ed3239;
+    border: 1px solid #9500ff;
     text-align: center;
     font-weight: 900;
 }
@@ -541,8 +541,8 @@ label {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     content: "\f068";
-    color: #ed3239;
-    border: 1px solid #ed3239;
+    color: #9500ff;
+    border: 1px solid #9500ff;
 }
 
 .accordion .content {
@@ -627,11 +627,11 @@ label {
 }
 
 .product-card .product-data a:hover {
-    color: #ed3239;
+    color: #9500ff;
 }
 
 .product-card .product-data h2 {
-    color: #ed3239;
+    color: #9500ff;
     font-weight: 700;
     font-size: 1.6rem;
     display: flex;
@@ -772,11 +772,11 @@ label {
 }
 
 .product-card-list .product-data a:hover {
-    color: #ed3239;
+    color: #9500ff;
 }
 
 .product-card-list .product-data h2 {
-    color: #ed3239;
+    color: #9500ff;
     font-weight: 700;
     font-size: 1.6rem;
     margin: 0;
@@ -925,11 +925,11 @@ label {
 }
 
 .store-card .store-data a:hover {
-    color: #ed3239;
+    color: #9500ff;
 }
 
 .store-card .store-data h2 {
-    color: #ed3239;
+    color: #9500ff;
     font-weight: 700;
     font-size: 1.6rem;
     display: flex;
@@ -938,7 +938,7 @@ label {
 }
 
 .store-card .store-data .ratings {
-    color: #ed3239;
+    color: #9500ff;
     text-align: center;
 }
 
@@ -1171,7 +1171,7 @@ figure.snip1192 blockquote:after {
     font-size: 50px;
     opacity: 0.3;
     font-style: normal;
-    color: #ed3239;
+    color: #9500ff;
 }
 
 figure.snip1192 blockquote:before {
@@ -1206,7 +1206,7 @@ figure.snip1192 .author h5 {
     border: 1px solid #c1c9d0;
 }
 .custom-text {
-    color: #ed3239;
+    color: #9500ff;
 }
 .shop-top-bar .form-control {
     padding-top: 0;
@@ -1228,7 +1228,7 @@ figure.snip1192 .author h5 {
 }
 
 .shop-top-bar a {
-    color: #ed3239;
+    color: #9500ff;
     font-size: 14px;
 }
 
@@ -1236,7 +1236,7 @@ figure.snip1192 .author h5 {
     font-size: 22px;
     font-weight: 900;
     text-align: center;
-    color: #ed3239;
+    color: #9500ff;
 }
 
 .search-bar .search__input {
@@ -1293,7 +1293,7 @@ figure.snip1192 .author h5 {
 }
 
 .gift-sidebar ul li a:hover {
-    color: #ed3239;
+    color: #9500ff;
     text-decoration: none;
 }
 
@@ -1322,7 +1322,7 @@ figure.snip1192 .author h5 {
     appearance: none;
     width: 15px;
     height: 15px;
-    background: #ed3239;
+    background: #9500ff;
     cursor: pointer;
 }
 
@@ -1330,7 +1330,7 @@ figure.snip1192 .author h5 {
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    background: #ed3239;
+    background: #9500ff;
     cursor: pointer;
 }
 
@@ -1340,7 +1340,7 @@ figure.snip1192 .author h5 {
 
 .rating-bar ul li a {
     font-size: 12px;
-    color: #ed3239 !important;
+    color: #9500ff !important;
 }
 
 .view-all-stores {
@@ -1391,7 +1391,7 @@ figure.snip1192 .author h5 {
     align-items: center;
     font-size: 1.6rem;
     font-weight: 700;
-    color: #ed3239;
+    color: #9500ff;
     line-height: 1;
 }
 
@@ -1466,14 +1466,14 @@ figure.snip1192 .author h5 {
 }
 
 .gift-data a:hover {
-    color: #ed3239;
+    color: #9500ff;
     text-decoration: none;
 }
 
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
     color: #fff;
-    background-color: #ed3239;
+    background-color: #9500ff;
 }
 
 .nav-pills .nav-link {
@@ -1510,7 +1510,7 @@ figure.snip1192 .author h5 {
 }
 
 .store-top-bar .ratings {
-    color: #ed3239;
+    color: #9500ff;
 }
 .store-data-overlay a {
     text-decoration: none;
@@ -1529,7 +1529,7 @@ figure.snip1192 .author h5 {
     border: none !important;
 }
 #cart_page .item-price {
-    color: #ed3239;
+    color: #9500ff;
     font-size: 1.25rem;
     font-weight: 600;
 }
@@ -1707,7 +1707,7 @@ figure.snip1192 .author h5 {
 }
 
 #checkout_content .checkoutd-nav .nav-item a.active {
-    background-color: #ed3239;
+    background-color: #9500ff;
     color: #fff;
 }
 
@@ -1715,7 +1715,7 @@ figure.snip1192 .author h5 {
     content: "";
     border-top: 19.7px solid transparent;
     border-bottom: 17.7px solid transparent;
-    border-left: 18px solid #ed3239;
+    border-left: 18px solid #9500ff;
     position: absolute;
     right: -18px;
     top: 0;
@@ -1763,7 +1763,7 @@ figure.snip1192 .author h5 {
     font-weight: 600;
 }
 #checkout_content .item-price {
-    color: #ed3239;
+    color: #9500ff;
     font-size: 1.25rem;
 }
 .select2-container--default
@@ -1773,10 +1773,10 @@ figure.snip1192 .author h5 {
 }
 .select2-container--default
     .select2-results__option--highlighted.select2-results__option--selectable {
-    background-color: #ed3239 !important;
+    background-color: #9500ff !important;
 }
 .select2-results__option--selectable:hover {
-    background-color: #ed3239 !important;
+    background-color: #9500ff !important;
 }
 .select2-container .select2-selection--single {
     height: 45px !important;
@@ -1848,11 +1848,11 @@ figure.snip1192 .author h5 {
     background-color: #fff !important;
 }
 .form-control:focus {
-    border-color: #ed3239 !important;
+    border-color: #9500ff !important;
     box-shadow: 0 0 0 0.2rem #ed323821;
 }
 .custom-file-input:focus~.custom-file-label{
-    border-color: #ed3239 !important;
+    border-color: #9500ff !important;
     box-shadow: 0 0 0 0.2rem #ed323821;
 }
 .notifications {
@@ -1880,13 +1880,13 @@ figure.snip1192 .author h5 {
 }
 
 .notifications::-webkit-scrollbar-thumb {
-    background-color: #ed3239;
+    background-color: #9500ff;
 }
 
 .notifications li h6 {
     font-size: 14px;
     font-weight: 900;
-    color: #ed3239;
+    color: #9500ff;
     margin: 0;
 }
 .notifications li p {
@@ -1899,7 +1899,7 @@ figure.snip1192 .author h5 {
     color: #000;
 }
 .notificationlink:active {
-    color: #ed3239 !important;
+    color: #9500ff !important;
 }
 .notificationlink:hover {
     color: #000 !important;
@@ -1920,8 +1920,8 @@ figure.snip1192 .author h5 {
 }
 .custom-control-input:checked ~ .custom-control-label::before {
     color: #fff;
-    border-color: #ed3239;
-    background-color: #ed3239;
+    border-color: #9500ff;
+    background-color: #9500ff;
     box-shadow: none !important;
 }
 
@@ -1940,7 +1940,7 @@ input[type="radio"] {
 }
 
 input[type="radio"]:checked {
-    background-color: #ed3239;
+    background-color: #9500ff;
 }
 input[type="checkbox"] {
     -webkit-appearance: none;
@@ -1956,7 +1956,7 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:checked {
-    background-color: #ed3239;
+    background-color: #9500ff;
 }
 .popup-detail-info p {
     font-size: 14px;
@@ -1977,7 +1977,7 @@ input[type="checkbox"]:checked {
 .wizard-main-heading {
     font-size: 30px;
     text-align: center;
-    color: #ed3239;
+    color: #9500ff;
     font-weight: 400;
     text-transform: uppercase;
     margin-bottom: 25px;
@@ -1989,7 +1989,7 @@ input[type="checkbox"]:checked {
     font-weight: 400;
 }
 .wizard-label{
-    color: #ed3239;
+    color: #9500ff;
     font-weight: 400;
     font-size: 18px;
 }
@@ -2024,13 +2024,13 @@ button:focus{
 }
 #points_nav .nav-link.active,#points_nav .show > .nav-link{
     background-color: transparent !important;
-    color: #ed3239;
+    color: #9500ff;
     font-weight: bolder;
-    border-bottom: 2px solid #ed3239;
+    border-bottom: 2px solid #9500ff;
 }
 
 .list-group-item .nav-link.active,.list-group-item .nav-link.active i {
-    color: #ed3239 !important;
+    color: #9500ff !important;
 }
 
 #points_nav .nav-link{
@@ -2052,8 +2052,8 @@ button:focus{
 }
 
 .StripeElement--focus {
-    box-shadow: 0 2px 4px 0 #ed323970;
-    border-color: #ed3239 !important;
+    box-shadow: 0 2px 4px 0 #9500ff70;
+    border-color: #9500ff !important;
 }
 
 .StripeElement--invalid {
@@ -2083,14 +2083,14 @@ button:focus{
 }
 
 .product-card .icon-trigger:hover{
-    background-color: #ed3239;
+    background-color: #9500ff;
 }
 
 .product-card .icon-trigger span {
     width: 10px;
     height: 2px;
     display: block;
-    background-color: #ed3239;
+    background-color: #9500ff;
     position: relative;
     transition: all 800ms cubic-bezier(0, 1.65, 0.58, 1);
 }
@@ -2132,7 +2132,7 @@ button:focus{
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #ed3239;
+    color: #9500ff;
     width: 45px;
     height: 45px;
     padding: 5px 0px;
@@ -2175,7 +2175,7 @@ button:focus{
     opacity: 1;
 }
 .content a{
-    color: #ed3239;
+    color: #9500ff;
     text-decoration: none;
 }
 
@@ -2201,7 +2201,7 @@ button:focus{
     appearance: none;
     width: 15px;
     height: 15px;
-    background: #ed3239;
+    background: #9500ff;
     cursor: pointer;
 }
 
@@ -2209,7 +2209,7 @@ button:focus{
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    background: #ed3239;
+    background: #9500ff;
     cursor: pointer;
 }
  .list-group-item {
@@ -2233,7 +2233,7 @@ button:focus{
     height: 34px;
     margin: 0 4px;
     font-size: 14px;
-    color: #ed3239;
+    color: #9500ff;
     font-weight: bold;
     display: inline-flex;
     justify-content: center;
@@ -2246,7 +2246,7 @@ button:focus{
 }
 
 .ps-pagination .pagination .active a {
-    background-color: #ed3239;
+    background-color: #9500ff;
     color: white;
     border-radius: 50%;
 }
@@ -2311,13 +2311,13 @@ html .gift-sidebar .ui-button.ui-state-disabled:active {
     appearance: none;
     width: 15px;
     height: 15px;
-    background: #ed3239;
+    background: #9500ff;
     cursor: pointer;
 }
 
 .gift-sidebar .ui-widget-header {
     border: 1px solid #aaaaaa;
-    background: #ed3239 !important;
+    background: #9500ff !important;
     color: #222222;
     font-weight: bold;
     height: 5px !important;
@@ -2340,5 +2340,5 @@ html .gift-sidebar .ui-button.ui-state-disabled:active {
 
 #slider-range {
     width: 95%;
-    margin-left: 9px;  
+    margin-left: 9px;
 }

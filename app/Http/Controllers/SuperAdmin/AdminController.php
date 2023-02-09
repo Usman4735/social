@@ -19,7 +19,7 @@ class AdminController extends Controller
         }
     }
 
-    public function registerProcess(Request $request)
+    public function loginProcess(Request $request)
     {
         $request->validate([
             "username" => "required",
