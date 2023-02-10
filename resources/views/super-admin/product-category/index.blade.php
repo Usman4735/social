@@ -1,9 +1,7 @@
 @extends('super-admin.layout.template')
 @section('page_title', 'Product Category')
-
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Category</li>
+    <li class="breadcrumb-item active">Category</li>
 @endsection
 @section('content')
     <div class="row clearfix">
@@ -11,7 +9,7 @@
             <div class="card">
                 <div class="card-header row">
                     <div class="col-12 text-end">
-                        <a href="{{ url('products/category/add') }}" class="btn btn-primary btn-sm mr-2"
+                        <a href="{{ url('sa1991as/product-categories/create') }}" class="btn btn-primary btn-sm mr-2"
                             title="Add Category"><i data-feather="plus"></i></a>
                     </div>
                 </div>
@@ -27,25 +25,19 @@
                         </thead>
                         <tbody>
                             @foreach ($categories as $category)
-                                {{-- @php
-                                    $main_cat = $category->get_main_product_category();
-                                    $sub_cat = $category->get_sub_category();
-                                @endphp --}}
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td>{{ $category->name }}</td>
-                                    {{-- <td>{{ $category->parent_category_id != null ? $main_cat->name : '' }}</td> --}}
-                                    {{-- <td>{{ $category->sub_category_id != null ? $sub_cat->name : '' }}</td> --}}
-                                    <td></td>
+                                    <td>{{$category->parent_category != null ? @$category->parent_category()->name : ''}}</td>
                                     <td>
-                                        <a href="{{ url('products/category/update') }}/{{ encrypt($category->id) }}"
+                                        <a href="{{ url('sa1991as/product-categories') }}/{{ encrypt($category->id) }}/edit"
                                             class="btn btn-primary btn-sm"><i
                                                 data-feather="edit"></i></a>
                                         <form class="d-inline-block delete-btn"
-                                            action="{{ url('products/category/delete') }}/{{ encrypt($category->id) }}"
+                                            action="{{ url('sa1991as/product-categories') }}/{{ encrypt($category->id) }}"
                                             method="post">
                                             @csrf
-                                            <input type="hidden" name="_method" value="DELETE">
+                                            @method('delete')
                                             <button type="submit" class="btn btn-danger btn-sm deleteAlert"><i
                                                 data-feather="trash"></i></button>
                                         </form>
@@ -54,10 +46,6 @@
                             @endforeach
                         </tbody>
                     </table>
-                    {{-- Pagination --}}
-                    {{-- <div class="d-flex justify-content-center mt-3" id="pagination">
-                        {{ $categories->appends(request()->query())->links() }}
-                    </div> --}}
                 </div>
             </div>
         </div>
