@@ -32,8 +32,8 @@
                 <div class="col-12 text-right">
                     <p>
                         @if (Session::has('online_customer'))
-                            <span class="mr-3"><a href="{{ url('profile') }}">Welcome,
-                                        {{ session('online_customer')->first_name }}</a></span>
+                            <span class="mr-3"><a href="javascript:void(0)">Welcome,
+                                        {{ session('online_customer')->full_name }}</a></span>
                             <a href="{{ url('logout') }}">
                                 <span class="mr-3">Logout </span></a>
                         @else
@@ -55,7 +55,7 @@
 <nav class="navbar navbar-expand-lg bg-light shadow navbar-light">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}"><img
-                src="{{ url('/') }}/assets/images/logo_dark.png" alt="logo" style="width: 140px" /></a>
+                src="{{ asset('images/logo.png') }}" alt="logo" style="width: 80px" /></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -81,17 +81,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('contact-us') }}">Contact Us</a>
                 </li>
-                @if (Session::has('online_customer'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('wishlist') }}">
-                            <div class="wishlist-left">
-                                <i class="far fa-heart"></i>
-                                <span class='badge badge-secondary wishlistcount'>0</span>
-                                {{-- class='badge badge-secondary wishlistcount'>{{ App\Models\Wishlistmodel::Count() }}</span> --}}
-                            </div>
-                        </a>
-                    </li>
-                @endif
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/cart') }}">
                         <div class="cart-left">
