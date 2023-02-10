@@ -60,7 +60,8 @@
                                 <a href="{{ url('sa1991as') }}" class="brand-logo">
                                     <img src="{{ asset('images/logo.png') }}" alt="logo" class="login-brand-logo">
                                 </a>
-                                <h4 class="card-title mb-1">Welcome to {{ env('APP_NAME') }}!</h4>
+                                <h4 class="card-title mb-1 text-center">Welcome to {{ env('APP_NAME') }}</h4>
+                                <h4 class="card-title mb-1 text-center">Super Admin</h4>
                                 <p class="card-text mb-2">Please sign-in to your account and start the adventure</p>
                                 @if (Session::has('error'))
                                     <div class="alert alert-danger" role="alert">
