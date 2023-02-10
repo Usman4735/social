@@ -67,22 +67,25 @@
                     <a class="nav-link" href="{{ url('/') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('gifts') }}">Gifts</a>
+                    <a class="nav-link" href="{{ url('/') }}">Catalog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('stores') }}">Stores</a>
+                    <a class="nav-link" href="{{ url('/') }}">Order Verification</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('about-us') }}">About Us</a>
+                    <a class="nav-link" href="{{ url('/') }}">How To Buy</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('faqs') }}">FAQs</a>
+                    <a class="nav-link" href="{{ url('/') }}">Reviews</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('contact-us') }}">Contact Us</a>
+                    <a class="nav-link" href="{{ url('/') }}">News</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/cart') }}">
+                    <a class="nav-link" href="{{ url('/') }}">Support</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/') }}">
                         <div class="cart-left">
                             <i class="fas fa-shopping-bag"></i>
                             <span
@@ -95,32 +98,39 @@
     </div>
 </nav>
 @yield('content')
+<div class="container text-center mt-5">
+    <h3 class="text-center">Support</h3>
+    <p>If something went wrong, if you have a problem with your order or have a question about your order, please contact support:</p>
+    <a href="{{ url('/') }}">Contact Support</a>
+
+</div>
 <footer>
     <div class="container p-5">
         <div class="row">
-            <div class="col-sm-12 col-md-2 col-lg-2">
-                <h5 class="footerMenuHeading mb-4">Policies</h5>
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                {{-- <h5 class="footerMenuHeading mb-4">Policies</h5> --}}
                 <ul class="footerUl">
-                    <li><a href="{{ url('privacy-policy') }}" target="_blank">Privacy Policy</a></li>
+                     <a class="navbar-brand" href="{{ url('/') }}"><img
+                src="{{ asset('images/logo.png') }}" alt="logo" style="width: 80px" /></a>
+                    {{-- <li><a href="{{ url('privacy-policy') }}" target="_blank">Privacy Policy</a></li>
                     <li><a href="{{ url('terms-and-conditions') }}" target="_blank">Terms & Conditions</a></li>
-                    <li><a href="{{ url('refund-policy') }}" target="_blank">Refunds & Exchange Policy</a></li>
+                    <li><a href="{{ url('refund-policy') }}" target="_blank">Refunds & Exchange Policy</a></li> --}}
                 </ul>
             </div>
 
             <div class="col-sm-12 col-md-2 col-lg-2">
-                <h5 class="footerMenuHeading mb-4">Quick Links </h5>
+                {{-- <h5 class="footerMenuHeading mb-4">Quick Links </h5> --}}
                 <ul class="footerUl">
-                    <li><a href="{{ url('faqs') }}" target="_blank">FAQs</a></li>
-                    <li><a href="{{ url('about-us') }}" target="_blank">About Us</a></li>
-                    <li><a href="{{ url('contact-us') }}" target="_blank">Contact Us</a></li>
-                    <li><a href="#">Order Tracking</a></li>
+                    <li><a href="{{ url('/') }}" target="_blank">whatsapp</a></li>
+                    <li><a href="{{ url('/') }}" target="_blank">Telegram</a></li>
+                    <li><a href="{{ url('/') }}" target="_blank">Jabbar</a></li>
                 </ul>
             </div>
             <div class="col-sm-12 col-md-2 col-lg-2">
-                <h5 class="footerMenuHeading mb-4">Signup</h5>
+                {{-- <h5 class="footerMenuHeading mb-4">Signup</h5> --}}
                 <ul class="footerUl">
-                    <li><a href="#" target="_blank">Vendor</a></li>
-                    <li><a href="#" target="_blank">Rider</a></li>
+                    <li><a href="#" target="_blank">Viber</a></li>
+                    <li><a href="#" target="_blank">Skype</a></li>
                 </ul>
             </div>
             <div class="col-sm-12 col-md-3 col-lg-4">
