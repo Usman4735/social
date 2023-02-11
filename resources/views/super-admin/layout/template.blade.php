@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
     <meta name="description" content="{{ env('APP_NAME') }}">
     <meta name="keywords" content="{{ env('APP_NAME') }}">
-    <meta name="author" content="Cre8tivebot">
+    {{-- <meta name="author" content=""> --}}
     <title>@yield('page_title') - {{ env('APP_NAME') }}</title>
     @include('super-admin.layout.header-cdns')
 </head>
