@@ -30,6 +30,13 @@
                     href="{{ url('sa1991as/user-management') }}"><i data-feather="users"></i><span
                         class="menu-title text-truncate" data-i18n="User Management">User Management</span></a>
             </li>
+            <li class=" nav-item"><a class="d-flex align-items-center" href="javascript:void(0)"><i data-feather="tool"></i><span
+                        class="menu-title text-truncate" data-i18n="Settings">Settings</span></a>
+                <ul class="menu-content">
+                    <li><a class="d-flex align-items-center" href="{{ url('/sa1991as/settings/smtp') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">SMTP</span></a></li>
+
+                </ul>
+            </li>
         </ul>
     </div>
 </div>

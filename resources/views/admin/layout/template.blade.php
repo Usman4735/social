@@ -11,7 +11,7 @@
     <meta name="keywords" content="{{ env('APP_NAME') }}">
     {{-- <meta name="author" content=""> --}}
     <title>@yield('page_title') - {{ env('APP_NAME') }}</title>
-    @include('super-admin.layout.header-cdns')
+    @include('admin.layout.header-cdns')
 </head>
 {{-- END: Head --}}
 
@@ -21,12 +21,12 @@
     data-menu="vertical-menu-modern" data-col="">
 
     {{-- BEGIN: Header --}}
-    @include('super-admin.layout.header')
+    @include('admin.layout.header')
     {{-- END: Header --}}
 
 
     {{-- BEGIN: Main Menu --}}
-    @include('super-admin.layout.sidebar')
+    @include('admin.layout.sidebar')
     {{-- END: Main Menu --}}
 
     {{-- BEGIN: Content --}}
@@ -67,11 +67,11 @@
     <div class="drag-target"></div>
 
     {{-- BEGIN: Footer --}}
-    @include('super-admin.layout.footer')
+    @include('admin.layout.footer')
     {{-- END: Footer --}}
 
     {{-- Footer CDNs --}}
-    @include('super-admin.layout.footer-cdns')
+    @include('admin.layout.footer-cdns')
 </body>
 {{-- END: Body --}}
 

@@ -115,13 +115,13 @@
                 </ul>
             </li>
             @php
-                $admin = Session::get('online_super_admin');
+                $admin = Session::get('online_admin');
             @endphp
             <li class="nav-item dropdown dropdown-user"><a class="nav-link dropdown-toggle dropdown-user-link"
                     id="dropdown-user" href="#" data-bs-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
                     <div class="user-nav d-sm-flex d-none"><span
-                            class="user-name fw-bolder">{{ $admin->full_name }}</span><span
+                            class="user-name fw-bolder">{{ $admin->first_name . ' ' . $admin->last_name }}</span><span
                             class="user-status">{{ ucwords(str_replace('_', ' ', $admin->role)) }}</span></div><span
                         class="avatar">
                         @if($admin->profile_picture)
@@ -131,9 +131,9 @@
                         @endif
                 </a>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user">
-                    <a class="dropdown-item" href="{{ url('sa1991as/profile') }}"><i class="me-50"
+                    <a class="dropdown-item" href="{{ url('a1aa/profile') }}"><i class="me-50"
                             data-feather="user"></i>Profile</a>
-                    <a class="dropdown-item" href="{{ url('sa1991as/logout') }}"><i class="me-50"
+                    <a class="dropdown-item" href="{{ url('a1aa/logout') }}"><i class="me-50"
                             data-feather="power"></i> Logout</a>
                 </div>
             </li>

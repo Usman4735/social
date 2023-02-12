@@ -20,7 +20,8 @@ class CustomerFactory extends Factory
         return [
             // 'qualification_id' => $this->faker->numerify('#'),
             'username' => $this->faker->name(),
-            'full_name' => $this->faker->name(),
+            'first_name' => $this->faker->name(),
+            'last_name' => $this->faker->name(),
             'email' => $this->faker->email(),
             'password' => Hash::make('password'), // password
 

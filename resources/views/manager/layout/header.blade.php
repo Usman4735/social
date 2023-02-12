@@ -115,25 +115,25 @@
                 </ul>
             </li>
             @php
-                $admin = Session::get('online_super_admin');
+                $manager = Session::get('online_manager');
             @endphp
             <li class="nav-item dropdown dropdown-user"><a class="nav-link dropdown-toggle dropdown-user-link"
                     id="dropdown-user" href="#" data-bs-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
                     <div class="user-nav d-sm-flex d-none"><span
-                            class="user-name fw-bolder">{{ $admin->full_name }}</span><span
-                            class="user-status">{{ ucwords(str_replace('_', ' ', $admin->role)) }}</span></div><span
+                            class="user-name fw-bolder">{{ $manager->first_name . ' ' . $manager->last_name }}</span><span
+                            class="user-status">{{ ucwords(str_replace('_', ' ', $manager->role)) }}</span></div><span
                         class="avatar">
-                        @if($admin->profile_picture)
-                            <img class="round"src="{{asset('storage/admin-images')}}/{{$admin->profile_picture}}" alt="Profile Picture"height="40" width="40"><span class="avatar-status-online"></span></span>
+                        @if($manager->profile_picture)
+                            <img class="round"src="{{asset('storage/admin-images')}}/{{$manager->profile_picture}}" alt="Profile Picture"height="40" width="40"><span class="avatar-status-online"></span></span>
                         @else
                             <img class="round"src="{{ asset('images/user.png') }}" alt="Avatar"height="40" width="40"><span class="avatar-status-online"></span></span>
                         @endif
                 </a>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user">
-                    <a class="dropdown-item" href="{{ url('sa1991as/profile') }}"><i class="me-50"
+                    <a class="dropdown-item" href="{{ url('m1001m/profile') }}"><i class="me-50"
                             data-feather="user"></i>Profile</a>
-                    <a class="dropdown-item" href="{{ url('sa1991as/logout') }}"><i class="me-50"
+                    <a class="dropdown-item" href="{{ url('m1001m/logout') }}"><i class="me-50"
                             data-feather="power"></i> Logout</a>
                 </div>
             </li>

@@ -11,7 +11,7 @@
     <meta name="keywords" content="{{ env('APP_NAME') }}">
     {{-- <meta name="author" content=""> --}}
     <title>@yield('page_title') - {{ env('APP_NAME') }}</title>
-    @include('super-admin.layout.header-cdns')
+    @include('manager.layout.header-cdns')
 </head>
 {{-- END: Head --}}
 
@@ -21,12 +21,12 @@
     data-menu="vertical-menu-modern" data-col="">
 
     {{-- BEGIN: Header --}}
-    @include('super-admin.layout.header')
+    @include('manager.layout.header')
     {{-- END: Header --}}
 
 
     {{-- BEGIN: Main Menu --}}
-    @include('super-admin.layout.sidebar')
+    @include('manager.layout.sidebar')
     {{-- END: Main Menu --}}
 
     {{-- BEGIN: Content --}}
@@ -42,7 +42,7 @@
                             <h2 class="content-header-title float-start mb-0">@yield('page_title')</h2>
                             <div class="breadcrumb-wrapper">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="{{ url('sa1991as') }}"><i class="fa fa-home"></i></a>
+                                    <li class="breadcrumb-item"><a href="{{ url('m1001m') }}"><i class="fa fa-home"></i></a>
                                     </li>
                                     @yield('breadcrumb')
                                 </ol>
@@ -67,11 +67,11 @@
     <div class="drag-target"></div>
 
     {{-- BEGIN: Footer --}}
-    @include('super-admin.layout.footer')
+    @include('manager.layout.footer')
     {{-- END: Footer --}}
 
     {{-- Footer CDNs --}}
-    @include('super-admin.layout.footer-cdns')
+    @include('manager.layout.footer-cdns')
 </body>
 {{-- END: Body --}}
 

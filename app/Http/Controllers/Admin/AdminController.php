@@ -1,25 +1,23 @@
 <?php
 
-namespace App\Http\Controllers\SuperAdmin;
+namespace App\Http\Controllers\Admin;
 
 use Carbon\Carbon;
 use App\Models\Admin;
 use App\Models\Mailer;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\PasswordReset;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 
-
 class AdminController extends Controller
 {
     public function index(Request $request)
     {
-        if ($request->session()->has('online_super_admin')) {
-            return view("super-admin.dashboard");
+        if ($request->session()->has('online_admin')) {
+            return view("admin.dashboard");
         } else {
-            return view("super-admin.login");
+            return view("admin.login");
         }
     }
 
@@ -29,47 +27,47 @@ class AdminController extends Controller
             "username" => "required",
             "password" => "required"
         ]);
-        $super_admin = Admin::where("username", $request->username)->where('role', 'super_admin')->first();
-        if ($super_admin) {
-            if ($super_admin->status != 1) {
+        $admin = Admin::where("username", $request->username)->where('role', 'admin')->first();
+        if ($admin) {
+            if ($admin->status != 1) {
                 return back()->with("error", "Your account has been Blocked.");
             }
-            if (Hash::check($request->password, $super_admin->password)) {
-                $request->session()->put("online_super_admin", $super_admin);
+            if (Hash::check($request->password, $admin->password)) {
+                $request->session()->put("online_admin", $admin);
             } else {
                 return back()->with("error", "Wrong username or password");
             }
         } else {
             return back()->with("error", "Wrong username or password");
         }
-        return redirect('sa1991as');
+        return redirect('a1aa');
     }
     public function logout(Request $request)
     {
-        if ($request->session()->has("online_super_admin")) {
-            $request->session()->pull("online_super_admin");
-            return redirect("sa1991as");
+    if ($request->session()->has("online_admin")) {
+        $request->session()->pull("online_admin");
+            return redirect("a1aa");
         }
-        return redirect("sa1991as");
+        return redirect("a1aa");
     }
 
     public function forgotPassword()
     {
-        return view("super-admin.forgot-password");
+        return view("admin.forgot-password");
     }
 
     public function processForgotPassword(Request $request)
     {
         $request->validate([
             'email' => 'required|email|exists:admins',
-        ],[
+            ],[
             "email.required" => "Email Not Found!"
         ]);
-        $super_admin = Admin::where("email", $request->email)->where("role", "super_admin")->first();
-        if($super_admin) {
+        $admin = Admin::where("email", $request->email)->where("role", "admin")->first();
+        if($admin) {
 
             $otp = rand(111111, 999999);
-            $email = $super_admin->email;
+            $email = $admin->email;
 
             $password_reset=PasswordReset::where('email', $email)->latest()->first();
             $now = Carbon::now();
@@ -87,13 +85,13 @@ class AdminController extends Controller
 
 
             $message = [
-                'username' => $super_admin->username,
-                'otp' => $otp
+            'username' => $admin->username,
+            'otp' => $otp
             ];
 
             $view = view("mails.otp", compact("message"))->render();
             Mailer::Send("Password Reset ", $view, $email);
-            return redirect('/sa1991as/otp/'.encrypt($password_reset->id))->with('success', 'OTP has been sent to your email!');
+            return redirect('/a1aa/otp/'.encrypt($password_reset->id))->with('success', 'OTP has been sent to your email!');
         }else {
             return back()->with("error", "The email is invalid" );
         }
@@ -102,8 +100,7 @@ class AdminController extends Controller
     public function otp(Request $request, $id)
     {
         $password_reset_otp = PasswordReset::findOrFail(decrypt($id));
-        return view('super-admin.otp', compact('password_reset_otp'));
-
+        return view('admin.otp', compact('password_reset_otp'));
     }
 
     public function otpVerify(Request $request, $id)
@@ -117,63 +114,63 @@ class AdminController extends Controller
         } elseif ($password_reset_otp && $now->isAfter($password_reset_otp->expire_at)) {
             return back()->with('error', 'Your OTP has been expired');
         }
-        $user=Admin::where('email', $password_reset_otp->email)->where('role', 'super_admin')->firstOrFail();
+        $user=Admin::where('email', $password_reset_otp->email)->where('role', 'admin')->firstOrFail();
         if ($user) {
             $password_reset_otp->expire_at=Carbon::now();
             $password_reset_otp->save();
-
         }
-        return redirect('sa1991as/reset-password/'.encrypt($user->id));
+        return redirect('a1aa/reset-password/'.encrypt($user->id));
     }
 
     public function resetPassword($id)
     {
         $user=Admin::findOrFail(decrypt($id));
-        return view('super-admin.reset-password', compact('user'))->with('success', "OTP verified successfully");
+        return view('admin.reset-password', compact('user'))->with('success', "OTP verified successfully");
     }
+
     public function processResetPassword(Request $request)
     {
         $request->validate([
             "password" => "min:8|required_with:confirm_password|same:confirm_password"
         ]);
-        $super_admin = Admin::where('id', decrypt($request->user))->where('role', 'super_admin')->firstOrFail();
-        if ($super_admin) {
-            $super_admin->password = Hash::make($request->password);
-            $super_admin->save();
+        $admin = Admin::where('id', decrypt($request->user))->where('role', 'admin')->firstOrFail();
+        if ($admin) {
+            $admin->password = Hash::make($request->password);
+            $admin->save();
         }
-        return redirect('sa1991as')->with('success', 'Your password has been reset successfully. Please login!');
+        return redirect('a1aa')->with('success', 'Your password has been reset successfully. Please login!');
     }
 
 
     // Admin Profile
     public function profile()
     {
-        $super_admin = Admin::findOrFail(session('online_super_admin')->id);
-        return view("super-admin.profile", compact("super_admin"));
+        $admin = Admin::findOrFail(session('online_admin')->id);
+        return view("admin.profile", compact("admin"));
     }
 
     public function updateProfile(Request $request)
     {
-        $super_admin = Admin::findOrFail(session('online_super_admin')->id);
+        $admin = Admin::findOrFail(session('online_admin')->id);
         // Validation
         $request->validate([
-            'username' => 'required|unique:admins,username,'.$super_admin->id,
-            "email" => "required|email|unique:admins,email," .$super_admin->id,
+            'username' => 'required|unique:admins,username,'.$admin->id,
+            "email" => "required|email|unique:admins,email," .$admin->id,
             "profile_picture" => "image|mimes:png,jpg,jpeg"
         ]);
-        $super_admin->fill($request->all());
+        $admin->fill($request->all());
         // Password
         if ($request->filled('password')) {
             $request->validate([
                 "password" => "required_with:confirm_password|same:confirm_password|min:8"
             ]);
-            $super_admin->password = Hash::make($request->password);
+            $admin->password = Hash::make($request->password);
         }
         // Image
         if (isset($request->profile_picture)) {
             // Delete Old Image First
-            if ($super_admin->profile_picture != null) {
-                $image_path = public_path() . '/storage/admin-images/' . $super_admin->profile_picture;
+            if ($admin->profile_picture != null) {
+                $image_path = public_path() . '/storage/admin-images/' . $admin->profile_picture;
                 if (file_exists($image_path)) {
                     unlink($image_path);
                 }
@@ -182,11 +179,11 @@ class AdminController extends Controller
             $image = $request->profile_picture;
             $image_name = uniqid() . '.' . $image->extension();
             $request->profile_picture->storeAs('public/admin-images', $image_name);
-            $super_admin->profile_picture = $image_name;
+            $admin->profile_picture = $image_name;
         }
         // Save and return with success
-        $super_admin->save();
-        $request->session()->put('online_super_admin', $super_admin);
+        $admin->save();
+        $request->session()->put('online_admin', $admin);
         return back()->with("success", "Your Profile has been updated successfully");
     }
 }
