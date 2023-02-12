@@ -2,7 +2,7 @@
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
             <li class="nav-item me-auto"><a class="navbar-brand"
-                    href="{{url('sa1991as')}}"><span class="brand-logo">
+                    href="{{url('a1aa')}}"><span class="brand-logo">
                         <img src="{{asset('images/logo.png')}}" alt="logo">
                     </span>
                     <h2 class="brand-text">{{env('APP_NAME')}}</h2>
@@ -19,20 +19,13 @@
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class=" nav-item"><a class="d-flex align-items-center" href="{{ url('sa1991as') }}"><i
+            <li class=" nav-item"><a class="d-flex align-items-center" href="{{ url('a1aa') }}"><i
                         data-feather="home"></i><span class="menu-title text-truncate"
                         data-i18n="Dashboard">Dashboard</span></a>
             </li>
-            <li class=" nav-item"><a class="d-flex align-items-center" href="{{ url('sa1991as/product-categories') }}"><i
+            <li class=" nav-item"><a class="d-flex align-items-center" href="{{ url('a1aa/product-categories') }}"><i
                         data-feather="home"></i><span class="menu-title text-truncate"
                         data-i18n="Product Category">Product Category</span></a>
-            </li>
-            <li class=" nav-item"><a class="d-flex align-items-center" href="javascript:void(0)"><i data-feather="tool"></i><span
-                        class="menu-title text-truncate" data-i18n="Settings">Settings</span></a>
-                <ul class="menu-content">
-                    <li><a class="d-flex align-items-center" href="{{ url('/sa1991as/settings/smtp') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">SMTP</span></a></li>
-
-                </ul>
             </li>
         </ul>
     </div>

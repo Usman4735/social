@@ -115,7 +115,7 @@
                 </ul>
             </li>
             @php
-                $admin = Session::get('online_super_admin');
+                $admin = Session::get('online_admin');
             @endphp
             <li class="nav-item dropdown dropdown-user"><a class="nav-link dropdown-toggle dropdown-user-link"
                     id="dropdown-user" href="#" data-bs-toggle="dropdown" aria-haspopup="true"
@@ -131,9 +131,9 @@
                         @endif
                 </a>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user">
-                    <a class="dropdown-item" href="{{ url('sa1991as/profile') }}"><i class="me-50"
+                    <a class="dropdown-item" href="{{ url('a1aa/profile') }}"><i class="me-50"
                             data-feather="user"></i>Profile</a>
-                    <a class="dropdown-item" href="{{ url('sa1991as/logout') }}"><i class="me-50"
+                    <a class="dropdown-item" href="{{ url('a1aa/logout') }}"><i class="me-50"
                             data-feather="power"></i> Logout</a>
                 </div>
             </li>
