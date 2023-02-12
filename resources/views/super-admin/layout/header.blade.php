@@ -121,7 +121,7 @@
                     id="dropdown-user" href="#" data-bs-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
                     <div class="user-nav d-sm-flex d-none"><span
-                            class="user-name fw-bolder">{{ $admin->first_name . ' ' . $admin->last_name }}</span><span
+                            class="user-name fw-bolder">{{ $admin->full_name }}</span><span
                             class="user-status">{{ ucwords(str_replace('_', ' ', $admin->role)) }}</span></div><span
                         class="avatar"><img class="round"
                             src="{{ asset('images/user.png') }}" alt="Avatar"
