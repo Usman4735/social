@@ -1,7 +1,7 @@
 @extends('super-admin.layout.template')
-@section('page_title', 'Product Category')
+@section('page_title', 'User Management')
 @section('breadcrumb')
-    <li class="breadcrumb-item active">Category</li>
+    <li class="breadcrumb-item active">User Management</li>
 @endsection
 @section('content')
     <div class="row clearfix">
@@ -9,7 +9,7 @@
             <div class="card">
                 <div class="card-header row">
                     <div class="col-12 text-end">
-                        <a href="{{ url('sa1991as/product-categories/create') }}" class="btn btn-primary btn-sm mr-2"
+                        <a href="{{ url('sa1991as/user-management/create') }}" class="btn btn-primary btn-sm mr-2"
                             title="Add Category"><i data-feather="plus"></i></a>
                     </div>
                 </div>
@@ -19,27 +19,32 @@
                             <tr>
                                 <th>Sr#</th>
                                 <th>Name</th>
-                                <th>Parent Category</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Status</th>
                                 <th>Operations</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($categories as $category)
+                            @foreach ($users as $user)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td>{{ $category->name }}</td>
-                                    <td>{{$category->parent_category != null ? @$category->parent_category()->name : ''}}</td>
+                                    <td>{{ $user->full_name }}</td>
+                                    <td>{{ $user->username }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ ucwords(str_replace('_', ' ', $user->role)) }}</td>
+                                    <td><span class="badge badge-glow bg-{{ $user->status == 1 ? 'success' : 'danger' }}">{{ $user->status == 1 ? 'Active' : 'Blocked' }}</span></td>
                                     <td>
-                                        <a href="{{ url('sa1991as/product-categories') }}/{{ encrypt($category->id) }}/edit"
-                                            class="btn btn-primary btn-sm"><i
-                                                data-feather="edit"></i></a>
+                                        <a href="{{ url('sa1991as/user-management') }}/{{ encrypt($user->id) }}/edit"
+                                            class="btn btn-primary btn-sm"><i data-feather="edit"></i></a>
                                         <form class="d-inline-block delete-btn"
-                                            action="{{ url('sa1991as/product-categories') }}/{{ encrypt($category->id) }}"
+                                            action="{{ url('sa1991as/user-management') }}/{{ encrypt($user->id) }}"
                                             method="post">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn btn-danger btn-sm deleteAlert"><i
-                                                data-feather="trash"></i></button>
+                                                    data-feather="trash"></i></button>
                                         </form>
                                     </td>
                                 </tr>

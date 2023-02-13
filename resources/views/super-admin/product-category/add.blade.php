@@ -1,97 +1,78 @@
-@extends('layout.template')
-@section('page_title', 'Add Category')
+@extends('super-admin.layout.template')
+@section('page_title', 'Add Product Category')
 @section('breadcrumb')
-    <li class="breadcrumb-item" aria-current="page"><a href="{{ url('/products/category') }}">Category</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Add Category</li>
+    <li class="breadcrumb-item"><a href="{{ url('sa1991as/product-categories') }}">Product Categories</a></li>
+    <li class="breadcrumb-item active">Add Category</li>
 @endsection
 @section('content')
-
-    <div class="row clearfix">
+    <div class="row">
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ url('products/category/add') }}" method="post" enctype="multipart/form-data" id="form">
+                    <form action="{{ url('sa1991as/product-categories') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
-                            <div class="col-12">
-                                <label class="col-form-label"> Name </label>
-                                <span class="text-primary">*</span>
-                                <input type="text" name="name" class="form-control" required
-                                    value="{{ old('name') }}" autocomplete="false">
+                            <div class="col-lg-6">
+                                <label for="name" class="col-form-label">Category Name</label>
+                                <input type="text" name="name" id="name" class="form-control">
                             </div>
-                            <div class="col-12">
-                                <label class="col-form-label"> Parent Category </label>
-                                <select name="parent_category_id" id="parent_category" class="form-control">
+                            <div class="col-lg-6">
+                                <label for="name" class="col-form-label">Parent Category</label>
+                                <select name="parent_category" id="parent_category" class="form-control select-2">
                                     <option value="">None</option>
-                                    @if (count($total_parent_category) > 0)
-                                        <optgroup label="Parent Category">
-                                            @foreach ($total_parent_category as $parent_cateogy)
-                                                <option value="{{ $parent_cateogy->id }}">{{ $parent_cateogy->name }}</option>
-                                            @endforeach
-                                        </optgroup>
-                                    @endif
-                                    @if (count($total_sub_category) > 0)
-                                        <optgroup label="Sub Category">
-                                            @foreach ($total_sub_category as $sub_category)
-                                                <option value="{{ $sub_category->id }}">{{ $sub_category->name }}</option>
-                                            @endforeach
-                                        </optgroup>
-                                    @endif
-                                </select>
-                            </div>
-                            <div class="col-12">
-                                <label class="col-form-label"> Default Duty Charges (%) </label>
-                                <span class="text-primary">*</span>
-                                <input type="number" step="any" name="default_charges" class="form-control" required
-                                    value="{{ old('default_charges') }}" autocomplete="false">
-                            </div>
-                            <div class="col-12">
-                                <label class="col-form-label">Category Image</label>
-                                    <input type="file" name="image" class="form-control" id="customFile">
-                            </div>
-                            <div class="col-12 mt-2">
-                                <label class="col-form-label"> Description </label>
-                                <textarea name="description" class="form-control mb-4" value="{{ old('description') }}" autocomplete="false"></textarea>
-                            </div>
-                        </div>
-                            <h4 class="card-title mt-2">Category HS Code</h4>
-
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <label class="col-form-label"> Country </label>
-                                <span class="text-primary">*</span>
-                                <select class="form-control select-2" name="country_id">
-                                    @foreach ($countries as $country)
-                                        <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-lg-4">
-                                <label class="col-form-label"> HS Code </label>
-                                <span class="text-primary">*</span>
-                                <input type="text" name="hs_code" class="form-control" autocomplete="false" required>
+                            <div class="col-lg-12">
+                                <label for="picture" class="col-form-label">Category Image</label>
+                                <input type="file" name="picture" id="picture" class="form-control">
                             </div>
-                            <div class="col-lg-4">
-                                <label class="col-form-label"> Duty Charges (%) </label>
-                                <span class="text-primary">*</span>
-                                <input type="number" step="any" name="duty_charges" class="form-control" autocomplete="false" required>
+                            <div class="col-lg-12">
+                                <label for="category_description" class="col-form-label">Description</label>
+                                <textarea name="category_description" id="category_description" class="form-control"></textarea>
+                            </div>
+
+                            <div class="card-title my-3">SEO Settings</div>
+
+                            <div class="row mb-3">
+                                <label for="seo_url" class="col-sm-2 col-form-label">URL</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="seo_url" id="seo_url">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="seo_description" class="col-sm-2 col-form-label">Description</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="seo_description" id="seo_description">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="seo_keyword" class="col-sm-2 col-form-label">Keywords</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="seo_keyword" id="seo_keyword">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="seo_title" class="col-sm-2 col-form-label">Title</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="seo_title" id="seo_title">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="seo_h1" class="col-sm-2 col-form-label">H1</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="seo_h1" id="seo_h1">
+                                </div>
+                            </div>
+                            <div class="col-12 mt-2">
+                                <input type="submit" value="Save" class="btn btn-primary px-3">
                             </div>
                         </div>
-                        <div class="col-lg-12 mt-2">
-                            <button class="btn btn-primary form_btn" title="Save Category">Save</button>
-                        </div>
-                        <br>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    @section('custom_scripts')
-    <script>
-        $("#parent_category").on('change', function() {
-            var parent_category = $("#parent_category option:selected").val();
-            $("#category_id").val(parent_category);
-        });
-    </script>
-    @endsection
 @endsection

@@ -8,6 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Admin extends Model
 {
     use HasFactory;
-    protected $fillable = ['username', 'mobile', 'first_name', 'last_name', 'email'];
+    protected $table = "admins";
+    protected $fillable = [
+        "full_name",
+        "username",
+        "email",
+        "mobile",
+        "role",
+        "status"
+    ];
+    // protected $fillable = ['username', 'mobile', 'first_name', 'last_name', 'email'];
     protected $guarded = ['password'];
 }

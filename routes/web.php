@@ -8,6 +8,7 @@ use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Manager\ManagerController;
 use App\Http\Controllers\SuperAdmin\AdminController;
 use App\Http\Controllers\SuperAdmin\ProductCategoryController;
+use App\Http\Controllers\SuperAdmin\UserController;
 use App\Http\Controllers\SuperAdmin\SettingController;
 
 // Super Admin Routes
@@ -26,25 +27,24 @@ Route::prefix('sa1991as')->group(function() {
 
     Route::get('logout', [AdminController::class, "logout"]);
 
+    // Profile
     Route::get('profile', [AdminController::class, "profile"]);
     Route::put('profile', [AdminController::class, "updateProfile"]);
 
+    // Product Categories
+    Route::resource('product-categories', ProductCategoryController::class);
 
+    // User Management
+    Route::resource('user-management', UserController::class);
 
-    Route::prefix('product-categories')->group(function() {
-        Route::get("/", [ProductCategoryController::class, "index"]);
-        Route::get("/create", [ProductCategoryController::class, "create"]);
-        Route::post("/save", [ProductCategoryController::class, "store"]);
-        Route::get("/edit/{id}", [ProductCategoryController::class, "edit"]);
-        Route::put("/update/{id}", [ProductCategoryController::class, "update"]);
-        Route::delete("/delete/{id}", [ProductCategoryController::class, "destroy"]);
-    });
+    // Settings
     Route::prefix('settings')->group(function() {
         Route::get("/smtp", [SettingController::class, "smtp"]);
         Route::put("/smtp", [SettingController::class, "updateSMTP"]);
     });
-
 });
+
+// ----------------------------------------------------------------------------------------------------
 
 // admin
 Route::prefix('a1aa')->group(function() {
@@ -78,6 +78,8 @@ Route::prefix('a1aa')->group(function() {
 
 });
 
+// ----------------------------------------------------------------------------------------------------
+
 // manager
 Route::prefix('m1001m')->group(function() {
 
@@ -99,6 +101,8 @@ Route::prefix('m1001m')->group(function() {
     Route::put('profile', [ManagerController::class, "updateProfile"]);
 
 });
+
+// ----------------------------------------------------------------------------------------------------
 
 // website
 Route::prefix('/')->group(function() {

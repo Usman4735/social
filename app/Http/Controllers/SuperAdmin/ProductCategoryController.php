@@ -15,7 +15,7 @@ class ProductCategoryController extends Controller
      */
     public function index()
     {
-        $categories=ProductCategory::all();
+        $categories = ProductCategory::all();
         return view('super-admin.product-category.index', compact('categories'));
     }
 
@@ -26,7 +26,8 @@ class ProductCategoryController extends Controller
      */
     public function create()
     {
-        //
+        $categories = ProductCategory::all();
+        return view("super-admin.product-category.add", compact("categories"));
     }
 
     /**
@@ -37,7 +38,22 @@ class ProductCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "name" => "required",
+            "category_description" => "required",
+            "picture" => "required|image|mimes:png,jpg,jpeg",
+        ]);
+        $category = new ProductCategory();
+        $category->fill($request->all());
+        // Picture
+        if (isset($request->picture)) {
+            $picture = $request->picture;
+            $picture_name = uniqid() . '.' . $picture->extension();
+            $request->picture->storeAs('public/category-pictures', $picture_name);
+            $category->picture = $picture_name;
+        }
+        $category->save();
+        return redirect("sa1991as/product-categories")->with("success", "A category has been saved successfully");
     }
 
     /**
@@ -57,9 +73,11 @@ class ProductCategoryController extends Controller
      * @param  \App\Models\ProductCategory  $productCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProductCategory $productCategory)
+    public function edit($id)
     {
-        //
+        $category = ProductCategory::findOrFail(decrypt($id));
+        $categories = ProductCategory::all();
+        return view("super-admin.product-category.edit", compact("category", "categories"));
     }
 
     /**
@@ -69,9 +87,34 @@ class ProductCategoryController extends Controller
      * @param  \App\Models\ProductCategory  $productCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProductCategory $productCategory)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            "name" => "required",
+            "category_description" => "required",
+            "picture" => "image|mimes:png,jpg,jpeg",
+        ]);
+        $category = ProductCategory::findOrFail(decrypt($id));
+        $category->fill($request->all());
+        // Picture
+        if (isset($request->picture)) {
+            // Delete old picture first
+            if ($category->picture != null) {
+                $image_path = public_path() . '/storage/category-pictures/' . $category->picture;
+                if (file_exists($image_path)) {
+                    unlink($image_path);
+                }
+            }
+            $picture = $request->picture;
+            $picture_name = uniqid() . '.' . $picture->extension();
+            $request->picture->storeAs('public/category-pictures', $picture_name);
+            $category->picture = $picture_name;
+        }
+        if($request->isNotFilled('parent_category')) {
+            $category->parent_category = null;
+        }
+        $category->save();
+        return redirect("sa1991as/product-categories")->with("success", "A category has been updated successfully");
     }
 
     /**
@@ -80,8 +123,14 @@ class ProductCategoryController extends Controller
      * @param  \App\Models\ProductCategory  $productCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProductCategory $productCategory)
+    public function destroy($id)
     {
-        //
+        $category = ProductCategory::findOrFail(decrypt($id));
+        $children_categories = ProductCategory::where("parent_category", $category->id)->get();
+        foreach($children_categories as $child_category) {
+            $child_category->delete();
+        }
+        $category->delete();
+        return back()->with("error", "A category has been deleted");
     }
 }
