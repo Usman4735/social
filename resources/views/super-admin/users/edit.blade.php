@@ -15,11 +15,15 @@
                         @method('put')
                         <div class="row">
                             <div class="col-lg-6">
-                                <label for="full_name" class="col-form-label">Full Name</label>
-                                <input type="text" name="full_name" id="full_name" class="form-control" value="{{$user->full_name}}" required>
+                                <label for="first_name" class="col-form-label">First Name</label>
+                                <input type="text" name="first_name" id="first_name" class="form-control" value="{{$user->first_name}}" required>
                             </div>
                             <div class="col-lg-6">
-                                <label for="username" class="col-form-label">Full Name</label>
+                                <label for="last_name" class="col-form-label">Last Name</label>
+                                <input type="text" name="last_name" id="last_name" class="form-control" value="{{$user->last_name}}" required>
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="username" class="col-form-label">Username</label>
                                 <input type="text" name="username" id="username" class="form-control" value="{{$user->username}}" required>
                             </div>
                             <div class="col-lg-6">

@@ -18,6 +18,8 @@ return new class extends Migration
            $table->string('name', 100)->nullable();
            $table->string('parent_category', 100)->nullable();
            $table->string('picture')->nullable();
+           $table->string('added_by')->nullable();
+           $table->string('added_by_role')->nullable();
            $table->string('category_description')->nullable();
            $table->string('seo_url')->nullable();
            $table->string('seo_description')->nullable();

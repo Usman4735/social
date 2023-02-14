@@ -23,6 +23,10 @@
                         data-feather="home"></i><span class="menu-title text-truncate"
                         data-i18n="Dashboard">Dashboard</span></a>
             </li>
+              <li class=" nav-item"><a class="d-flex align-items-center"
+                    href="{{ url('m1001m/product-categories') }}"><i data-feather="archive"></i><span
+                        class="menu-title text-truncate" data-i18n="Product Category">Product Category</span></a>
+            </li>
         </ul>
     </div>
 </div>

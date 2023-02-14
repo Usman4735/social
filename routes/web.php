@@ -1,11 +1,12 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController as AdminAdminController;
-use App\Http\Controllers\Admin\ProductCateogryController;
+use App\Http\Controllers\Admin\ProductCategoryController as AdminProductCategoryController;
 use App\Http\Controllers\Front\CustomerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Manager\ManagerController;
+use App\Http\Controllers\Manager\ProductCategoryController as ManagerProductCategoryController;
 use App\Http\Controllers\SuperAdmin\AdminController;
 use App\Http\Controllers\SuperAdmin\ProductCategoryController;
 use App\Http\Controllers\SuperAdmin\UserController;
@@ -65,16 +66,7 @@ Route::prefix('a1aa')->group(function() {
     Route::get('profile', [AdminAdminController::class, "profile"]);
     Route::put('profile', [AdminAdminController::class, "updateProfile"]);
 
-
-
-    Route::prefix('product-categories')->group(function() {
-        Route::get("/", [ProductCateogryController::class, "index"]);
-        Route::get("/create", [ProductCateogryController::class, "create"]);
-        Route::post("/save", [ProductCateogryController::class, "store"]);
-        Route::get("/edit/{id}", [ProductCateogryController::class, "edit"]);
-        Route::put("/update/{id}", [ProductCateogryController::class, "update"]);
-        Route::delete("/delete/{id}", [ProductCateogryController::class, "destroy"]);
-    });
+    Route::resource('product-categories', AdminProductCategoryController::class);
 
 });
 
@@ -99,6 +91,9 @@ Route::prefix('m1001m')->group(function() {
 
     Route::get('profile', [ManagerController::class, "profile"]);
     Route::put('profile', [ManagerController::class, "updateProfile"]);
+
+    Route::resource('product-categories', ManagerProductCategoryController::class);
+
 
 });
 

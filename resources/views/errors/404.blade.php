@@ -6,8 +6,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
-    <meta name="description" content="eGift Shop">
-    <meta name="keywords" content="eGift Shop">
+    <meta name="description" content="Social Online">
+    <meta name="keywords" content="Social Online">
     <meta name="author" content="PIXINVENT">
     <title>Error - {{ env('APP_NAME') }}</title>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('backend-assets/images/ico/favicon.ico') }}">
@@ -52,10 +52,11 @@
             </div>
             <div class="content-body">
                 <!-- Error page-->
-                <div class="misc-wrapper"><a class="brand-logo" href="index.html">
-                        <img src="{{ asset('images/logo/logo_dark.png') }}" height="65" alt="Logo">
-                        {{-- <h2 class="brand-text text-primary ms-1">{{env('APP_NAME')}}</h2> --}}
-                    </a>
+                <div class="misc-wrapper">
+                    {{-- <a class="brand-logo"href="{{ Request::is('sa1991as*')? url('/sa1991as'): url('/') }}">
+                        <img src="{{ asset('images/logo/logo.png') }}" height="65" alt="Logo">
+                        <h2 class="brand-text text-primary ms-1">{{env('APP_NAME')}}</h2>
+                    </a> --}}
                     <div class="misc-inner p-2 p-sm-3">
                         <div class="w-100 text-center">
                             <h2 class="mb-1">Page Not Found</h2>
