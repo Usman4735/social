@@ -2,13 +2,16 @@
 
 use App\Http\Controllers\Admin\AdminController as AdminAdminController;
 use App\Http\Controllers\Admin\ProductCategoryController as AdminProductCategoryController;
+use App\Http\Controllers\Admin\ProductGroupController as AdminProductGroupController;
 use App\Http\Controllers\Front\CustomerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Manager\ManagerController;
 use App\Http\Controllers\Manager\ProductCategoryController as ManagerProductCategoryController;
+use App\Http\Controllers\Manager\ProductGroupController as ManagerProductGroupController;
 use App\Http\Controllers\SuperAdmin\AdminController;
 use App\Http\Controllers\SuperAdmin\ProductCategoryController;
+use App\Http\Controllers\SuperAdmin\ProductGroupController;
 use App\Http\Controllers\SuperAdmin\UserController;
 use App\Http\Controllers\SuperAdmin\SettingController;
 
@@ -34,6 +37,9 @@ Route::prefix('sa1991as')->group(function() {
 
     // Product Categories
     Route::resource('product-categories', ProductCategoryController::class);
+
+    // Product Groups
+    Route::resource('product-groups', ProductGroupController::class);
 
     // User Management
     Route::resource('user-management', UserController::class);
@@ -68,6 +74,9 @@ Route::prefix('a1aa')->group(function() {
 
     Route::resource('product-categories', AdminProductCategoryController::class);
 
+    // Product Groups
+    Route::resource('product-groups', AdminProductGroupController::class);
+
 });
 
 // ----------------------------------------------------------------------------------------------------
@@ -94,6 +103,8 @@ Route::prefix('m1001m')->group(function() {
 
     Route::resource('product-categories', ManagerProductCategoryController::class);
 
+    // Product Groups
+    Route::resource('product-groups', ManagerProductGroupController::class);
 
 });
 

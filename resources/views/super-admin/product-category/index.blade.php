@@ -1,7 +1,7 @@
 @extends('super-admin.layout.template')
-@section('page_title', 'Product Category')
+@section('page_title', 'Product Categories')
 @section('breadcrumb')
-    <li class="breadcrumb-item active">Category</li>
+    <li class="breadcrumb-item active">Product Categories</li>
 @endsection
 @section('content')
     <div class="row clearfix">

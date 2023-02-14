@@ -1,7 +1,7 @@
 @extends('manager.layout.template')
-@section('page_title', 'Product Categories')
+@section('page_title', 'Product Groups')
 @section('breadcrumb')
-    <li class="breadcrumb-item active">Product Categories</li>
+    <li class="breadcrumb-item active">Product Groups</li>
 @endsection
 @section('content')
     <div class="row clearfix">
@@ -9,7 +9,7 @@
             <div class="card">
                 <div class="card-header row">
                     <div class="col-12 text-end">
-                        <a href="{{ url('m1001m/product-categories/create') }}" class="btn btn-primary btn-sm mr-2"
+                        <a href="{{ url('m1001m/product-groups/create') }}" class="btn btn-primary btn-sm mr-2"
                             title="Add Category"><i data-feather="plus"></i></a>
                     </div>
                 </div>
@@ -18,28 +18,29 @@
                         <thead>
                             <tr>
                                 <th>Sr#</th>
-                                <th>Name</th>
-                                <th>Parent Category</th>
+                                <th>Product Group</th>
+                                <th>Category</th>
+                                <th>Price</th>
                                 <th>Operations</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($categories as $category)
+                            @foreach ($products as $product)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td>{{ $category->name }}</td>
-                                    <td>{{$category->parent_category != null ? @$category->parent_category()->name : ''}}</td>
+                                    <td>{{ $product->name }}</td>
+                                    <td>{{ $product->category->name }}</td>
+                                    <td>{{ number_format($product->price, 2) }}</td>
                                     <td>
-                                        <a href="{{ url('m1001m/product-categories') }}/{{ encrypt($category->id) }}/edit"
-                                            class="btn btn-primary btn-sm"><i
-                                                data-feather="edit"></i></a>
+                                        <a href="{{ url('m1001m/product-groups') }}/{{ encrypt($product->id) }}/edit"
+                                            class="btn btn-primary btn-sm"><i data-feather="edit"></i></a>
                                         <form class="d-inline-block delete-btn"
-                                            action="{{ url('m1001m/product-categories') }}/{{ encrypt($category->id) }}"
+                                            action="{{ url('m1001m/product-groups') }}/{{ encrypt($product->id) }}"
                                             method="post">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn btn-danger btn-sm deleteAlert"><i
-                                                data-feather="trash"></i></button>
+                                                    data-feather="trash"></i></button>
                                         </form>
                                     </td>
                                 </tr>

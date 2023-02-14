@@ -2342,3 +2342,8 @@ html .gift-sidebar .ui-button.ui-state-disabled:active {
     width: 95%;
     margin-left: 9px;
 }
+
+.required::after {
+    content: "*";
+    color: red;
+}

@@ -27,6 +27,10 @@
                     href="{{ url('m1001m/product-categories') }}"><i data-feather="archive"></i><span
                         class="menu-title text-truncate" data-i18n="Product Category">Product Category</span></a>
             </li>
+            <li class=" nav-item"><a class="d-flex align-items-center"
+                    href="{{ url('m1001m/product-groups') }}"><i data-feather="package"></i><span
+                        class="menu-title text-truncate" data-i18n="Product Groups">Product Groups</span></a>
+            </li>
         </ul>
     </div>
 </div>
