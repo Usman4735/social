@@ -18,11 +18,11 @@ class CustomerFactory extends Factory
     public function definition()
     {
         return [
-            // 'qualification_id' => $this->faker->numerify('#'),
             'username' => $this->faker->name(),
             'first_name' => $this->faker->name(),
             'last_name' => $this->faker->name(),
             'email' => $this->faker->email(),
+            'mobile' => $this->faker->numerify("######"),
             'password' => Hash::make('password'), // password
 
         ];

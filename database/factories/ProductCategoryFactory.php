@@ -17,7 +17,6 @@ class ProductCategoryFactory extends Factory
     public function definition()
     {
         return [
-        // 'qualification_id' => $this->faker->numerify('#'),
         'name' => $this->faker->name(),
         'category_description' => $this->faker->paragraph(),
         ];
