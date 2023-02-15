@@ -34,6 +34,10 @@
                     href="{{ url('sa1991as/user-management') }}"><i data-feather="users"></i><span
                         class="menu-title text-truncate" data-i18n="User Management">User Management</span></a>
             </li>
+            <li class=" nav-item"><a class="d-flex align-items-center" href="{{ url('sa1991as/news') }}"><i
+                        data-feather="file-text"></i><span class="menu-title text-truncate"
+                        data-i18n="News">News</span></a>
+            </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="javascript:void(0)"><i data-feather="tool"></i><span
                         class="menu-title text-truncate" data-i18n="Settings">Settings</span></a>
                 <ul class="menu-content">

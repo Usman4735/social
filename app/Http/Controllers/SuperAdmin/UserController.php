@@ -27,7 +27,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view("super-admin.users.add");
+        $admins = Admin::where("role", "super_admin")->orWhere("role", "admin")->get();
+        return view("super-admin.users.add", compact("admins"));
     }
 
     /**
@@ -47,6 +48,14 @@ class UserController extends Controller
             "profile_picture" => "image|mimes:png,jpg,jpeg",
             "password" => "required_with:confirm_password|same:confirm_password|min:8"
         ]);
+        if($request->role == "manager") {
+            $request->validate([
+                "admin_id" => "required"
+            ],
+        [
+            "admin_id.required" => "Admin Field is required"
+        ]);
+        }
         $user = new Admin();
         $user->fill($request->all());
         $user->password = Hash::make($request->password);
@@ -84,7 +93,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = Admin::findOrFail(decrypt($id));
-        return view("super-admin.users.edit", compact("user"));
+        $admins = Admin::where("role", "super_admin")->orWhere("role", "admin")->get();
+        return view("super-admin.users.edit", compact("user", "admins"));
     }
 
     /**
@@ -104,6 +114,14 @@ class UserController extends Controller
             "role" => "required",
             "profile_picture" => "image|mimes:png,jpg,jpeg",
         ]);
+        if($request->role == "manager") {
+            $request->validate([
+                "admin_id" => "required"
+            ],
+        [
+            "admin_id.required" => "Admin Field is required"
+        ]);
+        }
         $user = Admin::findOrFail(decrypt($id));
         $user->fill($request->all());
         if($request->filled('password')) {

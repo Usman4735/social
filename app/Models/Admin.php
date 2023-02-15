@@ -16,6 +16,7 @@ class Admin extends Model
         "email",
         "mobile",
         "role",
+        "admin_id",
         "status"
     ];
     protected $guarded = ['password'];

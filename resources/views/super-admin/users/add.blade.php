@@ -48,6 +48,15 @@
                                     <option value="manager">Manager</option>
                                 </select>
                             </div>
+                            <div class="col-lg-12" id="admin_div" style="display: none">
+                                <label for="admin_id" class="col-form-label">Admin</label>
+                                <select name="admin_id" id="admin_id" class="form-control form-control-sm select-2" required>
+                                    <option value="">Select Admin</option>
+                                    @foreach ($admins as $admin)
+                                        <option value="{{$admin->id}}">{{$admin->first_name}} {{$admin->last_name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <div class="col-lg-12">
                                 <label for="profile_picture" class="col-form-label">Profile Picture</label>
                                 <input type="file" name="profile_picture" id="profile_picture" class="form-control form-control-sm">
@@ -67,4 +76,15 @@
             </div>
         </div>
     </div>
+@endsection
+@section("custom_scripts"))
+    <script>
+        $("#role").on("change", function() {
+            $("#admin_div").hide();
+            var role = $(this).val();
+            if(role == 'manager') {
+                $("#admin_div").show();
+            }
+        });
+    </script>
 @endsection

@@ -10,6 +10,7 @@ use App\Http\Controllers\Manager\ManagerController;
 use App\Http\Controllers\Manager\ProductCategoryController as ManagerProductCategoryController;
 use App\Http\Controllers\Manager\ProductGroupController as ManagerProductGroupController;
 use App\Http\Controllers\SuperAdmin\AdminController;
+use App\Http\Controllers\SuperAdmin\NewsController;
 use App\Http\Controllers\SuperAdmin\ProductCategoryController;
 use App\Http\Controllers\SuperAdmin\ProductGroupController;
 use App\Http\Controllers\SuperAdmin\UserController;
@@ -43,6 +44,9 @@ Route::prefix('sa1991as')->group(function() {
 
     // User Management
     Route::resource('user-management', UserController::class);
+
+    // News
+    Route::resource('news', NewsController::class);
 
     // Settings
     Route::prefix('settings')->group(function() {

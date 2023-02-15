@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('profile_picture')->nullable();
             $table->string('mobile')->nullable();
             $table->string('role')->nullable();
+            $table->bigInteger('admin_id')->nullable();
             $table->integer('status')->default(0);
             $table->timestamps();
         });

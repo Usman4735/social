@@ -27,7 +27,8 @@
 {{-- BEGIN: Page Vendor JS --}}
 <script src="{{ asset('backend-assets/vendors/js/extensions/toastr.min.js') }}"></script>
 <script src="{{asset('backend-assets/vendors/js/extensions/sweetalert2.all.min.js')}}"></script>
-<script src="{{asset('backend-assets/vendors/js/ckeditor/ckeditor.js')}}"></script>
+{{-- <script src="{{asset('backend-assets/vendors/js/ckeditor/ckeditor.js')}}"></script> --}}
+<script src="//cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
 
 {{-- END: Page Vendor JS --}}
 
