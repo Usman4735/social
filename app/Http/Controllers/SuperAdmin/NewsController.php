@@ -15,8 +15,8 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news = News::all();
-        return view("super-admin.news.index", compact("news"));
+        $news_posts = News::all();
+        return view("super-admin.news.index", compact("news_posts"));
     }
 
     /**
@@ -44,6 +44,9 @@ class NewsController extends Controller
         ]);
         $news = new News();
         $news->fill($request->all());
+         if($request->isNotFilled('is_published')) {
+         $news->is_published = 0;
+         }
         // Image
         if (isset($request->image)) {
             $image = $request->image;
@@ -94,6 +97,9 @@ class NewsController extends Controller
         ]);
         $news = News::findOrFail(decrypt($id));
         $news->fill($request->all());
+         if($request->isNotFilled('is_published')) {
+         $news->is_published = 0;
+         }
         // Image
         if (isset($request->image)) {
             // Delete old image first

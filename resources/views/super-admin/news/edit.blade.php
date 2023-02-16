@@ -32,7 +32,12 @@
                                 <label for="long_description" class="col-form-label">Long Description</label>
                                 <textarea name="long_description" id="long_description" class="form-control">{!! $news->long_description !!}</textarea>
                             </div>
-                            <div class="col-lg-12"></div>
+                            <div class="col-lg-12 mt-2">
+                                <div class="form-check form-switch">
+                                    <input type="checkbox" class="form-check-input" id="is_published" name="is_published" value="1" {{$news->is_published == 1 ? 'checked' : ''}}>
+                                    <label class="form-check-label" for="is_published">Publish / Draft</label>
+                                </div>
+                            </div>
                             <div class="col-12 mt-2">
                                 <input type="submit" value="Save" class="btn btn-primary px-3">
                             </div>

@@ -27,7 +27,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $admins = Admin::where("role", "super_admin")->orWhere("role", "admin")->get();
+        $admins = Admin::where("role", "admin")->get();
         return view("super-admin.users.add", compact("admins"));
     }
 
@@ -93,7 +93,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = Admin::findOrFail(decrypt($id));
-        $admins = Admin::where("role", "super_admin")->orWhere("role", "admin")->get();
+        $admins = Admin::where("role", "admin")->get();
         return view("super-admin.users.edit", compact("user", "admins"));
     }
 
