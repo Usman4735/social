@@ -16,7 +16,7 @@ class ProductGroupController extends Controller
      */
     public function index()
     {
-        $products = ProductGroup::all();
+        $products = ProductGroup::orderBy('id', 'desc')->get();
         return view("super-admin.product-groups.index", compact("products"));
     }
 

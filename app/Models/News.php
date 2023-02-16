@@ -13,5 +13,10 @@ class News extends Model
     "short_description",
     "long_description",
     "is_published",
+     "seo_url",
+     "seo_description",
+     "seo_keyword",
+     "seo_title",
+     "seo_h1"
     ];
 }

@@ -15,7 +15,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news_posts = News::all();
+        $news_posts = News::orderBy('id', 'desc')->get();
         return view("super-admin.news.index", compact("news_posts"));
     }
 
