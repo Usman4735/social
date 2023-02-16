@@ -38,11 +38,15 @@
                         data-feather="file-text"></i><span class="menu-title text-truncate"
                         data-i18n="News">News</span></a>
             </li>
+            <li class=" nav-item"><a class="d-flex align-items-center"
+                href="{{ url('sa1991as/testimonials') }}"><i data-feather="users"></i><span
+                    class="menu-title text-truncate" data-i18n="Testimonials">Testimonials</span></a>
+        </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="javascript:void(0)"><i data-feather="tool"></i><span
                         class="menu-title text-truncate" data-i18n="Settings">Settings</span></a>
                 <ul class="menu-content">
+                    <li><a class="d-flex align-items-center" href="{{ url('/sa1991as/settings/general') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">General Settings</span></a></li>
                     <li><a class="d-flex align-items-center" href="{{ url('/sa1991as/settings/smtp') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">SMTP</span></a></li>
-
                 </ul>
             </li>
         </ul>

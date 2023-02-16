@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('news', function (Blueprint $table) {
+        Schema::create('application_settings', function (Blueprint $table) {
             $table->id();
-            $table->string("title")->nullable();
-            $table->text("short_description")->nullable();
-            $table->text("long_description")->nullable();
-            $table->text("image")->nullable();
+            $table->string("name")->nullable();
+            $table->string("logo")->nullable();
+            $table->string("favicon")->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('news');
+        Schema::dropIfExists('application_settings');
     }
 };

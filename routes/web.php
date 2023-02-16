@@ -15,6 +15,7 @@ use App\Http\Controllers\SuperAdmin\ProductCategoryController;
 use App\Http\Controllers\SuperAdmin\ProductGroupController;
 use App\Http\Controllers\SuperAdmin\UserController;
 use App\Http\Controllers\SuperAdmin\SettingController;
+use App\Http\Controllers\SuperAdmin\TestimonialController;
 
 // Super Admin Routes
 Route::prefix('sa1991as')->group(function() {
@@ -48,8 +49,13 @@ Route::prefix('sa1991as')->group(function() {
     // News
     Route::resource('news', NewsController::class);
 
+    // Testimonials
+    Route::resource('testimonials', TestimonialController::class);
+
     // Settings
     Route::prefix('settings')->group(function() {
+        Route::get("general", [SettingController::class, "generalSettings"]);
+        Route::put("general", [SettingController::class, "updateGeneralSettings"]);
         Route::get("/smtp", [SettingController::class, "smtp"]);
         Route::put("/smtp", [SettingController::class, "updateSMTP"]);
     });
