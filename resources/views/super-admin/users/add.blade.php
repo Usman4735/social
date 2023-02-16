@@ -50,7 +50,7 @@
                             </div>
                             <div class="col-lg-12" id="admin_div" style="display: none">
                                 <label for="admin_id" class="col-form-label">Admin</label>
-                                <select name="admin_id" id="admin_id" class="form-control form-control-sm select-2" required>
+                                <select name="admin_id" id="admin_id" class="form-control form-control-sm select-2" >
                                     <option value="">Select Admin</option>
                                     @foreach ($admins as $admin)
                                         <option value="{{$admin->id}}">{{$admin->first_name}} {{$admin->last_name}}</option>
@@ -77,7 +77,7 @@
         </div>
     </div>
 @endsection
-@section("custom_scripts"))
+@section("custom_scripts")
     <script>
         $("#role").on("change", function() {
             $("#admin_div").hide();

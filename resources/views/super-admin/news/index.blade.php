@@ -19,20 +19,32 @@
                             <tr>
                                 <th>Sr#</th>
                                 <th>Title</th>
+                                <th>Short Description</th>
+                                <th>Status</th>
                                 <th>Operations</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($news as $single_news)
+                            @foreach ($news_posts as $news)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td>{{ $single_news->title }}</td>
+                                    <td>{{ $news->title }}</td>
                                     <td>
-                                        <a href="{{ url('sa1991as/news') }}/{{ encrypt($single_news->id) }}/edit"
+                                        @if(strlen($news->short_description)>200)
+
+                                        {!! substr($news->short_description, 0,200) !!}
+                                        @else
+                                        {!! $news->short_description !!}
+                                        @endif
+                                    </td>
+                                    <td><span class="badge badge-glow bg-{{ $news->is_published == 1 ? 'success' : 'danger' }}">{{ $news->is_published == 1 ? 'Published' : 'Draft' }}</span></td>
+
+                                    <td>
+                                        <a href="{{ url('sa1991as/news') }}/{{ encrypt($news->id) }}/edit"
                                             class="btn btn-primary btn-sm"><i
                                                 data-feather="edit"></i></a>
                                         <form class="d-inline-block delete-btn"
-                                            action="{{ url('sa1991as/news') }}/{{ encrypt($single_news->id) }}"
+                                            action="{{ url('sa1991as/news') }}/{{ encrypt($news->id) }}"
                                             method="post">
                                             @csrf
                                             @method('delete')

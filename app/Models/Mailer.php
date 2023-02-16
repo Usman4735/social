@@ -41,6 +41,7 @@ class Mailer extends Model
             }
             return true;
         } catch (Exception $e) {
+            // dd($e);
             return false;
         }
     }
