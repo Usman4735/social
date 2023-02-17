@@ -30,6 +30,10 @@
                         data-feather="package"></i><span class="menu-title text-truncate"
                         data-i18n="Product Groups">Product Groups</span></a>
             </li>
+            <li class=" nav-item"><a class="d-flex align-items-center" href="{{ url('sa1991as/product-goods') }}"><i
+                        data-feather="package"></i><span class="menu-title text-truncate"
+                        data-i18n="Product Goods">Product Goods</span></a>
+            </li>
             <li class=" nav-item"><a class="d-flex align-items-center"
                     href="{{ url('sa1991as/user-management') }}"><i data-feather="users"></i><span
                         class="menu-title text-truncate" data-i18n="User Management">User Management</span></a>
