@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Admin;
 use App\Models\Customer;
+use App\Models\MediaGallery;
 use App\Models\News;
 use App\Models\Product;
 use App\Models\ProductCategory;
@@ -46,5 +47,6 @@ class DatabaseSeeder extends Seeder
         ProductCategory::factory(5)->create();
         Product::factory(5)->create();
         News::factory(5)->create();
+        MediaGallery::factory(5)->create();
     }
 }
