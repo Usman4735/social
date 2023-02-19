@@ -8,6 +8,7 @@ use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Manager\ManagerController;
 use App\Http\Controllers\Manager\ProductCategoryController as ManagerProductCategoryController;
 use App\Http\Controllers\Manager\ProductGroupController as ManagerProductGroupController;
+use App\Http\Controllers\ProductGoodController;
 use App\Http\Controllers\SuperAdmin\AdminController;
 use App\Http\Controllers\SuperAdmin\MediaGalleryController;
 use App\Http\Controllers\SuperAdmin\NewsController;
@@ -46,6 +47,8 @@ Route::prefix('sa1991as')->group(function() {
 
     // media gallery
     Route::resource('gallery', MediaGalleryController::class);
+    // Product Goods
+    Route::resource('product-goods', ProductGoodController::class);
 
     // User Management
     Route::resource('user-management', UserController::class);

@@ -33,6 +33,9 @@
             <li class=" nav-item"><a class="d-flex align-items-center" href="{{ url('sa1991as/gallery') }}"><i
                         data-feather="image"></i><span class="menu-title text-truncate"
                         data-i18n="Media Gallery">Media Gallery</span></a>
+            <li class=" nav-item"><a class="d-flex align-items-center" href="{{ url('sa1991as/product-goods') }}"><i
+                        data-feather="package"></i><span class="menu-title text-truncate"
+                        data-i18n="Product Goods">Product Goods</span></a>
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center"
                     href="{{ url('sa1991as/user-management') }}"><i data-feather="users"></i><span
