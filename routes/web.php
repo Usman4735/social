@@ -11,6 +11,7 @@ use App\Http\Controllers\Manager\ProductCategoryController as ManagerProductCate
 use App\Http\Controllers\Manager\ProductGroupController as ManagerProductGroupController;
 use App\Http\Controllers\ProductGoodController;
 use App\Http\Controllers\SuperAdmin\AdminController;
+use App\Http\Controllers\SuperAdmin\BannerController;
 use App\Http\Controllers\SuperAdmin\NewsController;
 use App\Http\Controllers\SuperAdmin\ProductCategoryController;
 use App\Http\Controllers\SuperAdmin\ProductGroupController;
@@ -52,6 +53,9 @@ Route::prefix('sa1991as')->group(function() {
 
     // News
     Route::resource('news', NewsController::class);
+
+    // Banners
+    Route::resource('banners', BannerController::class);
 
     // Testimonials
     Route::resource('testimonials', TestimonialController::class);

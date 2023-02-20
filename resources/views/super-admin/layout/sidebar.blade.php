@@ -43,9 +43,13 @@
                         data-i18n="News">News</span></a>
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center"
+                href="{{ url('sa1991as/banners') }}"><i data-feather="image"></i><span
+                    class="menu-title text-truncate" data-i18n="Banners">Banners</span></a>
+            </li>
+            <li class=" nav-item"><a class="d-flex align-items-center"
                 href="{{ url('sa1991as/testimonials') }}"><i data-feather="users"></i><span
                     class="menu-title text-truncate" data-i18n="Testimonials">Testimonials</span></a>
-        </li>
+            </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="javascript:void(0)"><i data-feather="tool"></i><span
                         class="menu-title text-truncate" data-i18n="Settings">Settings</span></a>
                 <ul class="menu-content">
