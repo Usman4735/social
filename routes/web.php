@@ -3,7 +3,6 @@
 use App\Http\Controllers\Admin\AdminController as AdminAdminController;
 use App\Http\Controllers\Admin\ProductCategoryController as AdminProductCategoryController;
 use App\Http\Controllers\Admin\ProductGroupController as AdminProductGroupController;
-use App\Http\Controllers\Front\CustomerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Manager\ManagerController;
@@ -12,12 +11,14 @@ use App\Http\Controllers\Manager\ProductGroupController as ManagerProductGroupCo
 use App\Http\Controllers\ProductGoodController;
 use App\Http\Controllers\SuperAdmin\AdminController;
 use App\Http\Controllers\SuperAdmin\BannerController;
+use App\Http\Controllers\SuperAdmin\MediaGalleryController;
 use App\Http\Controllers\SuperAdmin\NewsController;
 use App\Http\Controllers\SuperAdmin\ProductCategoryController;
 use App\Http\Controllers\SuperAdmin\ProductGroupController;
 use App\Http\Controllers\SuperAdmin\UserController;
 use App\Http\Controllers\SuperAdmin\SettingController;
 use App\Http\Controllers\SuperAdmin\TestimonialController;
+
 
 // Super Admin Routes
 Route::prefix('sa1991as')->group(function() {
@@ -45,6 +46,8 @@ Route::prefix('sa1991as')->group(function() {
     // Product Groups
     Route::resource('product-groups', ProductGroupController::class);
 
+    // media gallery
+    Route::resource('gallery', MediaGalleryController::class);
     // Product Goods
     Route::resource('product-goods', ProductGoodController::class);
 
