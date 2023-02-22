@@ -50,15 +50,12 @@
                         data-feather="file-text"></i><span class="menu-title text-truncate"
                         data-i18n="News">News</span></a>
             </li>
-            <li class=" nav-item"><a class="d-flex align-items-center"
-                href="{{ url('sa1991as/banners') }}"><i data-feather="image"></i><span
-                    class="menu-title text-truncate" data-i18n="Banners">Banners</span></a>
+
+            <li class=" nav-item"><a class="d-flex align-items-center" href="{{ url('sa1991as/testimonials') }}"><i
+                        data-feather="users"></i><span class="menu-title text-truncate"
+                        data-i18n="Testimonials">Testimonials</span></a>
             </li>
-            <li class=" nav-item"><a class="d-flex align-items-center"
-                href="{{ url('sa1991as/testimonials') }}"><i data-feather="users"></i><span
-                    class="menu-title text-truncate" data-i18n="Testimonials">Testimonials</span></a>
-            </li>
-             <li class=" nav-item"><a class="d-flex align-items-center" href="{{ url('sa1991as/user-management') }}"><i
+            <li class=" nav-item"><a class="d-flex align-items-center" href="{{ url('sa1991as/user-management') }}"><i
                         data-feather="users"></i><span class="menu-title text-truncate" data-i18n="User Management">User
                         Management</span></a>
             </li>
@@ -72,6 +69,10 @@
                     <li><a class="d-flex align-items-center" href="{{ url('/sa1991as/settings/smtp') }}"><i
                                 data-feather="circle"></i><span class="menu-item text-truncate"
                                 data-i18n="List">SMTP</span></a></li>
+                    <li class=" nav-item"><a class="d-flex align-items-center" href="{{ url('sa1991as/banners') }}"><i
+                                data-feather="image"></i><span class="menu-title text-truncate"
+                                data-i18n="Banners">Banners</span></a>
+                    </li>
                 </ul>
             </li>
         </ul>
