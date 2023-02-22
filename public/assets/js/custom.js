@@ -1,40 +1,6 @@
-$(window).scroll(function () {
-    var sticky = $(".navbar"),
-        scroll = $(window).scrollTop();
-
-    if (scroll >= 40) {
-        sticky.addClass("sticky-top");
-    } else {
-        sticky.removeClass("sticky-top");
-    }
-});
-var btn = $("#backToTop");
-
-$(window).scroll(function () {
-    if ($(window).scrollTop() > 300) {
-        btn.addClass("show");
-    } else {
-        btn.removeClass("show");
-    }
-});
-
-btn.on("click", function (e) {
-    e.preventDefault();
-    $("html, body").animate({ scrollTop: 0 }, "600");
-});
 $(document).ready(function () {
-     $(".select-2").select2({
-         width: "100%",
-     });
-
-    $(".accordion a").click(function () {
-        $(this).toggleClass("active");
-        $(this).next(".content").slideToggle(400);
-    });
-    $("#myTable").DataTable({
-        responsive: true,
-        autoWidth: true,
-        order: [[0, "desc"]],
+    $(".select-2").select2({
+        width: "100%",
     });
 
     $(document).on("click ", ".modal_popup", function (e) {
@@ -75,21 +41,6 @@ $(document).ready(function () {
             });
     });
 
-
-    $(".icon-trigger").click(function (e) {
-        e.preventDefault();
-        $(this).toggleClass("close-icon");
-        $(this).parent().find(".icons").toggleClass("icon-triggred");
-    });
-
-
-    $(".custom-file-input").on("change", function () {
-        var fileName = $(this).val().split("\\").pop();
-        $(this)
-            .siblings(".custom-file-label")
-            .addClass("selected")
-            .html(fileName);
-    });
     //MODAL(call by ajax)
     $(document).on("click ", ".modal_popup", function (e) {
         e.preventDefault();
@@ -110,13 +61,7 @@ $(document).ready(function () {
             },
         });
     });
-    $("#country_name").on("click", function () {
-        $("#exampleModal").modal("show");
-    });
 
-    $("#selected_country").on("change", function () {
-        $("#country_form").submit();
-    });
     $("#subscribe").on("click", function () {
         var email = $("#subscribe_email").val();
         var url = "subscribe" + "/" + email;
@@ -131,10 +76,7 @@ $(document).ready(function () {
             alert("Please Enter Email!");
         }
     });
-    $(".notificationlink").on("click", function (e) {
-        e.preventDefault();
-        $(".notifications").toggle();
-    });
+
     $('#form').on('submit', function (e) {
         $('.form_btn').attr("disabled", "disabled");
     });
