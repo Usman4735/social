@@ -1,21 +1,6 @@
 @extends('web.layout.template')
 @section('page_title', 'Login')
-@section('breadcrum')
-    <div class="breadcrumbs-area mb-70">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumbs-menu">
-                        <ul>
-                            <li><a href="{{ url('/') }}">Home</a></li>
-                            <li><a class="active">login</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-@endsection
+
 @section('content')
 
     <div class="user-login-area mb-70">

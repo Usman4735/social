@@ -31,6 +31,7 @@
     <!-- responsive css -->
     <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
 </head>
+
 <body>
     <!-- header-area-start -->
     <header>
@@ -85,7 +86,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
                 <div class="logo-area text-center logo-xs-mrg">
-                    <a href="{{url('/')}}"><img src="{{ asset('images/front-logo.png') }}" alt="logo"
+                    <a href="{{ url('/') }}"><img src="{{ asset('images/front-logo.png') }}" alt="logo"
                             width="140" /></a>
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -95,22 +96,22 @@
                 <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item mx-2">
-                            <a class="nav-link" href="{{url('/')}}">Home</a>
+                            <a class="nav-link" href="{{ url('/') }}">Home</a>
                         </li>
                         <li class="nav-item mx-2">
-                            <a class="nav-link" href="#">Catalog</a>
+                            <a class="nav-link" href="#">Catalog </a>
                         </li>
                         <li class="nav-item mx-2">
                             <a class="nav-link" href="#">Order Verification</a>
                         </li>
                         <li class="nav-item mx-2">
-                            <a class="nav-link" href="#">How to Buy</a>
+                            <a class="nav-link" href="{{ url('how-to-buy') }}">How to Buy</a>
                         </li>
                         <li class="nav-item mx-2">
                             <a class="nav-link" href="#">Reviews</a>
                         </li>
                         <li class="nav-item mx-2">
-                            <a class="nav-link" href="#">News</a>
+                            <a class="nav-link" href="{{ url('news') }}">News</a>
                         </li>
                         <li class="nav-item mx-2">
                             <a class="nav-link" href="#">Support</a>
@@ -127,32 +128,25 @@
         </nav>
         <!-- main-menu-area-end -->
     </header>
-    @yield('breadcrum')
-    @yield('content')
-
-
-    <footer>
-        <!-- footer-top-start -->
-        <div class="footer-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="footer-top-menu bb-2">
-                            <nav>
-                                <ul>
-                                    <li><a href="#">home</a></li>
-                                    <li><a href="#">Enable Cookies</a></li>
-                                    <li><a href="#">Privacy and Cookie Policy</a></li>
-                                    <li><a href="#">contact us</a></li>
-                                    <li><a href="#">blog</a></li>
-                                </ul>
-                            </nav>
-                        </div>
+    <div class="breadcrumbs-area mb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumbs-menu">
+                        <ul>
+                            {{-- <li><a href="#">Home</a></li> --}}
+                            {{-- <li><a href="#" class="active">News</a></li> --}}
+                            @yield('breadcrum')
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- footer-top-start -->
+    </div>
+    @yield('content')
+
+
+    <footer>
         <!-- footer-mid-start -->
         <div class="footer-mid ptb-50">
             <div class="container">

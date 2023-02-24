@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\ProductCategoryController as AdminProductCategory
 use App\Http\Controllers\Admin\ProductGroupController as AdminProductGroupController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\Front\PageController;
 use App\Http\Controllers\Manager\ManagerController;
 use App\Http\Controllers\Manager\ProductCategoryController as ManagerProductCategoryController;
 use App\Http\Controllers\Manager\ProductGroupController as ManagerProductGroupController;
@@ -153,4 +154,6 @@ Route::prefix('/')->group(function() {
     Route::get('login', [HomeController::class, "login"]);
     Route::post('login', [HomeController::class, "loginProcess"]);
     Route::get('logout', [HomeController::class, "logout"]);
+    Route::get('news', [PageController::class, "news"]);
+    Route::get('how-to-buy', [PageController::class, "howToBuy"]);
 });
