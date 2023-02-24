@@ -144,12 +144,17 @@
         <!-- header-mid-area-end -->
         <!-- main-menu-area-start -->
         <div class="main-menu-area d-md-none d-none d-lg-block sticky-header-1" id="header-sticky">
-            <div class="container">
+            <div class="container" style="max-width: 1200px">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="menu-area">
                             <nav>
                                 <ul>
+                                    <li>
+                                        {{-- <a href="index.html">imran</a> --}}
+                                        <img src="{{ asset('assets/img/logo/logo.png') }}" alt="logo" width="120"/>
+                                    </li>
+
                                     <li class="active"><a href="index.html">Home<i class="fa fa-angle-down"></i></a>
                                         <div class="sub-menu">
                                             <ul>
@@ -555,20 +560,20 @@
     <!-- chosen.jquery.min.js -->
     <script src="{{ asset('assets/js/chosen.jquery.min.js') }}"></script>
     <!-- jquery.counterup.min.js -->
-    <script src="{{ asset('assets/js/jquery.counterup.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/jquery-1.12.4.min.js') }}"></script>
     <!-- waypoints.min.js -->
-    <script src="{{ asset('assets/js/waypoints.min.js') }}"></script>
+    <script src="{{ asset('assets/js/popper.min.js') }}"></script>
     <!-- plugins js -->
-    <script src="{{ asset('assets/js/plugins.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
     <!-- main js -->
-    <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
     <!-- modernizr css -->
-    <script src="{{ asset('assets/js/vendor/modernizr-2.8.3.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.meanmenu.js') }}"></script>
 
-    <script src="{{ asset('assets/js/select2.min.js') }}"></script>
-    <script src="{{ asset('assets/js/sweetalert.js') }}"></script>
+    <script src="{{ asset('assets/js/wow.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.parallax-1.1.3.js') }}"></script>
 
-    <script src="{{ asset('assets/js/custom.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.countdown.min.js') }}"></script>
     @yield('scripts')
 </body>
 
