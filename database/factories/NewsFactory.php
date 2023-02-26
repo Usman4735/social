@@ -20,6 +20,7 @@ class NewsFactory extends Factory
         'title' => $this->faker->name(),
         'short_description' => $this->faker->name(),
         'long_description' => $this->faker->name(),
+        'seo_url' => $this->faker->slug(),
         'is_published' => 1,
 
         ];

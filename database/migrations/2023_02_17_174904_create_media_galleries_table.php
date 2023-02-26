@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('media_galleries', function (Blueprint $table) {
            $table->id();
-           $table->string("header")->nullable();
-           $table->string("description")->nullable();
-           $table->text("alt")->nullable();
-           $table->string("image")->nullable();
+           $table->string("header", 50)->nullable();
+           $table->string("description", 50)->nullable();
+           $table->string("alt", 50)->nullable();
+           $table->text("image")->nullable();
            $table->timestamps();
 
         });

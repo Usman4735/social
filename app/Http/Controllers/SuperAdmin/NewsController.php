@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\SuperAdmin;
 
-use App\Http\Controllers\Controller;
 use App\Models\News;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class NewsController extends Controller
 {
@@ -40,13 +41,16 @@ class NewsController extends Controller
         $request->validate([
             "title" => "required",
             "short_description" => "required",
+            "seo_url" => "required",
             "image" => "image|mimes:png,jpg,jpeg"
         ]);
         $news = new News();
         $news->fill($request->all());
-         if($request->isNotFilled('is_published')) {
-         $news->is_published = 0;
-         }
+        if($request->isNotFilled('is_published')) {
+            $news->is_published = 0;
+        }
+        $news->seo_url=Str::slug($request->seo_url);
+
         // Image
         if (isset($request->image)) {
             $image = $request->image;
@@ -93,13 +97,15 @@ class NewsController extends Controller
         $request->validate([
             "title" => "required",
             "short_description" => "required",
+            "seo_url" => "required",
             "image" => "image|mimes:png,jpg,jpeg"
         ]);
         $news = News::findOrFail(decrypt($id));
         $news->fill($request->all());
-         if($request->isNotFilled('is_published')) {
-         $news->is_published = 0;
-         }
+        $news->seo_url=Str::slug($request->seo_url);
+        if($request->isNotFilled('is_published')) {
+            $news->is_published = 0;
+        }
         // Image
         if (isset($request->image)) {
             // Delete old image first

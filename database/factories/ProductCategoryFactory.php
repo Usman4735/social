@@ -18,7 +18,7 @@ class ProductCategoryFactory extends Factory
     {
         return [
         'name' => $this->faker->name(),
-        'category_description' => $this->faker->paragraph(),
+        'category_description' => $this->faker->text(),
         ];
     }
 }

@@ -17,15 +17,15 @@ return new class extends Migration
            $table->id();
            $table->string('name', 100)->nullable();
            $table->string('parent_category', 100)->nullable();
-           $table->string('picture')->nullable();
-           $table->string('added_by')->nullable();
-           $table->string('added_by_role')->nullable();
-           $table->string('category_description')->nullable();
-           $table->string('seo_url')->nullable();
-           $table->string('seo_description')->nullable();
-           $table->string('seo_keyword')->nullable();
-           $table->string('seo_title')->nullable();
-           $table->string('seo_h1')->nullable();
+           $table->text('picture')->nullable();
+           $table->integer('added_by')->nullable();
+           $table->integer('added_by_role')->nullable();
+           $table->text('category_description', 200)->nullable();
+           $table->text('seo_url')->nullable();
+           $table->text('seo_description')->nullable();
+           $table->text('seo_keyword')->nullable();
+           $table->text('seo_title')->nullable();
+           $table->text('seo_h1')->nullable();
            $table->timestamps();
 
         });

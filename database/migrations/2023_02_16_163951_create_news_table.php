@@ -15,15 +15,15 @@ return new class extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->id();
-            $table->string("title")->nullable();
+            $table->text("title")->nullable();
             $table->text("short_description")->nullable();
             $table->text("long_description")->nullable();
             $table->text("image")->nullable();
-            $table->string('seo_url')->nullable();
-            $table->string('seo_description')->nullable();
-            $table->string('seo_keyword')->nullable();
-            $table->string('seo_title')->nullable();
-            $table->string('seo_h1')->nullable();
+            $table->text('seo_url')->unique();
+            $table->text('seo_description')->nullable();
+            $table->text('seo_keyword')->nullable();
+            $table->text('seo_title')->nullable();
+            $table->text('seo_h1')->nullable();
             $table->integer("is_published")->default(1);
             $table->timestamps();
         });

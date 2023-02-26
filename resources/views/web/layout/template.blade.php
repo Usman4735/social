@@ -11,25 +11,29 @@
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/logo/favicon.ico') }}">
 
+
+
     <!-- all css here -->
     <!-- bootstrap v3.3.6 css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css')}}">
     <!-- animate css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/animate.css')}}">
     <!-- meanmenu css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/meanmenu.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/meanmenu.min.css')}}">
     <!-- owl.carousel css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.css')}}">
     <!-- font-awesome css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css')}}">
     <!-- flexslider.css-->
-    <link rel="stylesheet" href="{{ asset('assets/css/flexslider.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/flexslider.css')}}">
     <!-- chosen.min.css-->
-    <link rel="stylesheet" href="{{ asset('assets/css/chosen.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/chosen.min.css')}}">
     <!-- style css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
     <!-- responsive css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/responsive.css')}}">
+    <!-- modernizr css -->
+    {{-- <script src="{{ asset('assets/js/vendor/modernizr-2.8.3.min.js') }}"></script> --}}
 </head>
 
 <body>
@@ -244,40 +248,33 @@
 
     <!-- all js here -->
     <!-- jquery latest version -->
-    <script src="{{ asset('assets/js/vendor/jquery-1.12.4.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/jquery-1.12.4.min.js')}}"></script>
     <!-- popper js -->
-    <script src="{{ asset('assets/js/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/js/popper.min.js')}}"></script>
     <!-- bootstrap js -->
-    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.min.js')}}"></script>
     <!-- owl.carousel js -->
-    <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('assets/js/owl.carousel.min.js')}}"></script>
     <!-- meanmenu js -->
-    <script src="{{ asset('assets/js/jquery.meanmenu.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.meanmenu.js')}}"></script>
     <!-- wow js -->
-    <script src="{{ asset('assets/js/wow.min.js') }}"></script>
+    <script src="{{ asset('assets/js/wow.min.js')}}"></script>
     <!-- jquery.parallax-1.1.3.js -->
-    <script src="{{ asset('assets/js/jquery.parallax-1.1.3.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.parallax-1.1.3.js')}}"></script>
     <!-- jquery.countdown.min.js -->
-    <script src="{{ asset('assets/js/jquery.countdown.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.countdown.min.js')}}"></script>
     <!-- jquery.flexslider.js -->
-    <script src="{{ asset('assets/js/jquery.flexslider.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.flexslider.js')}}"></script>
     <!-- chosen.jquery.min.js -->
-    <script src="{{ asset('assets/js/chosen.jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/js/chosen.jquery.min.js')}}"></script>
     <!-- jquery.counterup.min.js -->
-    <script src="{{ asset('assets/js/vendor/jquery-1.12.4.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.counterup.min.js')}}"></script>
     <!-- waypoints.min.js -->
-    <script src="{{ asset('assets/js/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/js/waypoints.min.js')}}"></script>
     <!-- plugins js -->
-    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins.js')}}"></script>
     <!-- main js -->
-    <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
-    <!-- modernizr css -->
-    <script src="{{ asset('assets/js/jquery.meanmenu.js') }}"></script>
-
-    <script src="{{ asset('assets/js/wow.min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.parallax-1.1.3.js') }}"></script>
-
-    <script src="{{ asset('assets/js/jquery.countdown.min.js') }}"></script>
+    <script src="{{ asset('assets/js/main.js')}}"></script>
     @yield('scripts')
 </body>
 

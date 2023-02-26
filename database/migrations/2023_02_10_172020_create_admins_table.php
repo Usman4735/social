@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('first_name', 100)->nullable();
             $table->string('last_name', 100)->nullable();
             $table->string('email', 100)->nullable();
-            $table->string('profile_picture')->nullable();
-            $table->string('mobile')->nullable();
+            $table->text('profile_picture')->nullable();
+            $table->text('mobile')->nullable();
             $table->string('role')->nullable();
             $table->bigInteger('admin_id')->nullable();
             $table->integer('status')->default(0);

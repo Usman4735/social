@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('application_settings', function (Blueprint $table) {
             $table->id();
-            $table->string("name")->nullable();
-            $table->string("logo")->nullable();
-            $table->string("favicon")->nullable();
+            $table->text("name")->nullable();
+            $table->text("logo")->nullable();
+            $table->text("favicon")->nullable();
             $table->timestamps();
         });
     }

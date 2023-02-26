@@ -15,19 +15,19 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
+            $table->text('name')->nullable();
             $table->foreignId('category_id')->nullable();
-            $table->string('tags')->nullable();
-            $table->string('picture')->nullable();
+            $table->text('tags')->nullable();
+            $table->text('picture')->nullable();
             $table->double('price')->nullable();
-            $table->string('currency_code')->nullable();
-            $table->string('manager_commission')->nullable();
-            $table->string('manager_commission_type')->nullable();
-            $table->string('description')->nullable();
-            $table->string('seo_description')->nullable();
-            $table->string('seo_keyword')->nullable();
-            $table->string('seo_title')->nullable();
-            $table->string('seo_h1')->nullable();
+            $table->text('currency_code')->nullable();
+            $table->text('manager_commission')->nullable();
+            $table->text('manager_commission_type')->nullable();
+            $table->text('description')->nullable();
+            $table->text('seo_description')->nullable();
+            $table->text('seo_keyword')->nullable();
+            $table->text('seo_title')->nullable();
+            $table->text('seo_h1')->nullable();
             $table->timestamps();
         });
     }

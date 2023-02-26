@@ -154,6 +154,11 @@ Route::prefix('/')->group(function() {
     Route::get('login', [HomeController::class, "login"]);
     Route::post('login', [HomeController::class, "loginProcess"]);
     Route::get('logout', [HomeController::class, "logout"]);
+
+    Route::get('products/quick-view/{id}', [PageController::class, "quickViewProduct"]);
+    Route::get('products/view/{id}', [PageController::class, "viewProduct"]);
+
     Route::get('news', [PageController::class, "news"]);
+    Route::get('news/{id}', [PageController::class, "newsDetails"]);
     Route::get('how-to-buy', [PageController::class, "howToBuy"]);
 });

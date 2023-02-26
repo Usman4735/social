@@ -48,7 +48,7 @@
                             <div class="col-lg-6">
                                 <label for="seo_url" class="col-sm-2 col-form-label">URL</label>
                                 <div class="col-sm-12">
-                                    <input type="text" class="form-control" name="seo_url" value="{{ $news->seo_url }}" id="seo_url">
+                                    <input type="text" class="form-control" name="seo_url" value="{{ $news->seo_url }}" id="seo_url" required>
                                 </div>
                             </div>
                             <div class="col-lg-6">
