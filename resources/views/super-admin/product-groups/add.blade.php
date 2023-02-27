@@ -56,9 +56,8 @@
                                 <label for="description" class="col-form-label">Description</label>
                                 <textarea name="description" id="description" class="form-control"></textarea>
                             </div>
-
-
                         </div>
+
                         <div class="row">
                             <div class="card-title my-3">SEO Settings</div>
 

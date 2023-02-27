@@ -46,6 +46,8 @@ Route::prefix('sa1991as')->group(function() {
 
     // Product Groups
     Route::resource('product-groups', ProductGroupController::class);
+    Route::get('product-groups/permissions/{manager}/{product}', [ProductGroupController::class, "addPermission"]);
+    Route::post('product-groups/permissions/{manager}/{product}', [ProductGroupController::class, "savePermission"]);
 
     // media gallery
     Route::resource('gallery', MediaGalleryController::class);

@@ -3,9 +3,15 @@
 namespace App\Http\Controllers\SuperAdmin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
+use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductGroup;
+use App\Models\ProductGroupPermission;
+use Illuminate\Database\Capsule\Manager;
 use Illuminate\Http\Request;
+
+use function GuzzleHttp\Promise\all;
 
 class ProductGroupController extends Controller
 {
@@ -83,7 +89,8 @@ class ProductGroupController extends Controller
     {
         $product = ProductGroup::findOrFail(decrypt($id));
         $categories = ProductCategory::all();
-        return view("super-admin.product-groups.edit", compact("product", "categories"));
+        $managers = Admin::where("role", "manager")->where('status', 1)->get();
+        return view("super-admin.product-groups.edit", compact("product", "categories", "managers"));
     }
 
     /**
@@ -142,5 +149,58 @@ class ProductGroupController extends Controller
         }
         $product->delete();
         return back()->with("error", "A category has been deleted");
+    }
+
+    public function addPermission($manager, $product) {
+        $manager = Admin::find($manager);
+        $product = Product::findOrFail($product);
+        $permission = null;
+        $existing_permission = ProductGroupPermission::where("product_group_id", $product->id)->where("manager_id", $manager->id)->first();
+        if($existing_permission) {
+            $permission = $existing_permission;
+        }
+        return view("super-admin.product-groups.permissions.index", compact("manager", "product", "permission"));
+    }
+
+    public function savePermission(Request $request, $manager, $product) {
+        $manager = Admin::find($manager);
+        $product = Product::findOrFail($product);
+        $permission = ProductGroupPermission::where("product_group_id", $product->id)->where("manager_id", $manager->id)->first();
+        if(!$permission) {
+            $permission = new ProductGroupPermission();
+            $permission->product_group_id = $product->id;
+            $permission->manager_id = $manager->id;
+        }
+        $permission->fill($request->all());
+
+        if($request->isNotFilled('see_price')) {
+            $permission->see_price = null;
+        }
+        if($request->isNotFilled('edit_price')) {
+            $permission->edit_price = null;
+        }
+        if($request->isNotFilled('see_photos')) {
+            $permission->see_photos = null;
+        }
+        if($request->isNotFilled('edit_photos')) {
+            $permission->edit_photos = null;
+        }
+        if($request->isNotFilled('see_description')) {
+            $permission->see_description = null;
+        }
+        if($request->isNotFilled('edit_description')) {
+            $permission->edit_description = null;
+        }
+        if($request->isNotFilled('see_tags')) {
+            $permission->see_tags = null;
+        }
+        if($request->isNotFilled('edit_tags')) {
+            $permission->edit_tags = null;
+        }
+
+        $permission->save();
+
+        return back()->with("success", "Permission has been saved successfully");
+
     }
 }
