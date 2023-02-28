@@ -157,6 +157,7 @@ Route::prefix('/')->group(function() {
 
     Route::get('products/quick-view/{id}', [PageController::class, "quickViewProduct"]);
     Route::get('products/view/{id}', [PageController::class, "viewProduct"]);
+    Route::post('add-to-cart/{id}', [PageController::class, "addToCart"]);
 
     Route::get('news', [PageController::class, "news"]);
     Route::get('news/{id}', [PageController::class, "newsDetails"]);

@@ -8,6 +8,15 @@
     <div class="product-main-area mb-70">
         <div class="container">
             <div class="row">
+                {{-- Success Message --}}
+                <div class="col-lg-12">
+
+                    @if (Session::has('success'))
+                    <div class="alert alert-success" role="alert">
+                        <div class="alert-body">{{ session('success') }}</div>
+                    </div>
+                    @endif
+                </div>
                 <div class="col-lg-9 col-md-12 col-12 order-lg-1 order-1">
                     <!-- product-main-area-start -->
                     <div class="product-main-area">
@@ -53,11 +62,15 @@
                                         </div>
                                     </div>
                                     <div class="product-add-form">
-                                        <form action="#">
+                                        <form action="{{ url('add-to-cart') }}/{{ $product->id }}" method="post">
+                                            @csrf
+                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                            <input type="hidden" name="price" value="{{ $product->price }}">
                                             <div class="quality-button">
-                                                <input class="qty" type="number" value="1">
+                                                <input class="qty" name="qty" type="number" value="1">
                                             </div>
-                                            <a href="#">Add to cart</a>
+                                            <input type="submit" value="Add to cart">
+                                            {{-- <a href="{{ url('add-to-cart') }}/{{ $product->id }}">Add to cart</a> --}}
                                         </form>
                                     </div>
                                     <div class="product-social-links">
@@ -490,7 +503,9 @@
                         @foreach ($related_products as $related_product)
                             <div class="single-most-product bd mb-18">
                                 <div class="most-product-img">
-                                    <a href="#"><img src="{{ asset('storage/product-group-images') }}/{{ $related_product->image }}" alt="book" /></a>
+                                    <a href="#"><img
+                                            src="{{ asset('storage/product-group-images') }}/{{ $related_product->image }}"
+                                            alt="book" /></a>
                                 </div>
                                 <div class="most-product-content">
                                     <div class="product-rating">

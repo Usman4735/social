@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cart;
 use App\Models\News;
 use App\Models\ProductGroup;
 use Illuminate\Http\Request;
@@ -21,6 +22,24 @@ class PageController extends Controller
 
         return view('web.view-product-details', compact('product', 'related_products'));
     }
+    public function addToCart(Request $request, $id)
+    {
+        $existed_product=Cart::where('product_id', $request->id)->first();
+        if ($existed_product!=null) {
+            $existed_product->qty=$existed_product->qty+$request->qty;
+            $existed_product->save();
+        }else {
+
+            $cart=new Cart();
+            // $cart->user_id=session('online_customoer')->id;
+            $cart->product_id=$request->product_id;
+            $cart->qty=$request->qty;
+            $cart->price=$request->price;
+            $cart->save();
+        }
+        return back()->with('success', 'Product added to cart successfully');
+    }
+
     public function news()
     {
         $news=News::where('is_published', 1)->orderBy('id', 'desc')->get();
