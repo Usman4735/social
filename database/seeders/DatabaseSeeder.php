@@ -27,6 +27,8 @@ class DatabaseSeeder extends Seeder
     {
         Admin::create([
         'username' => 'superadmin',
+        'first_name' => 'John',
+        'last_name' => 'Doe',
         'email' => 'superadmin@admin.com',
         'role' => 'super_admin',
         'status' => 1,
@@ -34,6 +36,8 @@ class DatabaseSeeder extends Seeder
         ]);
         Admin::create([
         'username' => 'admin',
+        'first_name' => 'John',
+        'last_name' => 'Doe',
         'email' => 'admin@admin.com',
         'role' => 'admin',
         'status' => 1,
@@ -41,6 +45,8 @@ class DatabaseSeeder extends Seeder
         ]);
         Admin::create([
         'username' => 'manager',
+        'first_name' => 'John',
+        'last_name' => 'Doe',
         'email' => 'manager@admin.com',
         'role' => 'manager',
         'status' => 1,

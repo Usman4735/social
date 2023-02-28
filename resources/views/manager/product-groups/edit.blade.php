@@ -27,26 +27,34 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-lg-6">
-                                <label for="name" class="col-form-label">Tags</label>
-                                <select name="tags[]" id="tags" class="form-control tags-select-2" multiple>
-                                    @foreach (explode(",", $product->tags) as $tag)
-                                        <option value="{{$tag}}" selected>{{$tag}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="col-lg-6">
-                                <label for="image" class="col-form-label">Image</label>
-                                <input type="file" name="image" id="image" class="form-control">
-                            </div>
-                            <div class="col-lg-12 mt-2">
-                                <img src="{{ asset('storage/product-group-images') }}/{{ $product->image }}"
-                                    alt="Category Picture" class="img-thumbnail" width="150">
-                            </div>
-                            <div class="col-lg-12">
-                                <label for="price" class="col-form-label">Price (Rubles)</label>
-                                <input type="text" name="price" id="price" class="form-control" value="{{number_format($product->price, 2)}}">
-                            </div>
+                            @if (@$permission->see_tags)
+                                <div class="col-lg-6">
+                                    <label for="name" class="col-form-label">Tags</label>
+                                    <select name="tags[]" id="tags" class="form-control tags-select-2" multiple {{@$permission->edit_tags != 1 ? 'disabled' : ''}}>
+                                        @if ($product->tags)
+                                            @foreach (explode(",", $product->tags) as $tag)
+                                                <option value="{{$tag}}" selected>{{$tag}}</option>
+                                            @endforeach
+                                        @endif
+                                    </select>
+                                </div>
+                            @endif
+                            @if (@$permission->see_photos)
+                                <div class="col-lg-6">
+                                    <label for="image" class="col-form-label">Image</label>
+                                    <input type="file" name="image" id="image" class="form-control" {{@$permission->edit_photos != 1 ? 'disabled' : ''}}>
+                                </div>
+                                <div class="col-lg-12 mt-2">
+                                    <img src="{{ asset('storage/product-group-images') }}/{{ $product->image }}"
+                                        alt="Product Picture" class="img-thumbnail" width="150">
+                                </div>
+                            @endif
+                            @if (@$permission->see_price == 1)
+                                <div class="col-lg-12">
+                                    <label for="price" class="col-form-label">Price (Rubles)</label>
+                                    <input type="text" name="price" id="price" class="form-control" value="{{number_format($product->price, 2)}}" {{@$permission->edit_price != 1 ? 'disabled' : ''}}>
+                                </div>
+                            @endif
                             <div class="col-lg-6">
                                 <label for="manager_salary" class="col-form-label">Manager Salary (Rubles)</label>
                                 <input type="text" name="manager_salary" id="manager_salary" class="form-control" value="{{$product->manager_salary}}">
@@ -58,10 +66,12 @@
                                     <option value="percentage" {{$product->manager_salary_type == "percentage" ? 'selected' : ''}}>Percentage</option>
                                 </select>
                             </div>
-                            <div class="col-lg-12">
-                                <label for="description" class="col-form-label">Description</label>
-                                <textarea name="description" id="description" class="form-control">{{$product->description}}</textarea>
-                            </div>
+                            @if (@$permission->see_description)
+                                <div class="col-lg-12">
+                                    <label for="description" class="col-form-label">Description</label>
+                                    <textarea name="description" id="description" class="form-control" {{@$permission->edit_description != 1 ? 'disabled' : ''}}>{{$product->description}}</textarea>
+                                </div>
+                            @endif
 
                             <div class="card-title my-3">SEO Settings</div>
 

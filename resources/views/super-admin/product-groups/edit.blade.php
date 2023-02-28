@@ -30,9 +30,11 @@
                             <div class="col-lg-6">
                                 <label for="name" class="col-form-label">Tags</label>
                                 <select name="tags[]" id="tags" class="form-control tags-select-2" multiple>
-                                    @foreach (explode(",", $product->tags) as $tag)
-                                        <option value="{{$tag}}" selected>{{$tag}}</option>
-                                    @endforeach
+                                    @if ($product->tags)
+                                        @foreach (explode(",", $product->tags) as $tag)
+                                            <option value="{{$tag}}" selected>{{$tag}}</option>
+                                        @endforeach
+                                    @endif
                                 </select>
                             </div>
                             <div class="col-lg-6">
@@ -41,7 +43,7 @@
                             </div>
                             <div class="col-lg-12 mt-2">
                                 <img src="{{ asset('storage/product-group-images') }}/{{ $product->image }}"
-                                    alt="Category Picture" class="img-thumbnail" width="150">
+                                    alt="Product Picture" class="img-thumbnail" width="150">
                             </div>
                             <div class="col-lg-12">
                                 <label for="price" class="col-form-label">Price (Rubles)</label>
@@ -61,6 +63,33 @@
                             <div class="col-lg-12">
                                 <label for="description" class="col-form-label">Description</label>
                                 <textarea name="description" id="description" class="form-control">{{$product->description}}</textarea>
+                            </div>
+
+                            <div class="row">
+                                <div class="card-title my-3">Manager Permissions</div>
+                                <div class="col-12">
+                                    <table class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Sr.#</th>
+                                                <th>Manager</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($managers as $manager)
+                                                <tr>
+                                                    <td>{{$loop->index+1}}</td>
+                                                    <td>{{$manager->first_name." ".$manager->last_name}}</td>
+                                                    <td>
+                                                        <button type="button" title="Manager Permissions" url="{{ url('sa1991as/product-groups/permissions') }}/{{$manager->id}}/{{$product->id}}" size="modal-lg"
+                                                            class="btn btn-primary btn-sm modal_popup">Permissions</button>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
 
                             <div class="card-title my-3">SEO Settings</div>
@@ -115,6 +144,7 @@
             </div>
         </div>
     </div>
+    <x-modal></x-modal>
 @endsection
 @section('custom_scripts')
     <script>

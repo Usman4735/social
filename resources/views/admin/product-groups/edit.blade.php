@@ -30,9 +30,11 @@
                             <div class="col-lg-6">
                                 <label for="name" class="col-form-label">Tags</label>
                                 <select name="tags[]" id="tags" class="form-control tags-select-2" multiple>
-                                    @foreach (explode(",", $product->tags) as $tag)
-                                        <option value="{{$tag}}" selected>{{$tag}}</option>
-                                    @endforeach
+                                    @if ($product->tags)
+                                        @foreach (explode(",", $product->tags) as $tag)
+                                            <option value="{{$tag}}" selected>{{$tag}}</option>
+                                        @endforeach
+                                    @endif
                                 </select>
                             </div>
                             <div class="col-lg-6">
@@ -41,7 +43,7 @@
                             </div>
                             <div class="col-lg-12 mt-2">
                                 <img src="{{ asset('storage/product-group-images') }}/{{ $product->image }}"
-                                    alt="Category Picture" class="img-thumbnail" width="150">
+                                    alt="Product Picture" class="img-thumbnail" width="150">
                             </div>
                             <div class="col-lg-12">
                                 <label for="price" class="col-form-label">Price (Rubles)</label>

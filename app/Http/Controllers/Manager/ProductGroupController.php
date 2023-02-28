@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Manager;
 use App\Http\Controllers\Controller;
 use App\Models\ProductCategory;
 use App\Models\ProductGroup;
+use App\Models\ProductGroupPermission;
 use Illuminate\Http\Request;
 
 class ProductGroupController extends Controller
@@ -16,7 +17,12 @@ class ProductGroupController extends Controller
      */
     public function index()
     {
-        $products = ProductGroup::all();
+        $product_group_ids = [];
+        $manager_permissions = ProductGroupPermission::where("manager_id", session('online_manager')->id)->get();
+        foreach($manager_permissions as $manager_permission) {
+            $product_group_ids[] = $manager_permission->product_group_id;
+        }
+        $products = ProductGroup::whereIn('id', $product_group_ids)->get();
         return view("manager.product-groups.index", compact("products"));
     }
 
@@ -42,7 +48,6 @@ class ProductGroupController extends Controller
         $request->validate([
             "name" => "required",
             "category_id" => "required",
-            "price" => "required"
         ]);
         $product = new ProductGroup();
         $product->fill($request->all());
@@ -83,7 +88,8 @@ class ProductGroupController extends Controller
     {
         $product = ProductGroup::findOrFail(decrypt($id));
         $categories = ProductCategory::all();
-        return view("manager.product-groups.edit", compact("product", "categories"));
+        $permission = ProductGroupPermission::where('product_group_id', $product->id)->where('manager_id', session('online_manager')->id)->first();
+        return view("manager.product-groups.edit", compact("product", "categories", "permission"));
     }
 
     /**
@@ -98,7 +104,6 @@ class ProductGroupController extends Controller
         $request->validate([
             "name" => "required",
             "category_id" => "required",
-            "price" => "required"
         ]);
         $product = ProductGroup::findOrFail(decrypt($id));
         $product->fill($request->all());
