@@ -70,7 +70,7 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-12">
                         <div class="account-area text-right">
-                            <ul>
+                            <ul> 
                                 @if (Session::has('online_customer'))
                                     <li><a href="my-account.html">My Account</a></li>
                                     <li><a href="checkout.html">Checkout</a></li>
