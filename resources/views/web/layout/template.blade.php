@@ -15,29 +15,28 @@
 
     <!-- all css here -->
     <!-- bootstrap v3.3.6 css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <!-- animate css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/animate.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}">
     <!-- meanmenu css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/meanmenu.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/meanmenu.min.css') }}">
     <!-- owl.carousel css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.css') }}">
     <!-- font-awesome css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}">
     <!-- flexslider.css-->
-    <link rel="stylesheet" href="{{ asset('assets/css/flexslider.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/flexslider.css') }}">
     <!-- chosen.min.css-->
-    <link rel="stylesheet" href="{{ asset('assets/css/chosen.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/chosen.min.css') }}">
     <!-- style css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <!-- responsive css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/responsive.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
     <!-- modernizr css -->
     {{-- <script src="{{ asset('assets/js/vendor/modernizr-2.8.3.min.js') }}"></script> --}}
 </head>
 
 <body>
-    <!-- header-area-start -->
     <header>
         <!-- header-top-area-start -->
         <div class="header-top-area">
@@ -70,14 +69,15 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-12">
                         <div class="account-area text-right">
-                            <ul> 
+                            <ul>
                                 @if (Session::has('online_customer'))
-                                    <li><a href="my-account.html">My Account</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                    <li><a href="{{ url('logout') }}">Logout</a></li>
-                                @else
-                                    <li><a href="{{ url('login') }}">Sign In</a></li>
-                                    <li><a href="{{ url('register') }}">Sign Up</a></li>
+                                    <li><a href="{{ url('/account') }}" title="My Account">Welcome,
+                                            {{ session('online_customer')->first_name }}</a></li>
+                                    <li><a href="{{ url('/logout') }}">Logout</a></li>
+                                @endif
+                                @if (!Session::has('online_customer'))
+                                    <li><a href="{{ url('/login') }}">Sign in</a></li>
+                                    <li><a href="{{ url('/register') }}">Sign Up</a></li>
                                 @endif
                             </ul>
                         </div>
@@ -86,68 +86,156 @@
             </div>
         </div>
         <!-- header-top-area-end -->
-        <!-- main-menu-area-start -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <!-- header-mid-area-start -->
+        <div class="header-mid-area ptb-40">
             <div class="container">
-                <div class="logo-area text-center logo-xs-mrg">
-                    <a href="{{ url('/') }}"><img src="{{ asset('images/front-logo.png') }}" alt="logo"
-                            width="140" /></a>
-                </div>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item mx-2">
-                            <a class="nav-link" href="{{ url('/') }}">Home</a>
-                        </li>
-                        <li class="nav-item mx-2">
-                            <a class="nav-link" href="#">Catalog </a>
-                        </li>
-                        <li class="nav-item mx-2">
-                            <a class="nav-link" href="#">Order Verification</a>
-                        </li>
-                        <li class="nav-item mx-2">
-                            <a class="nav-link" href="{{ url('how-to-buy') }}">How to Buy</a>
-                        </li>
-                        <li class="nav-item mx-2">
-                            <a class="nav-link" href="#">Reviews</a>
-                        </li>
-                        <li class="nav-item mx-2">
-                            <a class="nav-link" href="{{ url('news') }}">News</a>
-                        </li>
-                        <li class="nav-item mx-2">
-                            <a class="nav-link" href="#">Support</a>
-                        </li>
-                        <li class="nav-item mx-2">
-                            <a class="nav-link" href="#">
-                                <i class="fa fa-shopping-cart"></i>
-                                <span class="badge badge-pill badge-danger">5</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- main-menu-area-end -->
-    </header>
-    <div class="breadcrumbs-area mb-70">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumbs-menu">
-                        <ul>
-                            {{-- <li><a href="#">Home</a></li> --}}
-                            {{-- <li><a href="#" class="active">News</a></li> --}}
-                            @yield('breadcrum')
-                        </ul>
+                <div class="row">
+                    <div class="col-lg-3 col-md-5 col-12">
+                        <div class="header-search">
+                            <form action="#">
+                                <input type="text" placeholder="Search entire store here..." />
+                                <a href="#"><i class="fa fa-search"></i></a>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-4 col-12">
+                        <div class="logo-area text-center logo-xs-mrg">
+                            <a href="{{ url('/') }}"><img src="{{ asset('images/front-logo.png') }}"
+                                    alt="logo" /></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-12">
+                        <div class="my-cart">
+                            <ul>
+                                <li><a href="{{ url('/cart') }}"><i class="fa fa-shopping-cart"></i>My Cart</a>
+                                    <span>
+                                        @if (Session::get('cartinfo') != null)
+                                            {{ count(Session::get('cartinfo')) > 0 ? count(Session::get('cartinfo')) : '0' }}
+                                        @else
+                                            0ٖ
+                                        @endif
+
+                                    </span>
+                                    <div class="mini-cart-sub">
+                                        @if (Session::get('cartinfo') != null)
+                                            <div class="cart-product">
+
+                                                @php
+                                                    $sub_total = 0;
+
+                                                @endphp
+                                                @foreach (Session::get('cartinfo') as $item)
+                                                    <div class="single-cart">
+                                                        <div class="cart-img">
+                                                            @if ($item['product']->image != null)
+                                                                <img src="{{ asset('storage/product-group-images') }}/{{ $item['product']->image }}"
+                                                                    height="100px" alt="man"
+                                                                    style="max-height: 5rem !important ; width: auto" />
+                                                            @else
+                                                                <img src="{{ asset('assets/images/no-image.png') }}"
+                                                                    alt="{{ $item['product']->seo_title }}"
+                                                                    class="primary"
+                                                                    style="max-height: 5rem !important ; width: auto">
+                                                            @endif
+                                                            {{-- <a href="#"><img src="img/product/1.jpg" alt="book" /></a> --}}
+                                                        </div>
+                                                        <div class="cart-info">
+                                                            <h5><a href="#">{{ $item['product']->name }}</a></h5>
+                                                            <p>{{ $item['qty'] }} x ${{ $item['product']->price }}
+                                                            </p>
+                                                        </div>
+                                                        <div class="cart-icon">
+                                                            <a
+                                                                href="{{ url('remove-from-cart') }}/{{ $item['product']->id }}"><i
+                                                                    class="fa fa-remove"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    @php
+                                                        $sub_total += $item['qty'] * $item['product']->price;
+
+                                                    @endphp
+                                                @endforeach
+
+
+
+                                            </div>
+                                            <div class="cart-totals">
+                                                <h5>Total <span>${{ $sub_total }}</span></h5>
+                                            </div>
+                                            <div class="cart-bottom">
+                                                <div class="row d-flex">
+                                                    <div class="col-lg-6">
+                                                        <a class="justify-content-start"
+                                                            href="{{ url('/cart') }}">view
+                                                            cart</a>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <a class="justify-content-end btn btn-sm btn-primary payment_modal"
+                                                            url="payment-modal" href="javascript:void(0)">Check
+                                                            out</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @else
+                                            Cart is empty
+                                        @endif
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+        <!-- header-mid-area-end -->
+        <!-- main-menu-area-start -->
+
+        <div class="main-menu-area d-md-none d-none d-lg-block">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="menu-area">
+                            <nav>
+                                <ul>
+
+                                    <li class="active"><a href="{{ url('/') }}">Home</a>
+                                    </li>
+                                    <li><a href="product-details.html">Catalog<i class="fa fa-angle-down"></i></a>
+                                        <div class="mega-menu mega-menu-2">
+                                            <span>
+                                                <a href="#">Vkontakte</a>
+                                                <a href="shop.html">Classmates</a>
+                                                <a href="shop.html">My World @Mail.ru</a>
+                                            </span>
+                                            <span>
+                                                <a href="#">Whatsapp</a>
+                                                <a href="shop.html">Telegram</a>
+                                                <a href="shop.html">Jabber</a>
+                                            </span>
+                                            <span>
+                                                <a href="#">Viber</a>
+                                                <a href="shop.html">Skype</a>
+                                                <a href="shop.html">ICQ</a>
+                                            </span>
+                                        </div>
+                                    </li>
+                                    <li><a href="{{ url('/order-verification') }}">Order Verficaion</a></li>
+                                    <li><a href="{{ url('/how-to-buy') }}">How To buy</a></li>
+                                    <li><a href="#">Review</a></li>
+                                    <li><a href="{{ url('/news') }}">News</a></li>
+
+
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
     @yield('content')
+
+    <x-payment-modal></x-payment-modal>
 
 
     <footer>
@@ -248,33 +336,54 @@
 
     <!-- all js here -->
     <!-- jquery latest version -->
-    <script src="{{ asset('assets/js/vendor/jquery-1.12.4.min.js')}}"></script>
+    <script src="{{ asset('assets/js/vendor/jquery-1.12.4.min.js') }}"></script>
     <!-- popper js -->
-    <script src="{{ asset('assets/js/popper.min.js')}}"></script>
+    <script src="{{ asset('assets/js/popper.min.js') }}"></script>
     <!-- bootstrap js -->
-    <script src="{{ asset('assets/js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
     <!-- owl.carousel js -->
-    <script src="{{ asset('assets/js/owl.carousel.min.js')}}"></script>
+    <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
     <!-- meanmenu js -->
-    <script src="{{ asset('assets/js/jquery.meanmenu.js')}}"></script>
+    <script src="{{ asset('assets/js/jquery.meanmenu.js') }}"></script>
     <!-- wow js -->
-    <script src="{{ asset('assets/js/wow.min.js')}}"></script>
+    <script src="{{ asset('assets/js/wow.min.js') }}"></script>
     <!-- jquery.parallax-1.1.3.js -->
-    <script src="{{ asset('assets/js/jquery.parallax-1.1.3.js')}}"></script>
+    <script src="{{ asset('assets/js/jquery.parallax-1.1.3.js') }}"></script>
     <!-- jquery.countdown.min.js -->
-    <script src="{{ asset('assets/js/jquery.countdown.min.js')}}"></script>
+    <script src="{{ asset('assets/js/jquery.countdown.min.js') }}"></script>
     <!-- jquery.flexslider.js -->
-    <script src="{{ asset('assets/js/jquery.flexslider.js')}}"></script>
+    <script src="{{ asset('assets/js/jquery.flexslider.js') }}"></script>
     <!-- chosen.jquery.min.js -->
-    <script src="{{ asset('assets/js/chosen.jquery.min.js')}}"></script>
+    <script src="{{ asset('assets/js/chosen.jquery.min.js') }}"></script>
     <!-- jquery.counterup.min.js -->
-    <script src="{{ asset('assets/js/jquery.counterup.min.js')}}"></script>
+    <script src="{{ asset('assets/js/jquery.counterup.min.js') }}"></script>
     <!-- waypoints.min.js -->
-    <script src="{{ asset('assets/js/waypoints.min.js')}}"></script>
+    <script src="{{ asset('assets/js/waypoints.min.js') }}"></script>
     <!-- plugins js -->
-    <script src="{{ asset('assets/js/plugins.js')}}"></script>
+    <script src="{{ asset('assets/js/plugins.js') }}"></script>
     <!-- main js -->
-    <script src="{{ asset('assets/js/main.js')}}"></script>
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $(".payment_modal").on("click", function() {
+            let url = $(this).attr("url");
+            $(this).prop('disabled', true);
+            $.ajax({
+                url: "{{ url('/') }}/" + url,
+                method: "GET",
+                success: function(data) {
+
+                    $("#paymentModal .modal-body").html(data);
+                    $('.payment_modal').removeAttr('disabled');
+                    $("#paymentModal").modal("show");
+                }
+            });
+        });
+    </script>
     @yield('scripts')
 </body>
 

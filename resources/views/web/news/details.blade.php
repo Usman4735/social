@@ -1,11 +1,23 @@
 @extends('web.layout.template')
 @section('page_title', 'News')
-@section('breadcrum')
-    <li><a href="{{ url('/') }}">Home</a></li>
-    <li><a href="{{ url('news') }}" class="active">News</a></li>
-@endsection
 @section('content')
-    <div class="blog-main-area mb-70">
+
+<div class="breadcrumbs-area mb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumbs-menu">
+                    <ul>
+                        <li><a href="{{ url('/') }}">Home</a></li>
+                        <li><a href="{{ url('/news') }}">News</a></li>
+                        <li><a href="/news/{{ $news->GetSlug()}}" class="active">{{ $news->title }}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="blog-main-area my-5">
         <div class="container">
             <div class="row">
 
@@ -36,7 +48,7 @@
                             </div>
                         </div>
                         <div class="blog-img mb-30">
-                            <img src="{{ asset('storage/news-images') }}/{{ $news->image }}" alt="blog" />
+                            <img src="{{ asset('storage/news-images') }}/{{ $news->image }}" alt="blog" height="400" />
                         </div>
                         <div class="single-blog-content">
                             <div class="single-blog-title">
@@ -93,18 +105,18 @@
                                 </div>
                                 <div class="col-lg-9 col-md-8 col-12">
                                     <div class="product-wrapper-content">
-                                        <div class="product-details">
+                                        {{-- <div class="product-details"> --}}
 
-                                            <a href="/news/{{ $blog->GetSlug() }}">
 
-                                                <h4>{{ $blog->title }}</h4>
+                                            <h4>{{ $blog->title }}</h4>
                                                 <p>{{  date('M d Y', strtotime($blog->created_at)) }}</p>
 
 
                                                 <p>{!! $blog->short_description !!}</p>
+                                                <a href="/news/{{ $blog->GetSlug() }}">
                                                 Read more <i class="fa fa-long-arrow-right"></i>
                                             </a>
-                                        </div>
+                                        {{-- </div> --}}
                                     </div>
                                 </div>
                             </div>

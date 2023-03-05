@@ -35,7 +35,7 @@
                                 <input type="file" name="picture" id="picture" class="form-control">
                             </div>
                             <div class="col-lg-12 mt-2">
-                                <img src="{{ asset('storage/category-pictures') }}/{{ $category->picture }}"
+                                <img src="{{ url('/category-pictures') }}/{{ $category->picture }}"
                                     alt="Category Picture" class="img-thumbnail" width="150">
                             </div>
                             <div class="col-lg-12">

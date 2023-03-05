@@ -18,6 +18,7 @@
                         <thead>
                             <tr>
                                 <th>Sr#</th>
+                                <th>Image</th>
                                 <th>Product Group</th>
                                 <th>Category</th>
                                 <th>Price</th>
@@ -28,6 +29,9 @@
                             @foreach ($products as $product)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
+                                    <td>
+                                         <img src="{{ asset('storage/product-group-images') }}/{{ $product->image }}" alt="Product Picture" class="img-thumbnail" height="80" width="80">
+                                    </td>
                                     <td>{{ $product->name }}</td>
                                     <td>{{ $product->category->name }}</td>
                                     <td>{{ number_format($product->price, 2) }}</td>

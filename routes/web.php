@@ -14,6 +14,7 @@ use App\Http\Controllers\SuperAdmin\AdminController;
 use App\Http\Controllers\SuperAdmin\BannerController;
 use App\Http\Controllers\SuperAdmin\MediaGalleryController;
 use App\Http\Controllers\SuperAdmin\NewsController;
+use App\Http\Controllers\SuperAdmin\OrderController;
 use App\Http\Controllers\SuperAdmin\ProductCategoryController;
 use App\Http\Controllers\SuperAdmin\ProductGroupController;
 use App\Http\Controllers\SuperAdmin\UserController;
@@ -53,6 +54,10 @@ Route::prefix('sa1991as')->group(function() {
     Route::resource('gallery', MediaGalleryController::class);
     // Product Goods
     Route::resource('product-goods', ProductGoodController::class);
+
+    Route::prefix('orders')->group(function() {
+        Route::get('/', [OrderController::class, 'index']);
+    });
 
     // User Management
     Route::resource('user-management', UserController::class);
@@ -155,12 +160,38 @@ Route::prefix('/')->group(function() {
     // Login
     Route::get('login', [HomeController::class, "login"]);
     Route::post('login', [HomeController::class, "loginProcess"]);
-    Route::get('logout', [HomeController::class, "logout"]);
+
+    Route::prefix('/')->middleware('IsCustomerLogin')->group(function() {
+
+        Route::get('logout', [HomeController::class, "logout"]);
+        Route::get('account', [HomeController::class, "myAccount"]);
+        Route::get('orders', [HomeController::class, "OrderHistory"]);
+        Route::get('order-verifications', [HomeController::class, "orderVerification"]);
+        Route::get('profile', [HomeController::class, "profile"]);
+        Route::put('profile', [HomeController::class, "profileUpdate"]);
+    });
 
     Route::get('products/quick-view/{id}', [PageController::class, "quickViewProduct"]);
     Route::get('products/view/{id}', [PageController::class, "viewProduct"]);
     Route::post('add-to-cart/{id}', [PageController::class, "addToCart"]);
+    Route::get('cart', [PageController::class, "viewCart"]);
 
+    // cart login page token
+    Route::get('cart/{id}', [PageController::class, "viewCart"]);
+    Route::post('cart-buy-without-registration', [PageController::class, "buyWithoutRegistration"]);
+
+    Route::post('cart', [PageController::class, "viewCart"]);
+    Route::post('update-cart', [PageController::class, "UpdateCartQuantity"]);
+    Route::get('remove-from-cart/{id}', [PageController::class, "RemoveFromCart"]);
+
+    Route::post('payment-mthod-response', [PageController::class, "paymentMethodResponse"]);
+    Route::get('payment-modal', [PageController::class, "paymentMethod"]);
+
+    Route::post('checkout/{id}', [PageController::class, "checkoutProcess"]);
+    Route::get('checkout', [PageController::class, "checkoutSuccess"]);
+
+
+    Route::get('order-verification', [PageController::class, "orderVerification"]);
     Route::get('news', [PageController::class, "news"]);
     Route::get('news/{id}', [PageController::class, "newsDetails"]);
     Route::get('how-to-buy', [PageController::class, "howToBuy"]);

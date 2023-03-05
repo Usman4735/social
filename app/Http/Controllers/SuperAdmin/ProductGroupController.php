@@ -113,7 +113,7 @@ class ProductGroupController extends Controller
         if (isset($request->image)) {
             // Delete old image first
             if ($product->image != null) {
-                $image_path = public_path() . '/storage/product-group-images/' . $product->image;
+                $image_path = public_path() . '/product-group-images/' . $product->image;
                 if (file_exists($image_path)) {
                     unlink($image_path);
                 }
@@ -142,7 +142,7 @@ class ProductGroupController extends Controller
     {
         $product = ProductGroup::findOrFail(decrypt($id));
         if ($product->image != null) {
-            $image_path = public_path() . '/storage/product-group-images/' . $product->image;
+            $image_path = public_path() . '/product-group-images/' . $product->image;
             if (file_exists($image_path)) {
                 unlink($image_path);
             }

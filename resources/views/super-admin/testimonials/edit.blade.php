@@ -18,7 +18,7 @@
                                 <input type="text" name="name" id="name" class="form-control" value="{{$testimonial->name}}">
                             </div>
                             <div class="col-lg-12">
-                                <label for="image" class="col-form-label">Testimonial Image</label>
+                                <label for="image" class="col-form-label">Testimonial Image <span class="text-primary">Recommended size 1560*1560 px</span></label>
                                 <input type="file" name="image" id="image" class="form-control">
                             </div>
                             @if ($testimonial->image)

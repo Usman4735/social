@@ -5,19 +5,43 @@
     <li><a href="#" class="active">Product Details</a></li>
 @endsection
 @section('content')
+    <div class="breadcrumbs-area mb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumbs-menu">
+                        <ul>
+                            <li><a href="{{ url('/') }}">Home</a></li>
+                            <li><a href="#">Product</a></li>
+                            <li><a href="#" class="active">{{ $product->name }}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="product-main-area mb-70">
         <div class="container">
             <div class="row">
                 {{-- Success Message --}}
                 <div class="col-lg-12">
-
                     @if (Session::has('success'))
-                    <div class="alert alert-success" role="alert">
-                        <div class="alert-body">{{ session('success') }}</div>
-                    </div>
+                        <div class="container-fluid mb-3 p-2 bg-light" style="border: 1px solid #8932ed;">
+                            <div class="row">
+                                <div class="col-lg-8 my-auto text-primary" style="font-size: 15px">
+                                    {{ session('success') }}
+                                </div>
+                                <div class="col-lg-4 text-right">
+                                    <a id="continue_shopping" href="{{ url('/') }}"
+                                        class="btn btn-primary custom-btn">CONTINUE SHOPPING</a>
+                                    <a href="{{ url('/cart') }}" class="btn btn-primary custom-btn">View Cart</a>
+                                </div>
+                            </div>
+                        </div>
                     @endif
                 </div>
-                <div class="col-lg-9 col-md-12 col-12 order-lg-1 order-1">
+                <div
+                    class="{{ count($related_products) > 0 ? 'col-lg-9' : 'col-lg-12' }} col-md-12 col-12 order-lg-1 order-1">
                     <!-- product-main-area-start -->
                     <div class="product-main-area">
                         <div class="row">
@@ -35,26 +59,6 @@
                                 <div class="product-info-main">
                                     <div class="page-title">
                                         <h1>{{ $product->name }}</h1>
-                                    </div>
-                                    <div class="product-info-stock-sku">
-                                        <span>In stock</span>
-                                        <div class="product-attribute">
-                                            <span>SKU</span>
-                                            <span class="value">24-WB05</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-reviews-summary">
-                                        <div class="rating-summary">
-                                            <a href="#"><i class="fa fa-star"></i></a>
-                                            <a href="#"><i class="fa fa-star"></i></a>
-                                            <a href="#"><i class="fa fa-star"></i></a>
-                                            <a href="#"><i class="fa fa-star"></i></a>
-                                            <a href="#"><i class="fa fa-star"></i></a>
-                                        </div>
-                                        <div class="reviews-actions">
-                                            <a href="#">3 Reviews</a>
-                                            <a href="#" class="view">Add Your Review</a>
-                                        </div>
                                     </div>
                                     <div class="product-info-price">
                                         <div class="price-final">
@@ -98,7 +102,6 @@
                         <!-- Nav tabs -->
                         <ul class="nav">
                             <li><a class="active" href="#Details" data-toggle="tab">Details</a></li>
-                            <li><a href="#Reviews" data-toggle="tab">Reviews 3</a></li>
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="Details">
@@ -113,123 +116,6 @@
                                         <li><i class="fa fa-circle"></i>Full-length zipper.</li>
                                         <li><i class="fa fa-circle"></i>L 29" x W 13" x H 11".</li>
                                     </ul>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="Reviews">
-                                <div class="valu valu-2">
-                                    <div class="section-title mb-60 mt-60">
-                                        <h2>Customer Reviews</h2>
-                                    </div>
-                                    <ul>
-                                        <li>
-                                            <div class="review-title">
-                                                <h3>themes</h3>
-                                            </div>
-                                            <div class="review-left">
-                                                <div class="review-rating">
-                                                    <span>Price</span>
-                                                    <div class="rating-result">
-                                                        <a href="#"><i class="fa fa-star"></i></a>
-                                                        <a href="#"><i class="fa fa-star"></i></a>
-                                                        <a href="#"><i class="fa fa-star"></i></a>
-                                                        <a href="#"><i class="fa fa-star"></i></a>
-                                                        <a href="#"><i class="fa fa-star"></i></a>
-                                                    </div>
-                                                </div>
-                                                <div class="review-rating">
-                                                    <span>Value</span>
-                                                    <div class="rating-result">
-                                                        <a href="#"><i class="fa fa-star"></i></a>
-                                                        <a href="#"><i class="fa fa-star"></i></a>
-                                                        <a href="#"><i class="fa fa-star"></i></a>
-                                                        <a href="#"><i class="fa fa-star"></i></a>
-                                                        <a href="#"><i class="fa fa-star"></i></a>
-                                                    </div>
-                                                </div>
-                                                <div class="review-rating">
-                                                    <span>Quality</span>
-                                                    <div class="rating-result">
-                                                        <a href="#"><i class="fa fa-star"></i></a>
-                                                        <a href="#"><i class="fa fa-star"></i></a>
-                                                        <a href="#"><i class="fa fa-star"></i></a>
-                                                        <a href="#"><i class="fa fa-star"></i></a>
-                                                        <a href="#"><i class="fa fa-star"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="review-right">
-                                                <div class="review-content">
-                                                    <h4>themes </h4>
-                                                </div>
-                                                <div class="review-details">
-                                                    <p class="review-author">Review by<a href="#">plaza</a></p>
-                                                    <p class="review-date">Posted on <span>12/9/16</span></p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <div class="review-add">
-                                        <h3>You're reviewing:</h3>
-                                        <h4>Joust Duffle Bag</h4>
-                                    </div>
-                                    <div class="review-field-ratings">
-                                        <span>Your Rating <sup>*</sup></span>
-                                        <div class="control">
-                                            <div class="single-control">
-                                                <span>Value</span>
-                                                <div class="review-control-vote">
-                                                    <a href="#"><i class="fa fa-star"></i></a>
-                                                    <a href="#"><i class="fa fa-star"></i></a>
-                                                    <a href="#"><i class="fa fa-star"></i></a>
-                                                    <a href="#"><i class="fa fa-star"></i></a>
-                                                    <a href="#"><i class="fa fa-star"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="single-control">
-                                                <span>Quality</span>
-                                                <div class="review-control-vote">
-                                                    <a href="#"><i class="fa fa-star"></i></a>
-                                                    <a href="#"><i class="fa fa-star"></i></a>
-                                                    <a href="#"><i class="fa fa-star"></i></a>
-                                                    <a href="#"><i class="fa fa-star"></i></a>
-                                                    <a href="#"><i class="fa fa-star"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="single-control">
-                                                <span>Price</span>
-                                                <div class="review-control-vote">
-                                                    <a href="#"><i class="fa fa-star"></i></a>
-                                                    <a href="#"><i class="fa fa-star"></i></a>
-                                                    <a href="#"><i class="fa fa-star"></i></a>
-                                                    <a href="#"><i class="fa fa-star"></i></a>
-                                                    <a href="#"><i class="fa fa-star"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="review-form">
-                                        <div class="single-form">
-                                            <label>Nickname <sup>*</sup></label>
-                                            <form action="#">
-                                                <input type="text" />
-                                            </form>
-                                        </div>
-                                        <div class="single-form single-form-2">
-                                            <label>Summary <sup>*</sup></label>
-                                            <form action="#">
-                                                <input type="text" />
-                                            </form>
-                                        </div>
-                                        <div class="single-form">
-                                            <label>Review <sup>*</sup></label>
-                                            <form action="#">
-                                                <textarea name="massage" cols="10" rows="4"></textarea>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div class="review-form-button">
-                                        <a href="#">Submit Review</a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -495,37 +381,54 @@
                     </div>
                     <!-- new-book-area-start -->
                 </div>
-                <div class="col-lg-3 col-md-12 col-12 order-lg-2 order-2">
+
+
+                <div class="col-lg-3 col-md-12 col-12 order-lg-2 order-2"
+                    style="display: {{ count($related_products) > 0 ? 'block' : 'none' }}">
                     <div class="shop-left">
                         <div class="left-title mb-20">
                             <h4>Related Products</h4>
                         </div>
-                        @foreach ($related_products as $related_product)
-                            <div class="single-most-product bd mb-18">
-                                <div class="most-product-img">
-                                    <a href="#"><img
-                                            src="{{ asset('storage/product-group-images') }}/{{ $related_product->image }}"
-                                            alt="book" /></a>
-                                </div>
-                                <div class="most-product-content">
-                                    <div class="product-rating">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                        </ul>
+                        <div class="random-area mb-30">
+
+                            <div class="product-total-2">
+                                @foreach ($related_products as $related_product)
+                                    <div class="single-most-product bd mb-18">
+                                        <div class="most-product-img">
+                                            <a href="#">
+                                                @if ($related_product->image != null)
+                                                    <img
+                                                        src="{{ asset('storage/product-group-images') }}/{{ $related_product->image }}"alt="book" />
+                                                @else
+                                                    <img src="{{ asset('assets/images/no-image.png') }}"
+                                                        alt="{{ $related_product->seo_title }}" class="primary"
+                                                        width="350" width="449">
+                                                @endif
+                                            </a>
+                                        </div>
+                                        <div class="most-product-content">
+                                            <div class="product-rating">
+                                                <ul>
+                                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <h4><a href="#">{{ $related_product->name }}</a></h4>
+                                            <div class="product-price">
+                                                <ul>
+                                                    <li>{{ $related_product->price }}</li>
+
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <h4><a href="#">{{ $related_product->name }}</a></h4>
-                                    <div class="product-price">
-                                        <ul>
-                                            <li>{{ $related_product->price }}</li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                @endforeach
+
                             </div>
-                        @endforeach
+                        </div>
                     </div>
                 </div>
             </div>

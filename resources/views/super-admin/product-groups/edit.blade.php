@@ -42,7 +42,7 @@
                                 <input type="file" name="image" id="image" class="form-control">
                             </div>
                             <div class="col-lg-12 mt-2">
-                                <img src="{{ asset('storage/product-group-images') }}/{{ $product->image }}"
+                                <img src="{{ asset('/product-group-images') }}/{{ $product->image }}"
                                     alt="Product Picture" class="img-thumbnail" width="150">
                             </div>
                             <div class="col-lg-12">

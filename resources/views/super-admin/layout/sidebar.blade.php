@@ -41,6 +41,10 @@
                     href="{{ url('sa1991as/product-categories') }}"><i data-feather="archive"></i><span
                         class="menu-title text-truncate" data-i18n="Product Category">Product Categories</span></a>
             </li>
+            <li class=" nav-item"><a class="d-flex align-items-center"
+                    href="{{ url('sa1991as/orders') }}"><i data-feather="shopping-cart"></i><span
+                        class="menu-title text-truncate" data-i18n="Product Category">Orders</span></a>
+            </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="{{ url('sa1991as/gallery') }}"><i
                         data-feather="image"></i><span class="menu-title text-truncate" data-i18n="Media Gallery">Media
                         Gallery</span></a>
