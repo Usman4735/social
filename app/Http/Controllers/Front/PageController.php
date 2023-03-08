@@ -201,11 +201,14 @@ class PageController extends Controller
             return back()->with('error', 'something went wrong');
         }
     }
-    public function checkoutSuccess()
+    public function checkoutSuccess(Request $request)
     {
         $p_token='checkout';
         $order=Order::find(session('order_placed')->id);
         if ($order!=null) {
+            // if ($request->session()->has("cartinfo")) {
+            //     $request->session()->pull("cartinfo");
+            // }
             return view('web.cart', ['order' => $order, 'p_token' => $p_token])->with('order-placed', 'Your order is on hold Please pay through the selected payment method');
         }else {
             return redirect('/');

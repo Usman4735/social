@@ -16,35 +16,35 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <label for="first_name" class="col-form-label">First Name</label>
-                                <input type="text" name="first_name" id="first_name" class="form-control" value="{{$user->first_name}}" required>
+                                <input type="text" name="first_name" id="first_name" class="form-control form-control-sm" value="{{$user->first_name}}" required>
                             </div>
                             <div class="col-lg-6">
                                 <label for="last_name" class="col-form-label">Last Name</label>
-                                <input type="text" name="last_name" id="last_name" class="form-control" value="{{$user->last_name}}" required>
+                                <input type="text" name="last_name" id="last_name" class="form-control form-control-sm" value="{{$user->last_name}}" required>
                             </div>
                             <div class="col-lg-6">
                                 <label for="username" class="col-form-label">Username</label>
-                                <input type="text" name="username" id="username" class="form-control" value="{{$user->username}}" required>
+                                <input type="text" name="username" id="username" class="form-control form-control-sm" value="{{$user->username}}" required>
                             </div>
                             <div class="col-lg-6">
                                 <label for="email" class="col-form-label">Email</label>
-                                <input type="text" name="email" id="email" class="form-control" value="{{$user->email}}" required>
+                                <input type="text" name="email" id="email" class="form-control form-control-sm" value="{{$user->email}}" required>
                             </div>
                             <div class="col-lg-6">
                                 <label for="mobile" class="col-form-label">Mobile</label>
-                                <input type="text" name="mobile" id="mobile" class="form-control" value="{{$user->mobile}}">
+                                <input type="text" name="mobile" id="mobile" class="form-control form-control-sm" value="{{$user->mobile}}">
                             </div>
                             <div class="col-lg-6">
                                 <label for="password" class="col-form-label">Password</label>
-                                <input type="password" name="password" id="password" class="form-control" placeholder="Leave empty if you don't want to change">
+                                <input type="password" name="password" id="password" class="form-control form-control-sm" placeholder="Leave empty if you don't want to change">
                             </div>
                             <div class="col-lg-6">
                                 <label for="confirm_password" class="col-form-label">Confirm Password</label>
-                                <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="Leave empty if you don't want to change">
+                                <input type="password" name="confirm_password" id="confirm_password" class="form-control form-control-sm" placeholder="Leave empty if you don't want to change">
                             </div>
                             <div class="col-lg-12">
                                 <label for="role" class="col-form-label">User Role</label>
-                                <select name="role" id="role" class="form-control select-2" required>
+                                <select name="role" id="role" class="form-control form-control-sm select-2" required>
                                     <option value="">Select Role</option>
                                     <option value="admin" {{$user->role == 'admin' ? 'selected' : '' }}>Admin</option>
                                     <option value="manager" {{$user->role == 'manager' ? 'selected' : '' }}>Manager</option>
@@ -52,7 +52,7 @@
                             </div>
                             <div class="col-lg-12" id="admin_div" style="display: {{$user->role == "manager" ? 'block' : 'none'}}">
                                 <label for="admin_id" class="col-form-label">Admin</label>
-                                <select name="admin_id" id="admin_id" class="form-control form-control-sm select-2">
+                                <select name="admin_id" id="admin_id" class="form-control form-control-sm form-control form-control-sm-sm select-2">
                                     <option value="">Select Admin</option>
                                     @foreach ($admins as $admin)
                                         <option value="{{$admin->id}}" {{$user->admin_id == $admin->id ? 'selected' : ''}}>{{$admin->first_name}} {{$admin->last_name}}</option>
@@ -61,7 +61,7 @@
                             </div>
                             <div class="col-lg-12">
                                 <label for="profile_picture" class="col-form-label">Profile Picture</label>
-                                <input type="file" name="profile_picture" id="profile_picture" class="form-control">
+                                <input type="file" name="profile_picture" id="profile_picture" class="form-control form-control-sm">
                             </div>
                             @if ($user->profile_picture)
                                 <div class="col-lg-12 mt-2">

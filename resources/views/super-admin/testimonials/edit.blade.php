@@ -15,11 +15,11 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <label for="name" class="col-form-label">Testimonial Name</label>
-                                <input type="text" name="name" id="name" class="form-control" value="{{$testimonial->name}}">
+                                <input type="text" name="name" id="name" class="form-control form-control-sm" value="{{$testimonial->name}}">
                             </div>
                             <div class="col-lg-12">
                                 <label for="image" class="col-form-label">Testimonial Image <span class="text-primary">Recommended size 1560*1560 px</span></label>
-                                <input type="file" name="image" id="image" class="form-control">
+                                <input type="file" name="image" id="image" class="form-control form-control-sm">
                             </div>
                             @if ($testimonial->image)
                                 <div class="col-lg-12 mt-2">
@@ -28,7 +28,7 @@
                             @endif
                             <div class="col-lg-12">
                                 <label for="description" class="col-form-label">Testimonial Description</label>
-                                <textarea name="description" id="description" class="form-control">{{$testimonial->description}}</textarea>
+                                <textarea name="description" id="description" class="form-control form-control-sm">{{$testimonial->description}}</textarea>
                             </div>
                             <div class="col-12 mt-2">
                                 <input type="submit" value="Update" class="btn btn-primary px-3">

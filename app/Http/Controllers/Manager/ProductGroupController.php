@@ -33,8 +33,7 @@ class ProductGroupController extends Controller
      */
     public function create()
     {
-        $categories = ProductCategory::all();
-        return view("manager.product-groups.add", compact("categories"));
+
     }
 
     /**
@@ -45,26 +44,7 @@ class ProductGroupController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            "name" => "required",
-            "category_id" => "required",
-        ]);
-        $product = new ProductGroup();
-        $product->fill($request->all());
-        // Image
-        if (isset($request->image)) {
-            $image = $request->image;
-            $image_name = uniqid() . '.' . $image->extension();
-            $request->image->storeAs('public/product-group-images', $image_name);
-            $product->image = $image_name;
-        }
-        if (isset($request->tags)) {
-            $product->tags = implode(",", $request->tags);
-        }
-        $product->added_by = session('online_manager')->id;
-        $product->added_by_role = 3;
-        $product->save();
-        return redirect("m1001m/product-groups")->with("success", "Product Group has been saved successfully");
+
     }
 
     /**
@@ -73,9 +53,12 @@ class ProductGroupController extends Controller
      * @param  \App\Models\ProductGroup  $productGroup
      * @return \Illuminate\Http\Response
      */
-    public function show(ProductGroup $productGroup)
+    public function show(ProductGroup $productGroup, $id)
     {
-        //
+        $product = ProductGroup::findOrFail(decrypt($id));
+        $categories = ProductCategory::all();
+        $permission = ProductGroupPermission::where('product_group_id', $product->id)->where('manager_id', session('online_manager')->id)->first();
+        return view("manager.product-groups.edit", compact("product", "categories", "permission"));
     }
 
     /**
@@ -86,10 +69,7 @@ class ProductGroupController extends Controller
      */
     public function edit($id)
     {
-        $product = ProductGroup::findOrFail(decrypt($id));
-        $categories = ProductCategory::all();
-        $permission = ProductGroupPermission::where('product_group_id', $product->id)->where('manager_id', session('online_manager')->id)->first();
-        return view("manager.product-groups.edit", compact("product", "categories", "permission"));
+
     }
 
     /**

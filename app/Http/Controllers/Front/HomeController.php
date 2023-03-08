@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\PasswordReset;
 use App\Http\Controllers\Controller;
 use App\Models\News;
+use App\Models\Order;
 use App\Models\ProductGroup;
 use App\Models\Testimonial;
 use Illuminate\Support\Facades\Hash;
@@ -209,8 +210,12 @@ class HomeController extends Controller
     }
     public function OrderHistory()
     {
-
-        return view('web.customer-account.order-history');
+        $orders=Order::where('customer_id', session('online_customer')->id)->get();
+        return view('web.customer-account.order-history', compact('orders'));
+    }
+    public function viewOrder($id)
+    {
+        # code...
     }
     public function orderVerification(Request $request)
     {

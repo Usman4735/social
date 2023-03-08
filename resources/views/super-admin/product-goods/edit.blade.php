@@ -15,11 +15,11 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <label for="name" class="col-form-label required">Name</label>
-                                <input type="text" name="name" id="name" class="form-control" required value="{{$product->name}}">
+                                <input type="text" name="name" id="name" class="form-control form-control-sm" required value="{{$product->name}}">
                             </div>
                             <div class="col-lg-6">
                                 <label for="group_id" class="col-form-label required">Product Group</label>
-                                <select name="group_id" id="group_id" class="form-control select-2" required>
+                                <select name="group_id" id="group_id" class="form-control form-control-sm select-2" required>
                                     <option value="">Select Group</option>
                                     @foreach ($product_groups as $group)
                                         <option value="{{ $group->id }}" {{$product->group_id == $group->id ? 'selected' : ''}}>{{ $group->name }}</option>
@@ -28,7 +28,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <label for="status" class="col-form-label">Product Status</label>
-                                <select name="status" id="status" class="form-control">
+                                <select name="status" id="status" class="form-control form-control-sm">
                                     <option value="draft" {{$product->status == 'draft' ? 'selected' : ''}}>Draft</option>
                                     <option value="reserved" {{$product->status == 'reserved' ? 'selected' : ''}}>Reserved</option>
                                     <option value="awaiting_moderation" {{$product->status == 'awaiting_moderation' ? 'selected' : ''}}>Awaiting Moderation</option>
@@ -36,7 +36,7 @@
                             </div>
                             <div class="col-lg-12">
                                 <label for="description" class="col-form-label">Description</label>
-                                <textarea name="description" id="description" class="form-control">{{$product->description}}</textarea>
+                                <textarea name="description" id="description" class="form-control form-control-sm">{{$product->description}}</textarea>
                             </div>
                             <div class="col-12 mt-2">
                                 <input type="submit" value="Update" class="btn btn-primary px-3">

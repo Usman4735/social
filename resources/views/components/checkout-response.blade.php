@@ -1,7 +1,7 @@
 @php
     use Illuminate\Support\Facades\DB;
     use App\Models\ProductGroup;
-
+    Illuminate\Support\Facades\Session::forget('cartinfo');
     $trending_products = ProductGroup::all();
 
 @endphp

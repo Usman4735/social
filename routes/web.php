@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\PageController;
 use App\Http\Controllers\Manager\ManagerController;
-use App\Http\Controllers\Manager\ProductCategoryController as ManagerProductCategoryController;
 use App\Http\Controllers\Manager\ProductGroupController as ManagerProductGroupController;
 use App\Http\Controllers\ProductGoodController;
 use App\Http\Controllers\SuperAdmin\AdminController;
@@ -130,7 +129,6 @@ Route::prefix('m1001m')->group(function() {
     Route::get('profile', [ManagerController::class, "profile"]);
     Route::put('profile', [ManagerController::class, "updateProfile"]);
 
-    Route::resource('product-categories', ManagerProductCategoryController::class);
 
     // Product Groups
     Route::resource('product-groups', ManagerProductGroupController::class);
@@ -166,6 +164,7 @@ Route::prefix('/')->group(function() {
         Route::get('logout', [HomeController::class, "logout"]);
         Route::get('account', [HomeController::class, "myAccount"]);
         Route::get('orders', [HomeController::class, "OrderHistory"]);
+        Route::get('orders/view/id', [HomeController::class, "viewOrder"]);
         Route::get('order-verifications', [HomeController::class, "orderVerification"]);
         Route::get('profile', [HomeController::class, "profile"]);
         Route::put('profile', [HomeController::class, "profileUpdate"]);

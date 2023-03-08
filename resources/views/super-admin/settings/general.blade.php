@@ -18,13 +18,13 @@
                                     <div class="col-lg-12">
                                         <label class="col-form-label" for="name">Website Name <span
                                                 class="text-danger">*</span></label>
-                                        <input class="form-control" type="text" name="name"
+                                        <input class="form-control form-control-sm" type="text" name="name"
                                             id="name" value="{{ $settings->name }}" required>
                                     </div>
                                     <div class="col-lg-12">
                                         <label class="col-form-label" for="logo">Website Logo</label>
                                         <input type="file" name="logo" id="logo"
-                                            class="form-control">
+                                            class="form-control form-control-sm">
                                     </div>
                                     @if ($settings->logo != null)
                                         <div class="col-lg-12 my-2">
@@ -36,7 +36,7 @@
                                         <label class="col-form-label" for="favicon">Website Fav
                                             Icon</label>
                                         <input type="file" name="favicon" id="favicon"
-                                            class="form-control">
+                                            class="form-control form-control-sm">
                                     </div>
                                     @if ($settings->favicon != null)
                                         <div class="col-lg-12 my-2">

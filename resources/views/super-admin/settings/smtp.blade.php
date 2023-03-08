@@ -17,19 +17,19 @@
                                     <div class="col-lg-6">
                                         <label class="col-form-label" for="host">SMTP Host <span
                                                 class="text-danger">*</span></label>
-                                        <input class="form-control" type="text" name="host" id="host"
+                                        <input class="form-control form-control-sm" type="text" name="host" id="host"
                                             value="{{ $smtp->host }}" required>
                                     </div>
                                     <div class="col-lg-6">
                                         <label class="col-form-label" for="port">SMTP Port <span
                                                 class="text-danger">*</span></label>
-                                        <input class="form-control" type="text" name="port" id="port"
+                                        <input class="form-control form-control-sm" type="text" name="port" id="port"
                                             value="{{ $smtp->port }}" required>
                                     </div>
                                     <div class="col-lg-6">
                                         <label class="col-form-label" for="encryption">Encryption <span
                                                 class="text-danger">*</span></label>
-                                        <select name="encryption" id="encryption" class="form-control select-2" required>
+                                        <select name="encryption" id="encryption" class="form-control form-control-sm select-2" required>
                                             <option value="none"
                                                 {{ $smtp->encryption == 'none' ? 'selected' : '' }}>
                                                 None
@@ -48,23 +48,23 @@
                                     <div class="col-lg-6">
                                         <label class="col-form-label" for="username">SMTP Username <span
                                                 class="text-danger">*</span></label>
-                                        <input class="form-control" type="text" name="username" id="username"
+                                        <input class="form-control form-control-sm" type="text" name="username" id="username"
                                             value="{{ $smtp->username }}" required>
                                     </div>
                                     <div class="col-lg-6">
                                         <label class="col-form-label" for="password">SMTP Password</label>
-                                        <input class="form-control" type="password" name="password" id="password">
+                                        <input class="form-control form-control-sm" type="password" name="password" id="password">
                                     </div>
                                     <div class="col-lg-6">
                                         <label class="col-form-label" for="from_email">From Email <span
                                                 class="text-danger">*</span></label>
-                                        <input class="form-control" type="text" name="from_email" id="from_email"
+                                        <input class="form-control form-control-sm" type="text" name="from_email" id="from_email"
                                             value="{{ $smtp->from_email }}" required>
                                     </div>
                                     <div class="col-lg-6">
                                         <label class="col-form-label" for="from_name">From Name <span
                                                 class="text-danger">*</span></label>
-                                        <input class="form-control" type="text" name="from_name" id="from_name"
+                                        <input class="form-control form-control-sm" type="text" name="from_name" id="from_name"
                                             value="{{ $smtp->from_name }}" required>
                                     </div>
                                     <div class="col-lg-6">

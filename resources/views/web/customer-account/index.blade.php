@@ -1,10 +1,20 @@
 @extends('web.layout.template')
 @section('page_title', 'My Account')
-@section('breadcrum')
-    <li><a href="{{ url('/') }}">Home</a></li>
-    <li><a href="#" class="active">My Account</a></li>
-@endsection
 @section('content')
+    <div class="breadcrumbs-area mb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumbs-menu">
+                        <ul>
+                            <li><a href="{{ url('/') }}">Home</a></li>
+                            <li><a href="{{ url('/account') }}" class="active">My Account</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- entry-header-area-start -->
     <div class="entry-header-area">
         <div class="container">
@@ -28,7 +38,7 @@
                         <div class="myaccount-page-wrapper">
                             <!-- My Account Tab Menu Start -->
                             <div class="row">
-                               <x-customer-profile></x-customer-profile>
+                                <x-customer-profile></x-customer-profile>
                                 <!-- My Account Tab Menu End -->
 
                                 <!-- My Account Tab Content Start -->
@@ -53,7 +63,7 @@
 
 
 
-                                   
+
                                     </div>
                                 </div> <!-- My Account Tab Content End -->
                             </div>

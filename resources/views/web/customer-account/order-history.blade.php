@@ -1,10 +1,21 @@
 @extends('web.layout.template')
 @section('page_title', 'My Account')
-@section('breadcrum')
-    <li><a href="{{ url('/account') }}">My Account</a></li>
-    <li><a href="#" class="active">Order History</a></li>
-@endsection
 @section('content')
+    <div class="breadcrumbs-area mb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumbs-menu">
+                        <ul>
+                            <li><a href="{{ url('/') }}">Home</a></li>
+                            <li><a href="{{ url('/orders') }}" class="active">Order History</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- entry-header-area-start -->
     <div class="entry-header-area">
         <div class="container">
@@ -43,36 +54,37 @@
                                                             <tr>
                                                                 <th>Order</th>
                                                                 <th>Date</th>
+                                                                <th>Order#</th>
+                                                                <th>Payment ID</th>
+                                                                <th>Payment Method</th>
                                                                 <th>Status</th>
-                                                                <th>Total</th>
                                                                 <th>Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr>
-                                                                <td>1</td>
-                                                                <td>Aug 22, 2018</td>
-                                                                <td>Pending</td>
-                                                                <td>$3000</td>
-                                                                <td><a href="cart.html" class="btn btn-sqr">View</a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>2</td>
-                                                                <td>July 22, 2018</td>
-                                                                <td>Approved</td>
-                                                                <td>$200</td>
-                                                                <td><a href="cart.html" class="btn btn-sqr">View</a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>3</td>
-                                                                <td>June 12, 2017</td>
-                                                                <td>On Hold</td>
-                                                                <td>$990</td>
-                                                                <td><a href="cart.html" class="btn btn-sqr">View</a>
-                                                                </td>
-                                                            </tr>
+                                                            @if (count($orders) > 0)
+
+                                                                @foreach ($orders as $order)
+                                                                    <tr>
+                                                                        <td>{{ $loop->index + 1 }}</td>
+                                                                        <td>{{ date('Y-m-d', strtotime($order->created_at)) }}
+                                                                        </td>
+                                                                        <td>{{ $order->order_no }}</td>
+                                                                        <td>{{ $order->payment_id }}</td>
+                                                                        <td>{{ ucwords($order->payment_method) }}</td>
+                                                                        <td>{{ $order->status }}</td>
+                                                                        <td><a href="{{ url('orders/view') }}/{{ encrypt($order->id) }}"
+                                                                                class="btn btn-sqr"
+                                                                                title="View Order Details">View</a></td>
+                                                                    </tr>
+                                                                @endforeach
+                                                            @else
+                                                                <tr>
+                                                                    <td colspan="7">You did't have any order</td>
+                                                                </tr>
+                                                            @endif
+
+
                                                         </tbody>
                                                     </table>
                                                 </div>

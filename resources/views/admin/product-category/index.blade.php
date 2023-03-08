@@ -28,19 +28,15 @@
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td>{{ $category->name }}</td>
-                                    <td>{{$category->parent_category != null ? @$category->parent_category()->name : ''}}</td>
+                                    <td>{{ $category->parent_category != null ? @$category->parent_category()->name : '' }}
+                                    </td>
                                     <td>
-                                        <a href="{{ url('a1aa/product-categories') }}/{{ encrypt($category->id) }}/edit"
-                                            class="btn btn-primary btn-sm"><i
-                                                data-feather="edit"></i></a>
-                                        <form class="d-inline-block delete-btn"
-                                            action="{{ url('a1aa/product-categories') }}/{{ encrypt($category->id) }}"
-                                            method="post">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" class="btn btn-danger btn-sm deleteAlert"><i
-                                                data-feather="trash"></i></button>
-                                        </form>
+                                        @if ($category->added_by == session('online_admin')->id)
+                                            <a href="{{ url('a1aa/product-categories') }}/{{ encrypt($category->id) }}/edit"
+                                                class="btn btn-primary btn-sm"><i data-feather="edit"></i></a>
+                                        @else
+                                        N/A
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

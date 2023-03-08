@@ -775,7 +775,7 @@ footer.footer-border {
 
 .main-menu.menu-light .navigation > li.active > a {
   background:#9500ff;
-  box-shadow: 0 0 10px 1px #ed32389e;
+  /* box-shadow: 0 0 10px 1px #ed32389e; */
   color: #fff;
   font-weight: 400;
   border-radius: 4px;

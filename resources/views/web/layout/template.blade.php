@@ -223,6 +223,7 @@
                                     <li><a href="{{ url('/how-to-buy') }}">How To buy</a></li>
                                     <li><a href="#">Review</a></li>
                                     <li><a href="{{ url('/news') }}">News</a></li>
+                                    <li><a href="{{ url('/contact-us') }}">Contact Us</a></li>
 
 
                                 </ul>

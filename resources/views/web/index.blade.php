@@ -290,8 +290,13 @@
                                         <div class="single-post">
                                             <a href="/news/{{ $blog->GetSlug() }}">
                                                 <div class="post-img">
+                                                    @if($blog->image!=null)
                                                     <img src="{{ asset('storage/news-images') }}/{{ $blog->image }}"
-                                                        alt="{{ $blog->seo_title }}" height="200px">
+                                                    alt="{{ $blog->seo_title }}" height="200px">
+                                                    @else
+                                                    <img src="{{ asset('images/no-image.png') }}/{{ $blog->image }}"
+                                                    alt="{{ $blog->seo_title }}" height="200px">
+                                                    @endif
                                                 </div>
                                                 <div class="post-content">
                                                     <br>

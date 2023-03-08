@@ -1,17 +1,14 @@
 @extends('manager.layout.template')
-@section('page_title', 'Edit Product Group')
+@section('page_title', 'View Product Group')
 @section('breadcrumb')
     <li class="breadcrumb-item"><a href="{{ url('m1001m/product-groups') }}">Product Groups</a></li>
-    <li class="breadcrumb-item active">Edit Product Group</li>
+    <li class="breadcrumb-item active">View Product Group</li>
 @endsection
 @section('content')
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ url('m1001m/product-groups') }}/{{encrypt($product->id)}}" method="post" enctype="multipart/form-data">
-                        @csrf
-                        @method('put')
                         <div class="card-title">Basic Information</div>
                         <div class="row">
                             <div class="col-lg-6">
@@ -73,37 +70,34 @@
                                 </div>
                             @endif
 
-                            <div class="card-title my-3">SEO Settings</div>
+                            <div class="row">
+                                <div class="card-title my-3">SEO Settings</div>
+                                <div class="col-lg-4">
+                                    <label for="seo_title" class="col-form-label">Title</label>
+                                    <input type="text" class="form-control form-control-sm" name="seo_title"
+                                        value="{{ $product->seo_title }}" id="seo_title">
+                                </div>
+                                <div class="col-lg-4">
+                                    <label for="seo_h1" class="col-form-label">H1</label>
+                                    <input type="text" class="form-control form-control-sm" name="seo_h1"
+                                        value="{{ $product->seo_h1 }}" id="seo_h1">
+                                </div>
+                                <div class="col-lg-4">
+                                    <label for="seo_url" class="col-form-label">URL</label>
+                                    <input type="text" class="form-control form-control-sm" name="seo_url"
+                                        value="{{ $product->seo_url }}" id="seo_url">
+                                </div>
+                                <div class="col-lg-4">
+                                    <label for="seo_description" class="col-form-label">Description</label>
+                                    <input type="text" class="form-control form-control-sm" name="seo_description"
+                                        value="{{ $product->seo_description }}" id="seo_description">
+                                </div>
+                                <div class="col-lg-4">
+                                    <label for="seo_keyword" class="col-form-label">Keywords</label>
+                                    <input type="text" class="form-control form-control-sm" name="seo_keyword"
+                                        value="{{ $product->seo_keyword }}" id="seo_keyword">
+                                </div>
 
-                            <div class="row mb-3">
-                                <label for="seo_url" class="col-sm-2 col-form-label">URL</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="seo_url" value="{{$product->seo_url}}" id="seo_url">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="seo_description" class="col-sm-2 col-form-label">Description</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="seo_description" value="{{$product->seo_description}}" id="seo_description">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="seo_keyword" class="col-sm-2 col-form-label">Keywords</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="seo_keyword" value="{{$product->seo_keyword}}" id="seo_keyword">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="seo_title" class="col-sm-2 col-form-label">Title</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="seo_title" value="{{$product->seo_title}}" id="seo_title">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="seo_h1" class="col-sm-2 col-form-label">H1</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="seo_h1" value="{{$product->seo_h1}}" id="seo_h1">
-                                </div>
                             </div>
 
                             <div class="card-title my-3">Similar Products</div>
@@ -115,21 +109,10 @@
                                     </select>
                                 </div>
                             </div>
-
-                            <div class="col-12 mt-2">
-                                <input type="submit" value="Save" class="btn btn-primary px-3">
-                            </div>
                         </div>
-                    </form>
+
                 </div>
             </div>
         </div>
     </div>
-@endsection
-@section('custom_scripts')
-    <script>
-        $(".tags-select-2").select2({
-            tags: true
-        });
-    </script>
 @endsection

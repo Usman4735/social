@@ -1,10 +1,20 @@
 @extends('web.layout.template')
 @section('page_title', 'Profile')
-@section('breadcrum')
-    <li><a href="{{ url('/account') }}">My Account</a></li>
-    <li><a href="#" class="active">Profile</a></li>
-@endsection
 @section('content')
+<div class="breadcrumbs-area mb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumbs-menu">
+                        <ul>
+                            <li><a href="{{ url('/') }}">Home</a></li>
+                            <li><a href="{{ url('/profile') }}" class="active">Account Details</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- entry-header-area-start -->
     <div class="entry-header-area">
         <div class="container">
@@ -51,7 +61,7 @@
                                                                     <div class="single-input-item">
                                                                         <label for="first_name">First Name <span
                                                                                 class="text-primary">*</span></label>
-                                                                        <input type="text" name="first_name" required value="{{ $customer->first_name }}"
+                                                                        <input type="text" name="first_name" class="form-control form-control-sm" required value="{{ $customer->first_name }}"
                                                                             placeholder="John" />
                                                                     </div>
                                                                 </div>
@@ -59,7 +69,7 @@
                                                                     <div class="single-input-item">
                                                                         <label for="last_name">Last Name <span
                                                                                 class="text-primary">*</span></label>
-                                                                        <input type="text" name="last_name" required value="{{ $customer->last_name }}"
+                                                                        <input type="text" name="last_name" class="form-control form-control-sm" required value="{{ $customer->last_name }}"
                                                                             placeholder="Wick" />
                                                                     </div>
                                                                 </div>
@@ -69,7 +79,7 @@
                                                                     <div class="single-input-item">
                                                                         <label for="email">Email <span
                                                                                 class="text-primary">*</span></label>
-                                                                        <input type="email" name="email" required value="{{ $customer->email }}"
+                                                                        <input type="email" name="email" class="form-control form-control-sm" required value="{{ $customer->email }}"
                                                                             placeholder="jhon@email.com" />
                                                                     </div>
                                                                 </div>
@@ -81,7 +91,7 @@
                                                                         <label for="mobile">Mobile <span
                                                                                 class="text-primary">*</span></label>
                                                                         <input type="text"
-                                                                            name="mobile" required value="{{ $customer->mobile }}" placeholder="+2371234567" />
+                                                                            name="mobile" class="form-control form-control-sm" required value="{{ $customer->mobile }}" placeholder="+2371234567" />
                                                                     </div>
                                                                 </div>
 
@@ -90,14 +100,14 @@
                                                                 <div class="col-lg-6">
                                                                     <div class="single-input-item">
                                                                         <label for="first-name">Passowrd</label>
-                                                                        <input type="password" name="password"
+                                                                        <input type="password" name="password" class="form-control form-control-sm"
                                                                             placeholder="Leave empty if don't want to change password" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-6">
                                                                     <div class="single-input-item">
                                                                         <label for="first-name">Confirm Password </label>
-                                                                        <input type="password" name="confirm_password"
+                                                                        <input type="password" name="confirm_password" class="form-control form-control-sm"
                                                                             placeholder="Leave empty if don't want to change password" />
                                                                     </div>
                                                                 </div>
