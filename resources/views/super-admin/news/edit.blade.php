@@ -24,7 +24,7 @@
                                 <input type="file" name="image" id="image" class="form-control form-control-sm">
                             </div>
                             <div class="col-lg-12 mt-2">
-                                <img src="{{ asset('storage/news-images') }}/{{ $news->image }}" alt="News Image"
+                                   <img src="{{ asset('/news-images') }}/{{ $news->image }}" alt="News Picture"
                                     class="img-thumbnail" width="150">
                             </div>
                             <div class="col-lg-12">
