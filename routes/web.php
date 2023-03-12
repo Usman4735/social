@@ -11,6 +11,7 @@ use App\Http\Controllers\Manager\ProductGroupController as ManagerProductGroupCo
 use App\Http\Controllers\ProductGoodController;
 use App\Http\Controllers\SuperAdmin\AdminController;
 use App\Http\Controllers\SuperAdmin\BannerController;
+use App\Http\Controllers\SuperAdmin\CryptoWalletSettings;
 use App\Http\Controllers\SuperAdmin\MediaGalleryController;
 use App\Http\Controllers\SuperAdmin\NewsController;
 use App\Http\Controllers\SuperAdmin\OrderController;
@@ -19,6 +20,7 @@ use App\Http\Controllers\SuperAdmin\ProductGroupController;
 use App\Http\Controllers\SuperAdmin\UserController;
 use App\Http\Controllers\SuperAdmin\SettingController;
 use App\Http\Controllers\SuperAdmin\TestimonialController;
+use App\Http\Controllers\SuperAdmin\GeneralWalletSettings;
 
 
 // Super Admin Routes
@@ -76,6 +78,16 @@ Route::prefix('sa1991as')->group(function() {
         Route::put("general", [SettingController::class, "updateGeneralSettings"]);
         Route::get("/smtp", [SettingController::class, "smtp"]);
         Route::put("/smtp", [SettingController::class, "updateSMTP"]);
+    });
+
+    // Wallet Settings
+    Route::prefix('wallet-settings')->group(function() {
+       // General Wallet
+        Route::resource("general-wallet", GeneralWalletSettings::class);
+        Route::get("general-wallet/{id}/change-status", [GeneralWalletSettings::class, "changeStatus"]);
+        // Crypto Wallet
+        Route::resource("crypto-wallet", CryptoWalletSettings::class);
+        Route::get("crypto-wallet/{id}/change-status", [CryptoWalletSettings::class, "changeStatus"]);
     });
 });
 
