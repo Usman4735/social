@@ -53,6 +53,9 @@ class ProductCategoryController extends Controller
               $picture->move(public_path('/category-pictures'), $picture_name);
             $category->picture = $picture_name;
         }
+        if($request->isNotFilled('pre_moderation')) {
+            $category->pre_moderation = 0;
+        }
         $category->save();
         return redirect("sa1991as/product-categories")->with("success", "A category has been saved successfully");
     }
@@ -116,6 +119,9 @@ class ProductCategoryController extends Controller
         }
         if($request->isNotFilled('parent_category')) {
             $category->parent_category = null;
+        }
+        if($request->isNotFilled('pre_moderation')) {
+            $category->pre_moderation = 0;
         }
         $category->save();
         return redirect("sa1991as/product-categories")->with("success", "A category has been updated successfully");

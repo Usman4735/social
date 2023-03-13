@@ -22,6 +22,7 @@
                                 <th>Product Group</th>
                                 <th>Category</th>
                                 <th>Price</th>
+                                <th>Admin</th>
                                 <th>Operations</th>
                             </tr>
                         </thead>
@@ -30,11 +31,12 @@
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td>
-                                         <img src="{{ asset('storage/product-group-images') }}/{{ $product->image }}" alt="Product Picture" class="img-thumbnail" height="80" width="80">
+                                         <img src="{{ asset('storage/product-group-images') }}/{{ @$product->image }}" alt="Product Picture" class="img-thumbnail" height="80" width="80">
                                     </td>
-                                    <td>{{ $product->name }}</td>
-                                    <td>{{ $product->category->name }}</td>
-                                    <td>{{ number_format($product->price, 2) }}</td>
+                                    <td>{{ @$product->name }}</td>
+                                    <td>{{ @$product->category->name }}</td>
+                                    <td>{{ number_format(@$product->price, 2) }}</td>
+                                    <td>{{ @$product->admin->first_name }}&nbsp;{{ @$product->admin->last_name }}</td>
                                     <td>
                                         <a href="{{ url('sa1991as/product-groups') }}/{{ encrypt($product->id) }}/edit"
                                             class="btn btn-primary btn-sm"><i data-feather="edit"></i></a>

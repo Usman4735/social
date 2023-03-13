@@ -20,10 +20,18 @@ class ProductGroup extends Model
         "seo_description",
         "seo_keyword",
         "seo_title",
-        "seo_h1"
+        "seo_h1",
+        "admin_id",
+        "manager_id",
     ];
 
     public function category() {
         return $this->belongsTo(ProductCategory::class, "category_id");
+    }
+    public function admin() {
+        return $this->belongsTo(Admin::class, "admin_id");
+    }
+    public function manager() {
+        return $this->belongsTo(Admin::class, "manager_id");
     }
 }

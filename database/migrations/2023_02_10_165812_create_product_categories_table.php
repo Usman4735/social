@@ -18,6 +18,7 @@ return new class extends Migration
            $table->string('name', 100)->nullable();
            $table->string('parent_category', 100)->nullable();
            $table->text('picture')->nullable();
+           $table->integer('pre_moderation')->default(0);
            $table->integer('added_by')->nullable();
            $table->integer('added_by_role')->nullable();
            $table->text('category_description', 200)->nullable();

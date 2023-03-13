@@ -80,7 +80,7 @@
                 </ul>
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="javascript:void(0)"><i
-                        data-feather="tool"></i><span class="menu-title text-truncate"
+                        data-feather="dollar-sign"></i><span class="menu-title text-truncate"
                         data-i18n="Settings">Wallet Settings</span></a>
                 <ul class="menu-content">
                     <li><a class="d-flex align-items-center" href="{{ url('/sa1991as/wallet-settings/general-wallet') }}"><i

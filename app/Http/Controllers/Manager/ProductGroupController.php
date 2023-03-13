@@ -17,12 +17,12 @@ class ProductGroupController extends Controller
      */
     public function index()
     {
-        $product_group_ids = [];
-        $manager_permissions = ProductGroupPermission::where("manager_id", session('online_manager')->id)->get();
-        foreach($manager_permissions as $manager_permission) {
-            $product_group_ids[] = $manager_permission->product_group_id;
-        }
-        $products = ProductGroup::whereIn('id', $product_group_ids)->get();
+        // $product_group_ids = [];
+        // $manager_permissions = ProductGroupPermission::where("manager_id", session('online_manager')->id)->get();
+        // foreach($manager_permissions as $manager_permission) {
+        //     $product_group_ids[] = $manager_permission->product_group_id;
+        // }
+        $products = ProductGroup::where('manager_id', session('online_manager')->id)->get();
         return view("manager.product-groups.index", compact("products"));
     }
 
@@ -53,12 +53,12 @@ class ProductGroupController extends Controller
      * @param  \App\Models\ProductGroup  $productGroup
      * @return \Illuminate\Http\Response
      */
-    public function show(ProductGroup $productGroup, $id)
+    public function show($id)
     {
         $product = ProductGroup::findOrFail(decrypt($id));
         $categories = ProductCategory::all();
         $permission = ProductGroupPermission::where('product_group_id', $product->id)->where('manager_id', session('online_manager')->id)->first();
-        return view("manager.product-groups.edit", compact("product", "categories", "permission"));
+        return view("manager.product-groups.view", compact("product", "categories", "permission"));
     }
 
     /**
@@ -69,7 +69,6 @@ class ProductGroupController extends Controller
      */
     public function edit($id)
     {
-
     }
 
     /**
@@ -81,33 +80,7 @@ class ProductGroupController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            "name" => "required",
-            "category_id" => "required",
-        ]);
-        $product = ProductGroup::findOrFail(decrypt($id));
-        $product->fill($request->all());
-        // Image
-        if (isset($request->image)) {
-            // Delete old image first
-            if ($product->image != null) {
-                $image_path = public_path() . '/storage/product-group-images/' . $product->image;
-                if (file_exists($image_path)) {
-                    unlink($image_path);
-                }
-            }
-            $image = $request->image;
-            $image_name = uniqid() . '.' . $image->extension();
-            $request->image->storeAs('public/product-group-images', $image_name);
-            $product->image = $image_name;
-        }
-        if (isset($request->tags)) {
-            $product->tags = implode(",", $request->tags);
-        }
-        $product->added_by = session('online_manager')->id;
-        $product->added_by_role = 3;
-        $product->save();
-        return redirect("m1001m/product-groups")->with("success", "Product Group has updated saved successfully");
+
     }
 
     /**
@@ -118,14 +91,6 @@ class ProductGroupController extends Controller
      */
     public function destroy($id)
     {
-        $product = ProductGroup::findOrFail(decrypt($id));
-        if ($product->image != null) {
-            $image_path = public_path() . '/storage/product-group-images/' . $product->image;
-            if (file_exists($image_path)) {
-                unlink($image_path);
-            }
-        }
-        $product->delete();
-        return back()->with("error", "A category has been deleted");
+
     }
 }

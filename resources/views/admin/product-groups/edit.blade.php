@@ -64,6 +64,21 @@
                                 <label for="description" class="col-form-label">Description</label>
                                 <textarea name="description" id="description" class="form-control">{{$product->description}}</textarea>
                             </div>
+                             <div class="row">
+                                <div class="card-title my-3">Permission Settings</div>
+                                <div class="col-lg-12">
+                                    <label for="manager_id" class="col-form-label">Manager <span
+                                            class="text-primary">*</span></label>
+                                    <select name="manager_id" id="manager_id" class="form-control form-control-sm select-2"
+                                        required>
+                                        <option value="">Select Manager</option>
+                                        @foreach ($managers as $manager)
+                                            <option value="{{ $manager->id }}" {{ $manager->id==$product->manager_id? "selected" : " " }}>{{ $manager->first_name }}
+                                                &nbsp;{{ $manager->last_name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
 
                             <div class="card-title my-3">SEO Settings</div>
 

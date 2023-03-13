@@ -15,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('product_goods', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger("group_id");
             $table->string("name", 200);
             $table->text("description");
+            $table->foreignId('group_id')->constrained('product_groups');
             $table->string("status");
             $table->timestamps();
+
         });
     }
 

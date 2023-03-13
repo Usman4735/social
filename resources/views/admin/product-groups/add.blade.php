@@ -37,11 +37,13 @@
                             </div>
                             <div class="col-lg-12">
                                 <label for="price" class="col-form-label">Price (Rubles)</label>
-                                <input type="text" name="price" id="price" class="form-control" placeholder="Enter the salary in rubles">
+                                <input type="text" name="price" id="price" class="form-control"
+                                    placeholder="Enter the salary in rubles">
                             </div>
                             <div class="col-lg-6">
                                 <label for="manager_salary" class="col-form-label">Manager Salary (Rubles)</label>
-                                <input type="text" name="manager_salary" id="manager_salary" class="form-control" placeholder="Enter the salary in rubles">
+                                <input type="text" name="manager_salary" id="manager_salary" class="form-control"
+                                    placeholder="Enter the salary in rubles">
                             </div>
                             <div class="col-lg-6">
                                 <label for="manager_salary_type" class="col-form-label">Salary Type</label>
@@ -53,6 +55,21 @@
                             <div class="col-lg-12">
                                 <label for="description" class="col-form-label">Description</label>
                                 <textarea name="description" id="description" class="form-control"></textarea>
+                            </div>
+                            <div class="row">
+                                <div class="card-title my-3">Permission Settings</div>
+                                <div class="col-lg-12">
+                                    <label for="manager_id" class="col-form-label">Manager <span
+                                            class="text-primary">*</span></label>
+                                    <select name="manager_id" id="manager_id" class="form-control form-control-sm select-2"
+                                        required>
+                                        <option value="">Select Manager</option>
+                                        @foreach ($managers as $manager)
+                                            <option value="{{ $manager->id }}">{{ $manager->first_name }}
+                                                &nbsp;{{ $manager->last_name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="card-title my-3">SEO Settings</div>
@@ -108,7 +125,7 @@
         </div>
     </div>
 @endsection
-@section("custom_scripts")
+@section('custom_scripts')
     <script>
         $(".tags-select-2").select2({
             tags: true

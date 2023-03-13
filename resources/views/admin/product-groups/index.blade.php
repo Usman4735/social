@@ -21,6 +21,7 @@
                                 <th>Product Group</th>
                                 <th>Category</th>
                                 <th>Price</th>
+                                <th>Manager</th>
                                 <th>Operations</th>
                             </tr>
                         </thead>
@@ -28,9 +29,10 @@
                             @foreach ($products as $product)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td>{{ $product->name }}</td>
-                                    <td>{{ $product->category->name }}</td>
-                                    <td>{{ number_format($product->price, 2) }}</td>
+                                    <td>{{ @$product->name }}</td>
+                                    <td>{{ @$product->category->name }}</td>
+                                    <td>{{ number_format(@$product->price, 2) }}</td>
+                                    <td>{{ @$product->manager->first_name }}&nbsp;{{ @$product->manager->last_name }}</td>
                                     <td>
                                         <a href="{{ url('a1aa/product-groups') }}/{{ encrypt($product->id) }}/edit"
                                             class="btn btn-primary btn-sm"><i data-feather="edit"></i></a>

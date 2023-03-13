@@ -59,6 +59,18 @@
                         </div>
 
                         <div class="row">
+                            <div class="card-title my-3">Permission Settings</div>
+                            <div class="col-lg-12">
+                                <label for="admin_id" class="col-form-label">Admin <span class="text-primary">*</span></label>
+                                <select name="admin_id" id="admin_id" class="form-control form-control-sm select-2" required>
+                                    <option value="">Select Admin</option>
+                                    @foreach ($admins as $admin)
+                                        <option value="{{ $admin->id }}">{{ $admin->first_name }} &nbsp;{{ $admin->last_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="card-title my-3">SEO Settings</div>
                             <div class="col-lg-4">
                                 <label for="seo_title" class="col-form-label">Title</label>

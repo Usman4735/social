@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Providers;
+
+use App\Models\Admin;
 use App\Models\Banner;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
@@ -25,8 +27,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->share('banners', Banner::all());
-        // Blade::component('checkout-response', CheckoutResponse::class);
-
+        // view()->share('banners', Banner::all());
+        view()->share('admins', Admin::where('role', 'admin')->where('status', 1)->get());
     }
 }

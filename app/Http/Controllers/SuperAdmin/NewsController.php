@@ -62,7 +62,7 @@ class NewsController extends Controller
             $image = $request->image;
             $image_name = uniqid() . '.' . $image->extension();
             $request->image->storeAs('public/product-group-images', $image_name);
-            $product->image = $image_name;
+            $news->image = $image_name;
         }
         $news->save();
         return redirect("sa1991as/news")->with("success", "News have been saved successfully");

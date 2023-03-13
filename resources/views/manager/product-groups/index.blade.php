@@ -28,8 +28,7 @@
                                     <td>{{ @session('online_manager')->manager_permission($product->id)->see_price == 1 ? number_format($product->price, 2) : 'N/A'}}</td>
                                     <td>--</td>
                                     <td>
-                                        <a href="{{ url('m1001m/product-groups') }}/{{ encrypt($product->id) }}/show"
-                                            class="btn btn-primary btn-sm"><i data-feather="eye"></i></a>
+                                        <a href="{{ url('m1001m/product-groups') }}/{{ encrypt($product->id) }}/show" class="btn btn-primary btn-sm"><i data-feather="eye"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

@@ -47,11 +47,16 @@ class ProductCategoryController extends Controller
         $category->fill($request->all());
         // Picture
         if (isset($request->picture)) {
-        $picture = $request->picture;
-        $picture_name = uniqid() . '.' . $picture->extension();
-        $request->picture->storeAs('public/category-pictures', $picture_name);
-        $category->picture = $picture_name;
+            $picture = $request->picture;
+            $picture_name = uniqid() . '.' . $picture->extension();
+            $request->picture->storeAs('public/category-pictures', $picture_name);
+            $category->picture = $picture_name;
         }
+        if($request->isNotFilled('pre_moderation')) {
+            $category->pre_moderation = 0;
+        }
+        $category->added_by=session('online_admin')->id;
+        $category->added_by_role='admin';
         $category->save();
         return redirect("a1aa/product-categories")->with("success", "A category has been saved successfully");
     }
@@ -113,6 +118,11 @@ class ProductCategoryController extends Controller
         if($request->isNotFilled('parent_category')) {
             $category->parent_category = null;
         }
+        if($request->isNotFilled('pre_moderation')) {
+            $category->pre_moderation = 0;
+        }
+        $category->added_by=session('online_admin')->id;
+        $category->added_by_role='admin';
         $category->save();
         return redirect("a1aa/product-categories")->with("success", "A category has been updated successfully");
     }

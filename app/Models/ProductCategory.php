@@ -13,11 +13,12 @@ class ProductCategory extends Model
         "name",
         "parent_category",
         "category_description",
+        "pre_moderation",
         "seo_url",
         "seo_description",
         "seo_keyword",
         "seo_title",
-        "seo_h1"
+        "seo_h1",
     ];
 
     public function parent_category() {

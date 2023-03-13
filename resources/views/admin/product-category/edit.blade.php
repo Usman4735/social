@@ -9,7 +9,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                     <form action="{{ url('a1aa/product-categories') }}/{{ encrypt($category->id) }}" method="post"
+                    <form action="{{ url('a1aa/product-categories') }}/{{ encrypt($category->id) }}" method="post"
                         enctype="multipart/form-data">
                         @csrf
                         @method('put')
@@ -21,7 +21,8 @@
                             </div>
                             <div class="col-lg-4">
                                 <label for="name" class="col-form-label">Parent Category</label>
-                                <select name="parent_category" id="parent_category" class="form-control form-control-sm select-2">
+                                <select name="parent_category" id="parent_category"
+                                    class="form-control form-control-sm select-2">
                                     <option value="">None</option>
                                     @foreach ($categories as $single_category)
                                         <option value="{{ $single_category->id }}"
@@ -42,6 +43,15 @@
                                 <label for="category_description" class="col-form-label">Description</label>
                                 <textarea name="category_description" id="category_description" class="form-control form-control-sm">{{ $category->category_description }}</textarea>
                             </div>
+                            <div class="col-lg-12">
+                                <label class="col-form-label" for="smtp_switch">Pre-moderation (Set pre-moderation of
+                                    products in this category)</label>
+                                <div class="form-check form-switch">
+                                    <label class="col-form-label" class="form-check-label" for="smtp_switch"></label>
+                                    <input class="form-check-input" type="checkbox" name="pre_moderation" value="1"
+                                        id="smtp_switch" {{ $category->pre_moderation == 1 ? 'checked' : ' ' }}>
+                                </div>
+                            </div>
 
                             <div class="row">
                                 <div class="card-title">SEO Settings</div>
@@ -49,30 +59,31 @@
                                 <div class="col-lg-4">
                                     <label for="seo_title" class="col-form-label">Title</label>
 
-                                    <input type="text" class="form-control form-control-sm" value="{{ $category->seo_title }}" name="seo_title"
-                                        id="seo_title">
+                                    <input type="text" class="form-control form-control-sm"
+                                        value="{{ $category->seo_title }}" name="seo_title" id="seo_title">
                                 </div>
                                 <div class="col-lg-4">
                                     <label for="seo_h1" class="col-form-label">H1</label>
-                                    <input type="text" class="form-control form-control-sm" value="{{ $category->seo_h1 }}" name="seo_h1"
-                                        id="seo_h1">
+                                    <input type="text" class="form-control form-control-sm"
+                                        value="{{ $category->seo_h1 }}" name="seo_h1" id="seo_h1">
                                 </div>
                                 <div class="col-lg-4">
                                     <label for="seo_url" class="col-form-label">URL</label>
-                                    <input type="text" class="form-control form-control-sm" value="{{ $category->seo_url }}" name="seo_url"
-                                        id="seo_url">
+                                    <input type="text" class="form-control form-control-sm"
+                                        value="{{ $category->seo_url }}" name="seo_url" id="seo_url">
                                 </div>
                                 <div class="col-lg-4">
                                     <label for="seo_description" class="col-form-label">Description</label>
 
-                                    <input type="text" class="form-control form-control-sm" value="{{ $category->seo_description }}" name="seo_description"
+                                    <input type="text" class="form-control form-control-sm"
+                                        value="{{ $category->seo_description }}" name="seo_description"
                                         id="seo_description">
                                 </div>
                                 <div class="col-lg-4">
                                     <label for="seo_keyword" class="col-form-label">Keywords</label>
 
-                                    <input type="text" class="form-control form-control-sm" value="{{ $category->seo_keyword }}" name="seo_keyword"
-                                        id="seo_keyword">
+                                    <input type="text" class="form-control form-control-sm"
+                                        value="{{ $category->seo_keyword }}" name="seo_keyword" id="seo_keyword">
                                 </div>
 
                             </div>

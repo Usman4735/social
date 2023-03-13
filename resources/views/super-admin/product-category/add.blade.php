@@ -35,6 +35,15 @@
                                 <label for="category_description" class="col-form-label">Description</label>
                                 <textarea name="category_description" id="category_description" class="form-control form-control-sm"></textarea>
                             </div>
+                            <div class="col-lg-12">
+                                <label class="col-form-label" for="smtp_switch">Pre-moderation (Set pre-moderation of
+                                    products in this category)</label>
+                                <div class="form-check form-switch">
+                                    <label class="col-form-label" class="form-check-label" for="smtp_switch"></label>
+                                    <input class="form-check-input" type="checkbox" name="pre_moderation" value="1"
+                                        id="smtp_switch">
+                                </div>
+                            </div>
 
                         </div>
 

@@ -61,7 +61,7 @@
                         <div class="w-100 text-center">
                             <h2 class="mb-1">Page Not Found</h2>
                             <p class="mb-2">Oops! The requested URL was not found on this server.</p>
-                            <a class="btn btn-primary mb-2 btn-sm-block" href="{{ Request::is('sa1991as*')? url('/sa1991as'): url('/') }}">Back to home</a>
+                            <a class="btn btn-primary mb-2 btn-sm-block" href="{{ Request::is('sa1991as*')? url('/sa1991as'): (Request::is('a1aa*')? url('/a1aa') : (Request::is('m1001m*')? url('/m1001m') : url('/'))) }}">Back to home</a>
                             <img class="img-fluid" src="{{ asset('backend-assets/images/pages/error.svg') }}" alt="Error page" />
                         </div>
                     </div>

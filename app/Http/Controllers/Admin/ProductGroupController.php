@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Models\ProductCategory;
 use App\Models\ProductGroup;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class ProductGroupController extends Controller
      */
     public function index()
     {
-        $products = ProductGroup::all();
+        $products = ProductGroup::where('admin_id', session('online_admin')->id)->get();
         return view("admin.product-groups.index", compact("products"));
     }
 
@@ -28,7 +29,8 @@ class ProductGroupController extends Controller
     public function create()
     {
         $categories = ProductCategory::all();
-        return view("admin.product-groups.add", compact("categories"));
+        $managers=Admin::where('role', 'manager')->where('admin_id', session('online_admin')->id)->get();
+        return view("admin.product-groups.add", compact("categories", 'managers'));
     }
 
     /**
@@ -58,6 +60,8 @@ class ProductGroupController extends Controller
         }
         $product->added_by = session('online_admin')->id;
         $product->added_by_role = 2;
+        $product->admin_id = session('online_admin')->id;
+        $product->manager_id = $request->manager_id;
         $product->save();
         return redirect("a1aa/product-groups")->with("success", "Product Group has been saved successfully");
     }
@@ -83,7 +87,8 @@ class ProductGroupController extends Controller
     {
         $product = ProductGroup::findOrFail(decrypt($id));
         $categories = ProductCategory::all();
-        return view("admin.product-groups.edit", compact("product", "categories"));
+        $managers=Admin::where('role', 'manager')->where('admin_id', session('online_admin')->id)->get();
+        return view("admin.product-groups.edit", compact("product", "categories", 'managers'));
     }
 
     /**
@@ -121,6 +126,7 @@ class ProductGroupController extends Controller
         }
         $product->added_by = session('online_admin')->id;
         $product->added_by_role = 2;
+        $product->manager_id = $request->manager_id;
         $product->save();
         return redirect("a1aa/product-groups")->with("success", "Product Group has updated saved successfully");
     }
