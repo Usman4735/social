@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string("payment_id", 50)->nullable();
             $table->integer("status")->default(1);
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

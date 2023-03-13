@@ -16,10 +16,12 @@ return new class extends Migration
         Schema::create('order_details', function (Blueprint $table) {
             $table->id();
             $table->foreignId('order_id')->constrained('orders');
-            $table->foreignId('product_id')->constrained('products');
+            $table->foreignId('good_id')->constrained('product_goods');
+            $table->foreignId('group_id')->constrained('product_groups');
             $table->integer("qty")->nullable();
             $table->double("price")->nullable();
             $table->timestamps();
+            
         });
     }
 

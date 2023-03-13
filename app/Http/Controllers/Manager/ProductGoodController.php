@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Manager;
 
 use App\Models\ProductGood;
 use App\Models\ProductGroup;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ProductGoodController extends Controller
 {
@@ -16,7 +17,7 @@ class ProductGoodController extends Controller
     public function index()
     {
         $product_goods = ProductGood::all();
-        return view("super-admin.product-goods.index", compact("product_goods"));
+        return view("manager.product-goods.index", compact("product_goods"));
     }
 
     /**
@@ -27,7 +28,7 @@ class ProductGoodController extends Controller
     public function create()
     {
         $product_groups = ProductGroup::all();
-        return view("super-admin.product-goods.add", compact("product_groups"));
+        return view("manager.product-goods.add", compact("product_groups"));
     }
 
     /**
@@ -49,7 +50,7 @@ class ProductGoodController extends Controller
         $product = new ProductGood();
         $product->fill($request->all());
         $product->save();
-        return redirect("sa1991as/product-goods")->with("success", "A Product Good has been saved successfully");
+        return redirect("m1001m/product-goods")->with("success", "A Product Good has been saved successfully");
     }
 
     /**
@@ -73,7 +74,7 @@ class ProductGoodController extends Controller
     {
         $product = ProductGood::findOrFail(decrypt($id));
         $product_groups = ProductGroup::all();
-        return view("super-admin.product-goods.edit", compact("product", "product_groups"));
+        return view("manager.product-goods.edit", compact("product", "product_groups"));
     }
 
     /**
@@ -96,7 +97,7 @@ class ProductGoodController extends Controller
         $product = ProductGood::findOrFail(decrypt($id));
         $product->fill($request->all());
         $product->save();
-        return redirect("sa1991as/product-goods")->with("success", "A Product Good has been updated successfully");
+        return redirect("m1001m/product-goods")->with("success", "A Product Good has been updated successfully");
     }
 
     /**
@@ -109,6 +110,6 @@ class ProductGoodController extends Controller
     {
         $product = ProductGood::findOrFail(decrypt($id));
         $product->delete();
-        return redirect("sa1991as/product-goods")->with("error", "A Product Good has been deleted");
+        return redirect("m1001m/product-goods")->with("error", "A Product Good has been deleted");
     }
 }

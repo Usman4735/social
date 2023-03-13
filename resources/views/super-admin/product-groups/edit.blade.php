@@ -53,12 +53,12 @@
                             </div>
                             <div class="col-lg-12">
                                 <label for="price" class="col-form-label">Price (Rubles)</label>
-                                <input type="text" name="price" id="price" class="form-control form-control-sm"
+                                <input type="number" name="price" id="price" class="form-control form-control-sm"
                                     value="{{ number_format($product->price, 2) }}">
                             </div>
                             <div class="col-lg-6">
                                 <label for="manager_salary" class="col-form-label">Manager Salary (Rubles)</label>
-                                <input type="text" name="manager_salary" id="manager_salary"
+                                <input type="number" name="manager_salary" id="manager_salary"
                                     class="form-control form-control-sm" value="{{ $product->manager_salary }}">
                             </div>
                             <div class="col-lg-6">

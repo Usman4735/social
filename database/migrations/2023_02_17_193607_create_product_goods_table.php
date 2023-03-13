@@ -18,8 +18,12 @@ return new class extends Migration
             $table->string("name", 200);
             $table->text("description");
             $table->foreignId('group_id')->constrained('product_groups');
+            $table->bigInteger('admin_id')->nullable();
+            $table->bigInteger('manager_id')->nullable();
             $table->string("status");
             $table->timestamps();
+            $table->softDeletes();
+
 
         });
     }

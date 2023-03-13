@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\PageController;
 use App\Http\Controllers\Manager\ManagerController;
+use App\Http\Controllers\Manager\ProductGoodController as ManagerProductGoodController;
 use App\Http\Controllers\Manager\ProductGroupController as ManagerProductGroupController;
 use App\Http\Controllers\ProductGoodController;
 use App\Http\Controllers\SuperAdmin\AdminController;
@@ -21,7 +22,7 @@ use App\Http\Controllers\SuperAdmin\UserController;
 use App\Http\Controllers\SuperAdmin\SettingController;
 use App\Http\Controllers\SuperAdmin\TestimonialController;
 use App\Http\Controllers\SuperAdmin\GeneralWalletSettings;
-
+use App\Http\Controllers\SuperAdmin\ProductGoodController as SuperAdminProductGoodController;
 
 // Super Admin Routes
 Route::prefix('sa1991as')->group(function() {
@@ -54,7 +55,7 @@ Route::prefix('sa1991as')->group(function() {
     // media gallery
     Route::resource('gallery', MediaGalleryController::class);
     // Product Goods
-    Route::resource('product-goods', ProductGoodController::class);
+    Route::resource('product-goods', SuperAdminProductGoodController::class);
 
     Route::prefix('orders')->group(function() {
         Route::get('/', [OrderController::class, 'index']);
@@ -144,6 +145,8 @@ Route::prefix('m1001m')->group(function() {
 
     // Product Groups
     Route::resource('product-groups', ManagerProductGroupController::class);
+    Route::resource('product-goods', ManagerProductGoodController::class);
+
 
 });
 

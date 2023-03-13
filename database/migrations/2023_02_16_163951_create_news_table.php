@@ -26,6 +26,8 @@ return new class extends Migration
             $table->text('seo_h1')->nullable();
             $table->integer("is_published")->default(1);
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

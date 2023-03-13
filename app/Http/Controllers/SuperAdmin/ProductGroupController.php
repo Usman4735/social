@@ -56,7 +56,6 @@ class ProductGroupController extends Controller
         if (isset($request->image)) {
             $image = $request->image;
             $image_name = uniqid() . '.' . $image->extension();
-            // $image = public_path() . 'product-group-images' . $image_name;
             $image->move(public_path('product-group-images'), $image_name);
 
             $product->image = $image_name;
@@ -115,14 +114,13 @@ class ProductGroupController extends Controller
         if (isset($request->image)) {
             // Delete old image first
             if ($product->image != null) {
-                $image_path = public_path() . 'product-group-images/' . $product->image;
+                $image_path = public_path() . '/product-group-images/' . $product->image;
                 if (file_exists($image_path)) {
                     unlink($image_path);
                 }
             }
             $image = $request->image;
             $image_name = uniqid() . '.' . $image->extension();
-            // $request->image->storeAs('public/product-group-images', $image_name);
             $image->move(public_path('category-pictures'), $image_name);
             $product->image = $image_name;
         }
@@ -154,56 +152,56 @@ class ProductGroupController extends Controller
         return back()->with("error", "A category has been deleted");
     }
 
-    public function addPermission($manager, $product) {
-        $manager = Admin::find($manager);
-        $product = Product::findOrFail($product);
-        $permission = null;
-        $existing_permission = ProductGroupPermission::where("product_group_id", $product->id)->where("manager_id", $manager->id)->first();
-        if($existing_permission) {
-            $permission = $existing_permission;
-        }
-        return view("super-admin.product-groups.permissions.index", compact("manager", "product", "permission"));
-    }
+    // public function addPermission($manager, $product) {
+    //     $manager = Admin::find($manager);
+    //     $product = Product::findOrFail($product);
+    //     $permission = null;
+    //     $existing_permission = ProductGroupPermission::where("product_group_id", $product->id)->where("manager_id", $manager->id)->first();
+    //     if($existing_permission) {
+    //         $permission = $existing_permission;
+    //     }
+    //     return view("super-admin.product-groups.permissions.index", compact("manager", "product", "permission"));
+    // }
 
-    public function savePermission(Request $request, $manager, $product) {
-        $manager = Admin::find($manager);
-        $product = Product::findOrFail($product);
-        $permission = ProductGroupPermission::where("product_group_id", $product->id)->where("manager_id", $manager->id)->first();
-        if(!$permission) {
-            $permission = new ProductGroupPermission();
-            $permission->product_group_id = $product->id;
-            $permission->manager_id = $manager->id;
-        }
-        $permission->fill($request->all());
+    // public function savePermission(Request $request, $manager, $product) {
+    //     $manager = Admin::find($manager);
+    //     $product = Product::findOrFail($product);
+    //     $permission = ProductGroupPermission::where("product_group_id", $product->id)->where("manager_id", $manager->id)->first();
+    //     if(!$permission) {
+    //         $permission = new ProductGroupPermission();
+    //         $permission->product_group_id = $product->id;
+    //         $permission->manager_id = $manager->id;
+    //     }
+    //     $permission->fill($request->all());
 
-        if($request->isNotFilled('see_price')) {
-            $permission->see_price = null;
-        }
-        if($request->isNotFilled('edit_price')) {
-            $permission->edit_price = null;
-        }
-        if($request->isNotFilled('see_photos')) {
-            $permission->see_photos = null;
-        }
-        if($request->isNotFilled('edit_photos')) {
-            $permission->edit_photos = null;
-        }
-        if($request->isNotFilled('see_description')) {
-            $permission->see_description = null;
-        }
-        if($request->isNotFilled('edit_description')) {
-            $permission->edit_description = null;
-        }
-        if($request->isNotFilled('see_tags')) {
-            $permission->see_tags = null;
-        }
-        if($request->isNotFilled('edit_tags')) {
-            $permission->edit_tags = null;
-        }
+    //     if($request->isNotFilled('see_price')) {
+    //         $permission->see_price = null;
+    //     }
+    //     if($request->isNotFilled('edit_price')) {
+    //         $permission->edit_price = null;
+    //     }
+    //     if($request->isNotFilled('see_photos')) {
+    //         $permission->see_photos = null;
+    //     }
+    //     if($request->isNotFilled('edit_photos')) {
+    //         $permission->edit_photos = null;
+    //     }
+    //     if($request->isNotFilled('see_description')) {
+    //         $permission->see_description = null;
+    //     }
+    //     if($request->isNotFilled('edit_description')) {
+    //         $permission->edit_description = null;
+    //     }
+    //     if($request->isNotFilled('see_tags')) {
+    //         $permission->see_tags = null;
+    //     }
+    //     if($request->isNotFilled('edit_tags')) {
+    //         $permission->edit_tags = null;
+    //     }
 
-        $permission->save();
+    //     $permission->save();
 
-        return back()->with("success", "Permission has been saved successfully");
+    //     return back()->with("success", "Permission has been saved successfully");
 
-    }
+    // }
 }

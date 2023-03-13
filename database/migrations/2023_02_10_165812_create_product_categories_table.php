@@ -28,6 +28,8 @@ return new class extends Migration
            $table->text('seo_title')->nullable();
            $table->text('seo_h1')->nullable();
            $table->timestamps();
+        $table->softDeletes();
+
 
         });
     }

@@ -36,7 +36,7 @@
                                 <input type="file" name="picture" id="picture" class="form-control form-control-sm">
                             </div>
                             <div class="col-lg-12 mt-2">
-                                <img src="{{ url('/category-pictures') }}/{{ $category->picture }}" alt="Category Picture"
+                                <img src="{{ asset('/category-pictures') }}/{{ $category->picture }}" alt="Category Picture"
                                     class="img-thumbnail" width="150">
                             </div>
                             <div class="col-lg-12">
@@ -53,7 +53,7 @@
                                 </div>
                             </div>
 
-                            <div class="row">
+                            <div class="row mt-2">
                                 <div class="card-title">SEO Settings</div>
 
                                 <div class="col-lg-4">

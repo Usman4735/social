@@ -8,11 +8,8 @@ use App\Models\Admin;
 use App\Models\Customer;
 use App\Models\MediaGallery;
 use App\Models\News;
-use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductGroup;
-use App\Models\Testimonial;
-use Database\Factories\ProductGroupFactory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -54,7 +51,6 @@ class DatabaseSeeder extends Seeder
         ]);
         Customer::factory(5)->create();
         ProductCategory::factory(5)->create();
-        Product::factory(5)->create();
         News::factory(5)->create();
         MediaGallery::factory(5)->create();
         ProductGroup::factory(5)->create();

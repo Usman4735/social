@@ -33,6 +33,8 @@ return new class extends Migration
             $table->bigInteger('added_by')->nullable();
             $table->integer('added_by_role')->nullable();
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

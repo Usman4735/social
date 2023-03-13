@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // view()->share('banners', Banner::all());
+        view()->share('banners', Banner::all());
         view()->share('admins', Admin::where('role', 'admin')->where('status', 1)->get());
     }
 }

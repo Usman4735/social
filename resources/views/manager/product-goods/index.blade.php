@@ -1,7 +1,7 @@
-@extends('super-admin.layout.template')
-@section('page_title', 'Product Groups')
+@extends('manager.layout.template')
+@section('page_title', 'Product Goods')
 @section('breadcrumb')
-    <li class="breadcrumb-item active">Product Groups</li>
+    <li class="breadcrumb-item active">Product Goods</li>
 @endsection
 @section('content')
     <div class="row clearfix">
@@ -9,7 +9,7 @@
             <div class="card">
                 <div class="card-header row">
                     <div class="col-12 text-end">
-                        <a href="{{ url('sa1991as/product-groups/create') }}" class="btn btn-primary btn-sm mr-2"
+                        <a href="{{ url('m1001m/product-goods/create') }}" class="btn btn-primary btn-sm mr-2"
                             title="Add Category"><i data-feather="plus"></i></a>
                     </div>
                 </div>
@@ -18,34 +18,24 @@
                         <thead>
                             <tr>
                                 <th>Sr#</th>
-                                <th>Image</th>
-                                <th>Product Group</th>
-                                <th>Category</th>
-                                <th>Price</th>
-                                <th>Total Products</th>
-                                <th>Remaining Products</th>
-                                <th>Admin</th>
+                                <th>Product Name</th>
+                                <th>Product Groups</th>
+                                <th>Status</th>
                                 <th>Operations</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($products as $product)
+                            @foreach ($product_goods as $product)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
+                                    <td>{{ $product->name }}</td>
+                                    <td>{{@$product->group->name}}</td>
+                                    <td>{{ ucwords(str_replace('_', ' ', $product->status)) }}</td>
                                     <td>
-                                         <img src="{{ asset('/product-group-images') }}/{{ @$product->image }}" alt="Product Picture" class="img-thumbnail" height="80" width="80">
-                                    </td>
-                                    <td>{{ @$product->name }}</td>
-                                    <td>{{ @$product->category->name }}</td>
-                                    <td>{{ number_format(@$product->price, 2) }}</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>{{ @$product->admin->first_name }}&nbsp;{{ @$product->admin->last_name }}</td>
-                                    <td>
-                                        <a href="{{ url('sa1991as/product-groups') }}/{{ encrypt($product->id) }}/edit"
+                                        <a href="{{ url('m1001m/product-goods') }}/{{ encrypt($product->id) }}/edit"
                                             class="btn btn-primary btn-sm"><i data-feather="edit"></i></a>
                                         <form class="d-inline-block delete-btn"
-                                            action="{{ url('sa1991as/product-groups') }}/{{ encrypt($product->id) }}"
+                                            action="{{ url('m1001m/product-goods') }}/{{ encrypt($product->id) }}"
                                             method="post">
                                             @csrf
                                             @method('delete')

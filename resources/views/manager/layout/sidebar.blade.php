@@ -1,11 +1,10 @@
 <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
-            <li class="nav-item me-auto"><a class="navbar-brand"
-                    href="{{url('m1001m')}}"><span class="brand-logo">
-                        <img src="{{asset('images/logo.png')}}" alt="logo">
+            <li class="nav-item me-auto"><a class="navbar-brand" href="{{ url('m1001m') }}"><span class="brand-logo">
+                        <img src="{{ asset('images/logo.png') }}" alt="logo">
                     </span>
-                    <h2 class="brand-text">{{env('APP_NAME')}}</h2>
+                    <h2 class="brand-text">{{ env('APP_NAME') }}</h2>
                 </a></li>
             <li class="nav-item nav-toggle">
                 <a class="nav-link modern-nav-toggle pe-0" data-bs-toggle="collapse">
@@ -23,13 +22,17 @@
                         data-feather="home"></i><span class="menu-title text-truncate"
                         data-i18n="Dashboard">Dashboard</span></a>
             </li>
-            <li class=" nav-item"><a class="d-flex align-items-center"
-                    href="{{ url('m1001m/product-groups') }}"><i data-feather="package"></i><span
-                        class="menu-title text-truncate" data-i18n="Product Groups">Product Groups</span></a>
+            <li class=" nav-item"><a class="d-flex align-items-center" href="{{ url('m1001m/product-groups') }}"><i
+                        data-feather="package"></i><span class="menu-title text-truncate"
+                        data-i18n="Product Groups">Product Groups</span></a>
             </li>
-              <li class=" nav-item"><a class="d-flex align-items-center"
-                    href="{{ url('m1001m/orders') }}"><i data-feather="shopping-cart"></i><span
-                        class="menu-title text-truncate" data-i18n="Sales Order">Sales Order</span></a>
+            <li class=" nav-item"><a class="d-flex align-items-center" href="{{ url('m1001m/product-goods') }}"><i
+                        data-feather="package"></i><span class="menu-title text-truncate"
+                        data-i18n="Product Goods">Product Goods</span></a>
+            </li>
+            <li class=" nav-item"><a class="d-flex align-items-center" href="{{ url('m1001m/orders') }}"><i
+                        data-feather="shopping-cart"></i><span class="menu-title text-truncate"
+                        data-i18n="Sales Order">Sales Order</span></a>
             </li>
         </ul>
     </div>

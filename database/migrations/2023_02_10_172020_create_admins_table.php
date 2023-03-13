@@ -26,6 +26,8 @@ return new class extends Migration
             $table->bigInteger('admin_id')->nullable();
             $table->integer('status')->default(0);
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

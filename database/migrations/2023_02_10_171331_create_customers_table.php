@@ -24,6 +24,8 @@ return new class extends Migration
             $table->text('profile_picture')->nullable();
             $table->integer('block')->default(0);
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 
