@@ -1,7 +1,7 @@
-@extends('super-admin.layout.template')
+@extends('admin.layout.template')
 @section('page_title', 'Edit Product Good')
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{ url('sa1991as/product-goods') }}">Product Goods</a></li>
+    <li class="breadcrumb-item"><a href="{{ url('a1aa/product-goods') }}">Product Goods</a></li>
     <li class="breadcrumb-item active">Edit Product Good</li>
 @endsection
 @section('content')
@@ -9,7 +9,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ url('sa1991as/product-goods') }}/{{ encrypt($product->id) }}" method="post"
+                    <form action="{{ url('a1aa/product-goods') }}/{{ encrypt($product->id) }}" method="post"
                         enctype="multipart/form-data">
                         @csrf
                         @method('put')
@@ -50,19 +50,7 @@
                         </div>
                         <div class="row">
                             <div class="card-title my-3">Permission Settings</div>
-                            <div class="col-lg-6">
-                                <label for="admin_id" class="col-form-label">Admin <span
-                                        class="text-primary">*</span></label>
-                                <select name="admin_id" id="admin_id" class="form-control form-control-sm select-2"
-                                    required>
-                                    <option value="">Select Admin</option>
-                                    @foreach ($admins as $admin)
-                                        <option value="{{ $admin->id }}" {{ $admin->id==$product->admin_id?"selected" : " "}}>{{ $admin->first_name }}
-                                            &nbsp;{{ $admin->last_name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                                 <label for="manager_id" class="col-form-label">Manager <span
                                         class="text-primary">*</span></label>
                                 <select name="manager_id" id="manager_id" class="form-control form-control-sm select-2"
@@ -89,23 +77,6 @@
 @endsection
 @section('custom_scripts')
     <script>
-        $("#admin_id").on('change', function(e) {
-            $.ajax({
-                type: "post",
-                url: "{{ url('sa1991as/admin-managers') }}",
-                data: {
-                    admin_id: $(this).val()
-                },
-                success: function(response) {
-                    console.log(response);
-                    $.each(response, function(index, val) {
-                        $("#manager_id").empty();
-                        $("#manager_id").append('<option value="' + val.id + '">' +
-                            val.first_name + ' ' + val.last_name +
-                            '</option>');
-                    });
-                }
-            });
-        });
+        
     </script>
 @endsection

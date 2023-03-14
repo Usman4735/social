@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\SuperAdmin;
+namespace App\Http\Controllers\Admin;
 use App\Models\Admin;
 use App\Models\ProductGood;
 use App\Models\ProductGroup;
@@ -18,7 +18,7 @@ class ProductGoodController extends Controller
     public function index()
     {
         $product_goods = ProductGood::orderBy('id', 'desc')->get();
-        return view("super-admin.product-goods.index", compact("product_goods"));
+        return view("admin.product-goods.index", compact("product_goods"));
     }
 
     /**
@@ -29,8 +29,8 @@ class ProductGoodController extends Controller
     public function create()
     {
         $product_groups = ProductGroup::all();
-        $admins= Admin::where('status', 1)->where('role', 'admin')->get();
-        return view("super-admin.product-goods.add", compact("product_groups", "admins"));
+        $managers=Admin::where('admin_id', session('online_admin')->id)->where('role', 'manager')->get();
+        return view("admin.product-goods.add", compact("product_groups", "managers"));
     }
 
     /**
@@ -52,7 +52,7 @@ class ProductGoodController extends Controller
         $product = new ProductGood();
         $product->fill($request->all());
         $product->save();
-        return redirect("sa1991as/product-goods")->with("success", "A Product Good has been saved successfully");
+        return redirect("a1aa/product-goods")->with("success", "A Product Good has been saved successfully");
     }
 
     /**
@@ -76,9 +76,8 @@ class ProductGoodController extends Controller
     {
         $product = ProductGood::findOrFail(decrypt($id));
         $product_groups = ProductGroup::all();
-        $admins= Admin::where('status', 1)->where('role', 'admin')->get();
-        $managers=Admin::where('admin_id', $product->admin_id)->get();
-        return view("super-admin.product-goods.edit", compact("product", "product_groups", "managers"));
+        $managers=Admin::where('admin_id', $product->admin_id)->where('role', 'manager')->get();
+        return view("admin.product-goods.edit", compact("product", "product_groups", "managers"));
     }
 
     /**
@@ -101,7 +100,7 @@ class ProductGoodController extends Controller
         $product = ProductGood::findOrFail(decrypt($id));
         $product->fill($request->all());
         $product->save();
-        return redirect("sa1991as/product-goods")->with("success", "A Product Good has been updated successfully");
+        return redirect("a1aa/product-goods")->with("success", "A Product Good has been updated successfully");
     }
 
     /**
@@ -114,6 +113,6 @@ class ProductGoodController extends Controller
     {
         $product = ProductGood::findOrFail(decrypt($id));
         $product->delete();
-        return redirect("sa1991as/product-goods")->with("error", "A Product Good has been deleted");
+        return redirect("a1aa/product-goods")->with("error", "A Product Good has been deleted");
     }
 }

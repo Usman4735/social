@@ -23,13 +23,18 @@
                         data-feather="home"></i><span class="menu-title text-truncate"
                         data-i18n="Dashboard">Dashboard</span></a>
             </li>
-            <li class=" nav-item"><a class="d-flex align-items-center" href="{{ url('a1aa/product-categories') }}"><i
-                        data-feather="archive"></i><span class="menu-title text-truncate"
-                        data-i18n="Product Category">Product Categories</span></a>
-            </li>
+
             <li class=" nav-item"><a class="d-flex align-items-center" href="{{ url('a1aa/product-groups') }}"><i
                         data-feather="package"></i><span class="menu-title text-truncate"
                         data-i18n="Product Groups">Product Groups</span></a>
+            </li>
+            <li class=" nav-item"><a class="d-flex align-items-center" href="{{ url('a1aa/product-goods') }}"><i
+                        data-feather="package"></i><span class="menu-title text-truncate"
+                        data-i18n="Product Goods">Product Goods</span></a>
+            </li>
+             <li class=" nav-item"><a class="d-flex align-items-center" href="{{ url('a1aa/product-categories') }}"><i
+                        data-feather="archive"></i><span class="menu-title text-truncate"
+                        data-i18n="Product Category">Product Categories</span></a>
             </li>
              <li class=" nav-item"><a class="d-flex align-items-center"
                     href="{{ url('a1aa/orders') }}"><i data-feather="shopping-cart"></i><span

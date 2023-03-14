@@ -43,10 +43,13 @@ class BannerController extends Controller
         ]);
         $banner = new Banner();
         $banner->title = $request->title;
-        $image = $request->image;
-        $image_name = uniqid() . '.' . $image->extension();
-        $request->image->storeAs('public/banner-images', $image_name);
-        $banner->image = $image_name;
+
+        if (isset($request->image)) {
+            $image = $request->image;
+            $image_name = uniqid() . '.' . $image->extension();
+            $image->move(public_path('banner-images'), $image_name);
+            $banner->image = $image_name;
+        }
         $banner->save();
         return redirect("sa1991as/banners")->with("success", "A new banner has been saved successfully");
     }
@@ -89,17 +92,19 @@ class BannerController extends Controller
         ]);
         $banner = Banner::findOrFail(decrypt($id));
         $banner->title = $request->title;
+
         if (isset($request->image)) {
-            // Delete old image first
+            // Delete old picture first
             if ($banner->image != null) {
-                $image_path = public_path() . '/storage/banner-images/' . $banner->image;
+                $image_path = public_path().'/banner-images/'.$banner->image;
                 if (file_exists($image_path)) {
                     unlink($image_path);
                 }
             }
             $image = $request->image;
             $image_name = uniqid() . '.' . $image->extension();
-            $request->image->storeAs('public/banner-images', $image_name);
+            $image->move(public_path('news-images'), $image_name);
+
             $banner->image = $image_name;
         }
         $banner->save();
@@ -116,7 +121,7 @@ class BannerController extends Controller
     {
         $banner = Banner::findOrFail(decrypt($id));
         if ($banner->image != null) {
-            $image_path = public_path() . '/storage/banner-images/' . $banner->image;
+            $image_path = public_path() . '/banner-images/' . $banner->image;
             if (file_exists($image_path)) {
                 unlink($image_path);
             }

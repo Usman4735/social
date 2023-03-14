@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController as AdminAdminController;
 use App\Http\Controllers\Admin\ProductCategoryController as AdminProductCategoryController;
 use App\Http\Controllers\Admin\ProductGroupController as AdminProductGroupController;
+use App\Http\Controllers\Admin\ProductGoodController as AdminProductGoodController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\PageController;
@@ -43,6 +44,8 @@ Route::prefix('sa1991as')->group(function() {
     // Profile
     Route::get('profile', [AdminController::class, "profile"]);
     Route::put('profile', [AdminController::class, "updateProfile"]);
+
+    Route::post('admin-managers', [AdminController::class, "adminManagers"]);
 
     // Product Categories
     Route::resource('product-categories', ProductCategoryController::class);
@@ -113,10 +116,12 @@ Route::prefix('a1aa')->group(function() {
     Route::get('profile', [AdminAdminController::class, "profile"]);
     Route::put('profile', [AdminAdminController::class, "updateProfile"]);
 
-    Route::resource('product-categories', AdminProductCategoryController::class);
-
     // Product Groups
     Route::resource('product-groups', AdminProductGroupController::class);
+    Route::resource('product-goods', AdminProductGoodController::class);
+
+    Route::resource('product-categories', AdminProductCategoryController::class);
+
 
 });
 

@@ -37,4 +37,7 @@ class ProductGroup extends Model
     public function manager() {
         return $this->belongsTo(Admin::class, "manager_id");
     }
+    public function total_group_products() {
+        return $this->hasMany(ProductGood::class, "group_id");
+    }
 }

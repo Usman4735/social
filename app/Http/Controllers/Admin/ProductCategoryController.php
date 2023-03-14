@@ -15,7 +15,7 @@ class ProductCategoryController extends Controller
     */
     public function index()
     {
-        $categories = ProductCategory::all();
+        $categories = ProductCategory::orderBy('id', 'desc')->get();
         return view('admin.product-category.index', compact('categories'));
     }
 
@@ -49,7 +49,7 @@ class ProductCategoryController extends Controller
         if (isset($request->picture)) {
             $picture = $request->picture;
             $picture_name = uniqid() . '.' . $picture->extension();
-            $request->picture->storeAs('public/category-pictures', $picture_name);
+            $picture->move(public_path('/category-pictures'), $picture_name);
             $category->picture = $picture_name;
         }
         if($request->isNotFilled('pre_moderation')) {
@@ -105,14 +105,15 @@ class ProductCategoryController extends Controller
         if (isset($request->picture)) {
             // Delete old picture first
             if ($category->picture != null) {
-                $image_path = public_path() . '/storage/category-pictures/' . $category->picture;
+                $image_path = public_path().'/category-pictures/' .$category->picture;
                 if (file_exists($image_path)) {
                     unlink($image_path);
                 }
             }
             $picture = $request->picture;
             $picture_name = uniqid() . '.' . $picture->extension();
-            $request->picture->storeAs('public/category-pictures', $picture_name);
+            $picture->move(public_path('category-pictures'), $picture_name);
+
             $category->picture = $picture_name;
         }
         if($request->isNotFilled('parent_category')) {

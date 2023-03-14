@@ -42,16 +42,16 @@
                                 <input type="file" name="image" id="image" class="form-control">
                             </div>
                             <div class="col-lg-12 mt-2">
-                                <img src="{{ asset('storage/product-group-images') }}/{{ $product->image }}"
-                                    alt="Product Picture" class="img-thumbnail" width="150">
+                                <img src="{{ asset('/product-group-images') }}/{{ $product->image }}" alt="Product Picture"
+                                    class="img-thumbnail" width="150">
                             </div>
                             <div class="col-lg-12">
                                 <label for="price" class="col-form-label">Price (Rubles)</label>
-                                <input type="text" name="price" id="price" class="form-control" value="{{number_format($product->price, 2)}}">
+                                <input type="number" min="0" name="price" id="price" class="form-control" value="{{number_format($product->price, 2)}}">
                             </div>
                             <div class="col-lg-6">
                                 <label for="manager_salary" class="col-form-label">Manager Salary (Rubles)</label>
-                                <input type="text" name="manager_salary" id="manager_salary" class="form-control" value="{{$product->manager_salary}}">
+                                <input type="number" min="0" name="manager_salary" id="manager_salary" class="form-control" value="{{$product->manager_salary}}">
                             </div>
                             <div class="col-lg-6">
                                 <label for="manager_salary_type" class="col-form-label">Salary Type</label>

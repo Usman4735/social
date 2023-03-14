@@ -38,7 +38,7 @@
                                     <td>{{ @$product->name }}</td>
                                     <td>{{ @$product->category->name }}</td>
                                     <td>{{ number_format(@$product->price, 2) }}</td>
-                                    <td>--</td>
+                                    <td>{{ count(@$product->total_group_products) }}</td>
                                     <td>--</td>
                                     <td>{{ @$product->admin->first_name }}&nbsp;{{ @$product->admin->last_name }}</td>
                                     <td>

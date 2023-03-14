@@ -17,7 +17,7 @@ class ProductGroupController extends Controller
      */
     public function index()
     {
-        $products = ProductGroup::where('admin_id', session('online_admin')->id)->get();
+        $products = ProductGroup::where('admin_id', session('online_admin')->id)->orderBy('id', 'desc')->get();
         return view("admin.product-groups.index", compact("products"));
     }
 
@@ -52,7 +52,8 @@ class ProductGroupController extends Controller
         if (isset($request->image)) {
             $image = $request->image;
             $image_name = uniqid() . '.' . $image->extension();
-            $request->image->storeAs('public/product-group-images', $image_name);
+            $image->move(public_path('product-group-images'), $image_name);
+
             $product->image = $image_name;
         }
         if(isset($request->tags)) {
@@ -108,17 +109,18 @@ class ProductGroupController extends Controller
         $product = ProductGroup::findOrFail(decrypt($id));
         $product->fill($request->all());
         // Image
+        // Image
         if (isset($request->image)) {
             // Delete old image first
             if ($product->image != null) {
-                $image_path = public_path() . '/storage/product-group-images/' . $product->image;
+                $image_path = public_path() . '/product-group-images/' . $product->image;
                 if (file_exists($image_path)) {
                     unlink($image_path);
                 }
             }
             $image = $request->image;
             $image_name = uniqid() . '.' . $image->extension();
-            $request->image->storeAs('public/product-group-images', $image_name);
+            $image->move(public_path('product-group-images'), $image_name);
             $product->image = $image_name;
         }
         if(isset($request->tags)) {

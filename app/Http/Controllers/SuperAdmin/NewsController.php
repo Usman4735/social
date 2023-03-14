@@ -55,13 +55,7 @@ class NewsController extends Controller
         if (isset($request->image)) {
             $image = $request->image;
             $image_name = uniqid() . '.' . $image->extension();
-            $request->image->storeAs('public/news-images', $image_name);
-            $news->image = $image_name;
-        }
-        if (isset($request->image)) {
-            $image = $request->image;
-            $image_name = uniqid() . '.' . $image->extension();
-            $request->image->storeAs('public/product-group-images', $image_name);
+            $image->move(public_path('news-images'), $image_name);
             $news->image = $image_name;
         }
         $news->save();
@@ -114,16 +108,17 @@ class NewsController extends Controller
         }
         // Image
         if (isset($request->image)) {
-            // Delete old image first
+            // Delete old picture first
             if ($news->image != null) {
-                $image_path = public_path() . '/storage/news-images/' . $news->image;
+                $image_path = public_path().'/news-images/'.$news->image;
                 if (file_exists($image_path)) {
                     unlink($image_path);
                 }
             }
             $image = $request->image;
             $image_name = uniqid() . '.' . $image->extension();
-            $request->image->storeAs('public/news-images', $image_name);
+            $image->move(public_path('news-images'), $image_name);
+
             $news->image = $image_name;
         }
         $news->save();
@@ -141,7 +136,7 @@ class NewsController extends Controller
         $news = News::findOrFail(decrypt($id));
         // Delete image first
         if ($news->image != null) {
-            $image_path = public_path() . '/storage/news-images/' . $news->image;
+            $image_path = public_path().'/news-images/'.$news->image;
             if (file_exists($image_path)) {
                 unlink($image_path);
             }

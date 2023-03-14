@@ -189,4 +189,10 @@ class AdminController extends Controller
         $request->session()->put('online_super_admin', $super_admin);
         return back()->with("success", "Your Profile has been updated successfully");
     }
+
+
+    public function adminManagers(Request $request)
+    {
+        return Admin::where('admin_id', $request->admin_id)->where('role', 'manager')->get();
+    }
 }

@@ -48,7 +48,7 @@ class TestimonialController extends Controller
         if (isset($request->image)) {
             $image = $request->image;
             $image_name = uniqid() . '.' . $image->extension();
-            $request->image->storeAs('public/testimonial-images', $image_name);
+            $image->move(public_path('testimonial-images'), $image_name);
             $testimonial->image = $image_name;
         }
         $testimonial->save();
@@ -96,16 +96,16 @@ class TestimonialController extends Controller
         $testimonial->fill($request->all());
         // Image
         if (isset($request->image)) {
-            // Delete old image first
+            // Delete old picture first
             if ($testimonial->image != null) {
-                $image_path = public_path() . '/storage/testimonial-images/' . $testimonial->image;
+                $image_path = public_path().'/testimonial-images/'.$testimonial->image;
                 if (file_exists($image_path)) {
                     unlink($image_path);
                 }
             }
             $image = $request->image;
             $image_name = uniqid() . '.' . $image->extension();
-            $request->image->storeAs('public/testimonial-images', $image_name);
+            $image->move(public_path('testimonial-images'), $image_name);
             $testimonial->image = $image_name;
         }
         $testimonial->save();

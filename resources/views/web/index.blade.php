@@ -138,7 +138,7 @@
                                 <a href="#">
                                     @if($group->image!=null)
 
-                                    <img src="{{ asset('storage/product-group-images') }}/{{ $group->image }}"
+                                    <img src="{{ asset('/product-group-images') }}/{{ $group->image }}"
                                     alt="{{ $group->seo_title }}" class="primary">
                                     @else
                                     <img src="{{ asset('assets/images/no-image.png') }}" alt="{{ $group->seo_title }}" class="primary" width="350" width="449">
@@ -291,7 +291,7 @@
                                             <a href="/news/{{ $blog->GetSlug() }}">
                                                 <div class="post-img">
                                                     @if($blog->image!=null)
-                                                    <img src="{{ asset('storage/news-images') }}/{{ $blog->image }}"
+                                                    <img src="{{ asset('/news-images') }}/{{ $blog->image }}"
                                                     alt="{{ $blog->seo_title }}" height="200px">
                                                     @else
                                                     <img src="{{ asset('images/no-image.png') }}/{{ $blog->image }}"

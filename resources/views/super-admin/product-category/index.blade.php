@@ -27,6 +27,9 @@
                             @foreach ($categories as $category)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
+                                    <td>
+                                         <img src="{{ asset('/category-pictures') }}/{{ $category->picture }}" alt="Product Picture" class="img-thumbnail" height="80" width="80">
+                                    </td>
                                     <td>{{ $category->name }}</td>
                                     <td>{{$category->parent_category != null ? @$category->parent_category()->name : ''}}</td>
                                     <td>

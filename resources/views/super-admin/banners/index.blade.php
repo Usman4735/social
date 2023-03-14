@@ -28,7 +28,7 @@
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td>{{ $banner->title }}</td>
-                                    <td><img src="{{ asset('storage/banner-images') }}/{{$banner->image}}" alt="Banner" class="img-thumbnail" width="64"></td>
+                                    <td><img src="{{ asset('/banner-images') }}/{{$banner->image}}" alt="Banner" class="img-thumbnail" width="64"></td>
                                     <td>
                                         <a href="{{ url('sa1991as/banners') }}/{{ encrypt($banner->id) }}/edit"
                                             class="btn btn-primary btn-sm"><i data-feather="edit"></i></a>
