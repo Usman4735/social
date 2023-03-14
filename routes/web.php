@@ -25,135 +25,132 @@ use App\Http\Controllers\SuperAdmin\TestimonialController;
 use App\Http\Controllers\SuperAdmin\GeneralWalletSettings;
 use App\Http\Controllers\SuperAdmin\ProductGoodController as SuperAdminProductGoodController;
 
-// Super Admin Routes
-Route::prefix('sa1991as')->group(function() {
-    Route::get('/', [AdminController::class, "index"]);
-    Route::post('/', [AdminController::class, "loginProcess"]);
-    Route::get('forgot-password', [AdminController::class, "forgotPassword"]);
-    Route::post('forgot-password', [AdminController::class, "processForgotPassword"]);
+    // Super Admin Routes
+    Route::prefix('sa1991as')->group(function() {
+        Route::get('/', [AdminController::class, "index"]);
+        Route::post('/', [AdminController::class, "loginProcess"]);
+        Route::get('forgot-password', [AdminController::class, "forgotPassword"]);
+        Route::post('forgot-password', [AdminController::class, "processForgotPassword"]);
 
-    Route::get('otp/{id}', [AdminController::class, "otp"]);
-    Route::post('otp/{id}', [AdminController::class, "otpVerify"]);
+        Route::get('otp/{id}', [AdminController::class, "otp"]);
+        Route::post('otp/{id}', [AdminController::class, "otpVerify"]);
 
-    Route::get('reset-password/{id}', [AdminController::class, "resetPassword"]);
-    Route::post('reset-password', [AdminController::class, "processResetPassword"]);
-
-
-    Route::get('logout', [AdminController::class, "logout"]);
-
-    // Profile
-    Route::get('profile', [AdminController::class, "profile"]);
-    Route::put('profile', [AdminController::class, "updateProfile"]);
-
-    Route::post('admin-managers', [AdminController::class, "adminManagers"]);
-
-    // Product Categories
-    Route::resource('product-categories', ProductCategoryController::class);
-
-    // Product Groups
-    Route::resource('product-groups', ProductGroupController::class);
-    Route::get('product-groups/permissions/{manager}/{product}', [ProductGroupController::class, "addPermission"]);
-    Route::post('product-groups/permissions/{manager}/{product}', [ProductGroupController::class, "savePermission"]);
-
-    // media gallery
-    Route::resource('gallery', MediaGalleryController::class);
-    // Product Goods
-    Route::resource('product-goods', SuperAdminProductGoodController::class);
-
-    Route::prefix('orders')->group(function() {
-        Route::get('/', [OrderController::class, 'index']);
+        Route::get('reset-password/{id}', [AdminController::class, "resetPassword"]);
+        Route::post('reset-password', [AdminController::class, "processResetPassword"]);
     });
 
-    // User Management
-    Route::resource('user-management', UserController::class);
+    Route::prefix('/sa1991as')->middleware('IsSuperAdminLogin')->group(function() {
 
-    // News
-    Route::resource('news', NewsController::class);
+        Route::get('logout', [AdminController::class, "logout"]);
 
-    // Banners
-    Route::resource('banners', BannerController::class);
+        // Profile
+        Route::get('profile', [AdminController::class, "profile"]);
+        Route::put('profile', [AdminController::class, "updateProfile"]);
 
-    // Testimonials
-    Route::resource('testimonials', TestimonialController::class);
+        Route::post('admin-managers', [AdminController::class, "adminManagers"]);
 
-    // Settings
-    Route::prefix('settings')->group(function() {
-        Route::get("general", [SettingController::class, "generalSettings"]);
-        Route::put("general", [SettingController::class, "updateGeneralSettings"]);
-        Route::get("/smtp", [SettingController::class, "smtp"]);
-        Route::put("/smtp", [SettingController::class, "updateSMTP"]);
+        // Product Categories
+        Route::resource('product-categories', ProductCategoryController::class);
+
+        // Product Groups
+        Route::resource('product-groups', ProductGroupController::class);
+        Route::get('product-groups/permissions/{manager}/{product}', [ProductGroupController::class, "addPermission"]);
+        Route::post('product-groups/permissions/{manager}/{product}', [ProductGroupController::class, "savePermission"]);
+
+        // media gallery
+        Route::resource('gallery', MediaGalleryController::class);
+        // Product Goods
+        Route::resource('product-goods', SuperAdminProductGoodController::class);
+
+        Route::prefix('orders')->group(function() {
+            Route::get('/', [OrderController::class, 'index']);
+        });
+
+        // User Management
+        Route::resource('user-management', UserController::class);
+
+        // News
+        Route::resource('news', NewsController::class);
+
+        // Banners
+        Route::resource('banners', BannerController::class);
+
+        // Testimonials
+        Route::resource('testimonials', TestimonialController::class);
+
+        // Settings
+        Route::prefix('settings')->group(function() {
+            Route::get("general", [SettingController::class, "generalSettings"]);
+            Route::put("general", [SettingController::class, "updateGeneralSettings"]);
+            Route::get("/smtp", [SettingController::class, "smtp"]);
+            Route::put("/smtp", [SettingController::class, "updateSMTP"]);
+        });
+
+        // Wallet Settings
+        Route::prefix('wallet-settings')->group(function() {
+        // General Wallet
+            Route::resource("general-wallet", GeneralWalletSettings::class);
+            Route::get("general-wallet/{id}/change-status", [GeneralWalletSettings::class, "changeStatus"]);
+            // Crypto Wallet
+            Route::resource("crypto-wallet", CryptoWalletSettings::class);
+            Route::get("crypto-wallet/{id}/change-status", [CryptoWalletSettings::class, "changeStatus"]);
+        });
+
     });
-
-    // Wallet Settings
-    Route::prefix('wallet-settings')->group(function() {
-       // General Wallet
-        Route::resource("general-wallet", GeneralWalletSettings::class);
-        Route::get("general-wallet/{id}/change-status", [GeneralWalletSettings::class, "changeStatus"]);
-        // Crypto Wallet
-        Route::resource("crypto-wallet", CryptoWalletSettings::class);
-        Route::get("crypto-wallet/{id}/change-status", [CryptoWalletSettings::class, "changeStatus"]);
-    });
-});
 
 // ----------------------------------------------------------------------------------------------------
 
-// admin
-Route::prefix('a1aa')->group(function() {
-    Route::get('/', [AdminAdminController::class, "index"]);
-    Route::post('/', [AdminAdminController::class, "loginProcess"]);
-    Route::get('forgot-password', [AdminAdminController::class, "forgotPassword"]);
-    Route::post('forgot-password', [AdminAdminController::class, "processForgotPassword"]);
+    // admin
+    Route::prefix('a1aa')->group(function() {
+        Route::get('/', [AdminAdminController::class, "index"]);
+        Route::post('/', [AdminAdminController::class, "loginProcess"]);
+        Route::get('forgot-password', [AdminAdminController::class, "forgotPassword"]);
+        Route::post('forgot-password', [AdminAdminController::class, "processForgotPassword"]);
 
-    Route::get('otp/{id}', [AdminAdminController::class, "otp"]);
-    Route::post('otp/{id}', [AdminAdminController::class, "otpVerify"]);
+        Route::get('otp/{id}', [AdminAdminController::class, "otp"]);
+        Route::post('otp/{id}', [AdminAdminController::class, "otpVerify"]);
 
-    Route::get('reset-password/{id}', [AdminAdminController::class, "resetPassword"]);
-    Route::post('reset-password', [AdminAdminController::class, "processResetPassword"]);
+        Route::get('reset-password/{id}', [AdminAdminController::class, "resetPassword"]);
+        Route::post('reset-password', [AdminAdminController::class, "processResetPassword"]);
+    });
 
+    Route::prefix('/a1aa')->middleware('IsAdminLogin')->group(function() {
 
-    Route::get('logout', [AdminAdminController::class, "logout"]);
-
-    Route::get('profile', [AdminAdminController::class, "profile"]);
-    Route::put('profile', [AdminAdminController::class, "updateProfile"]);
-
-    // Product Groups
-    Route::resource('product-groups', AdminProductGroupController::class);
-    Route::resource('product-goods', AdminProductGoodController::class);
-
-    Route::resource('product-categories', AdminProductCategoryController::class);
-
-
-});
+        Route::get('logout', [AdminAdminController::class, "logout"]);
+        Route::get('profile', [AdminAdminController::class, "profile"]);
+        Route::put('profile', [AdminAdminController::class, "updateProfile"]);
+        // Product Groups
+        Route::resource('product-groups', AdminProductGroupController::class);
+        Route::resource('product-goods', AdminProductGoodController::class);
+        Route::resource('product-categories', AdminProductCategoryController::class);
+    });
 
 // ----------------------------------------------------------------------------------------------------
 
-// manager
-Route::prefix('m1001m')->group(function() {
+    // manager
+    Route::prefix('m1001m')->group(function() {
 
-    Route::get('/', [ManagerController::class, "index"]);
-    Route::post('/', [ManagerController::class, "loginProcess"]);
-    Route::get('forgot-password', [ManagerController::class, "forgotPassword"]);
-    Route::post('forgot-password', [ManagerController::class, "processForgotPassword"]);
+        Route::get('/', [ManagerController::class, "index"]);
+        Route::post('/', [ManagerController::class, "loginProcess"]);
+        Route::get('forgot-password', [ManagerController::class, "forgotPassword"]);
+        Route::post('forgot-password', [ManagerController::class, "processForgotPassword"]);
 
-    Route::get('otp/{id}', [ManagerController::class, "otp"]);
-    Route::post('otp/{id}', [ManagerController::class, "otpVerify"]);
+        Route::get('otp/{id}', [ManagerController::class, "otp"]);
+        Route::post('otp/{id}', [ManagerController::class, "otpVerify"]);
 
-    Route::get('reset-password/{id}', [ManagerController::class, "resetPassword"]);
-    Route::post('reset-password', [ManagerController::class, "processResetPassword"]);
+        Route::get('reset-password/{id}', [ManagerController::class, "resetPassword"]);
+        Route::post('reset-password', [ManagerController::class, "processResetPassword"]);
+    });
 
+    Route::prefix('/m1001m')->middleware('IsAdminLogin')->group(function() {
 
-    Route::get('logout', [ManagerController::class, "logout"]);
-
-    Route::get('profile', [ManagerController::class, "profile"]);
-    Route::put('profile', [ManagerController::class, "updateProfile"]);
-
-
-    // Product Groups
-    Route::resource('product-groups', ManagerProductGroupController::class);
-    Route::resource('product-goods', ManagerProductGoodController::class);
-
-
-});
+        Route::get('logout', [ManagerController::class, "logout"]);
+        Route::get('profile', [ManagerController::class, "profile"]);
+        Route::put('profile', [ManagerController::class, "updateProfile"]);
+        // Product Groups
+        Route::resource('product-groups', ManagerProductGroupController::class);
+        Route::resource('product-goods', ManagerProductGoodController::class);
+    });
 
 // ----------------------------------------------------------------------------------------------------
 
