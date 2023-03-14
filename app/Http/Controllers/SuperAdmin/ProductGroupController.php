@@ -121,7 +121,7 @@ class ProductGroupController extends Controller
             }
             $image = $request->image;
             $image_name = uniqid() . '.' . $image->extension();
-            $image->move(public_path('category-pictures'), $image_name);
+            $image->move(public_path('product-group-images'), $image_name);
             $product->image = $image_name;
         }
         if(isset($request->tags)) {

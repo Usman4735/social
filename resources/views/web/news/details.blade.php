@@ -48,7 +48,7 @@
                             </div>
                         </div>
                         <div class="blog-img mb-30">
-                            <img src="{{ asset('storage/news-images') }}/{{ $news->image }}" alt="blog" height="400" />
+                            <img src="{{ asset('/news-images') }}/{{ $news->image }}" alt="blog" height="400" />
                         </div>
                         <div class="single-blog-content">
                             <div class="single-blog-title">
@@ -97,7 +97,7 @@
 
                                             <a href="/news/{{ $blog->GetSlug() }}">
 
-                                                <img src="{{ asset('storage/news-images') }}/{{ $blog->image }}"
+                                                <img src="{{ asset('/news-images') }}/{{ $blog->image }}"
                                                     height="200px" alt="News Image" class="primary">
                                             </a>
                                         </div>

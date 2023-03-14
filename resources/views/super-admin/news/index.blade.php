@@ -18,6 +18,7 @@
                         <thead>
                             <tr>
                                 <th>Sr#</th>
+                                <th>Image</th>
                                 <th>Title</th>
                                 <th>Short Description</th>
                                 <th>Status</th>
@@ -28,11 +29,15 @@
                             @foreach ($news_posts as $news)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
+                                    <td>
+                                        <img src="{{ asset('/news-images') }}/{{ $news->image }}" alt="News Picture"
+                                    class="img-thumbnail" width="150">
+                                    </td>
                                     <td>{{ $news->title }}</td>
                                     <td>
-                                        @if(strlen($news->short_description)>200)
+                                        @if(strlen($news->short_description)>150)
 
-                                        {!! substr($news->short_description, 0,200) !!}
+                                        {!! substr($news->short_description, 0,150) !!}
                                         @else
                                         {!! $news->short_description !!}
                                         @endif

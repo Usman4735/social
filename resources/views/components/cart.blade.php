@@ -4,8 +4,8 @@
 
              <div class="row">
                  <div class="col-lg-12">
-                     {{-- <form action="{{ url('update-cart') }}" method="post" id="update_cart_form">
-                         @csrf --}}
+                     <form action="{{ url('update-cart') }}" method="post" id="update_cart_form">
+                         @csrf
                          <div class="table-content table-responsive mb-15 border-1">
                              <table>
                                  <thead>
@@ -27,7 +27,7 @@
                                          <tr>
                                              <td class="product-thumbnail"><a href="#">
                                                      @if ($item['product']->image != null)
-                                                         <img src="{{ asset('storage/product-group-images') }}/{{ $item['product']->image }}"
+                                                         <img src="{{ asset('/product-group-images') }}/{{ $item['product']->image }}"
                                                              height="100px" alt="man"
                                                              style="max-height: 5rem !important ; width: auto" />
                                                      @else
@@ -42,10 +42,9 @@
                                              <td class="product-price"><span
                                                      class="">{{ $item['product']->price }}</span></td>
                                              <td class="product-quantity">
-                                                {{-- <input type="number"
+                                                <input type="number"
                                                      name="qty+{{ $item['product']->id }}" value="{{ $item['qty'] }}"
-                                                     min="1"> --}}
-                                                     {{ $item['qty'] }}
+                                                     min="1">
                                                     </td>
                                              <td class="product-subtotal">{{ $item['qty'] * $item['product']->price }}
                                              </td>
@@ -67,14 +66,14 @@
                                  </tbody>
                              </table>
                          </div>
-                     {{-- </form> --}}
+                     </form>
                  </div>
              </div>
              <div class="row">
                  <div class="col-lg-8 col-md-6 col-12">
                      <div class="buttons-cart mb-30">
                          <ul>
-                             {{-- <li><a href="#" id="update_cart" class="btn btn-primary">Update Cart</a></li> --}}
+                             <li><a href="#" id="update_cart" class="btn btn-primary">Update Cart</a></li>
                              <li><a href="{{ url('/') }}" class="btn btn-primary">Continue Shopping</a></li>
                          </ul>
                      </div>

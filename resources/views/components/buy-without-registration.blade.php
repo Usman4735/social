@@ -6,25 +6,25 @@
 
 @endphp
 <style>
-.payment-method-custom {
-  /* display: flex; */
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  padding-left: 3rem;
-  padding-top: 1rem;
-}
+    .payment-method-custom {
+        /* display: flex; */
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 3rem;
+        padding-top: 1rem;
+    }
 
-.payment-method-item {
-  margin-bottom: 10px;
-  flex-basis: 100%;
-}
+    .payment-method-item {
+        margin-bottom: 10px;
+        flex-basis: 100%;
+    }
 
-@media only screen and (min-width: 768px) {
-  .payment-method-item {
-    flex-basis: 24%;
-  }
-}
+    @media only screen and (min-width: 768px) {
+        .payment-method-item {
+            flex-basis: 24%;
+        }
+    }
 </style>
 <div class="container">
     <div class="row" id="checkout">
@@ -42,7 +42,7 @@
                                 <div class="single-login">
                                     <label>First Name<span class="text-primary">*</span></label>
                                     <input type="text" required name="first_name" value="{{ old('first_name') }}"
-                                        placeholder="Please Enter First Name" value="{{ old('first_name') }}"
+                                        placeholder="Please Enter First Name"
                                         autocomplete="false" autofocus>
                                 </div>
                             </div>
@@ -50,23 +50,26 @@
 
                                 <div class="single-login">
                                     <label>Last Name<span class="text-primary">*</span></label>
-                                    <input type="text" required name="last_name" value="{{ old('last_name') }}" placeholder="Please Enter Last Name"
-                                        value="{{ old('last_name') }}" autocomplete="false">
+                                    <input type="text" required name="last_name" value="{{ old('last_name') }}"
+                                        placeholder="Please Enter Last Name"
+                                        autocomplete="false">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12">
 
                                 <div class="single-login">
                                     <label>Email<span class="text-primary">*</span></label>
-                                    <input type="email" required name="email" value="{{ old('email') }}" placeholder="John@gmail.com "
-                                        value="{{ old('email') }}" autocomplete="false">
+                                    <input type="email" required name="email" value="{{ old('email') }}"
+                                        placeholder="John@gmail.com "  autocomplete="false">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="single-login">
                                     <label>Mobile <span class="text-primary">*</span></label>
-                                    <input type="text" required name="mobile" value="{{ old('mobile') }}" placeholder="Please Enter Mobile"
-                                        value="{{ old('mobile') }}" autocomplete="false">
+                                    <input type="text" required name="mobile" value="{{ old('mobile') }}"
+                                        placeholder="Please Enter Mobile"
+                                        
+                                        autocomplete="false">
                                 </div>
                             </div>
                         </div>
@@ -76,19 +79,23 @@
                             </div>
                             <div class="payment-method-custom col-lg-12 d-flex">
                                 <div class="payment-method-item">
-                                    <input type="radio" required name="payment_method" class="payment_method" value="qiwi" id="payment-method-qiwi">
+                                    <input type="radio" required name="payment_method" class="payment_method"
+                                        value="qiwi" id="payment-method-qiwi">
                                     <label for="payment-method-qiwi">Qiwi</label>
                                 </div>
                                 <div class="payment-method-item">
-                                    <input type="radio" required name="payment_method" class="payment_method" value="bitcoin" id="payment-method-bitcoin">
+                                    <input type="radio" required name="payment_method" class="payment_method"
+                                        value="bitcoin" id="payment-method-bitcoin">
                                     <label for="payment-method-bitcoin">BitCoin</label>
                                 </div>
                                 <div class="payment-method-item">
-                                    <input type="radio" required name="payment_method" class="payment_method" value="webmoney" id="payment-method-webmoney">
+                                    <input type="radio" required name="payment_method" class="payment_method"
+                                        value="webmoney" id="payment-method-webmoney">
                                     <label for="payment-method-webmoney">Webmoney</label>
                                 </div>
                                 <div class="payment-method-item">
-                                    <input type="radio" required name="payment_method" class="payment_method" value="yandex" id="payment-method-yandex">
+                                    <input type="radio" required name="payment_method" class="payment_method"
+                                        value="yandex" id="payment-method-yandex">
                                     <label for="payment-method-yandex">Yandex</label>
                                 </div>
                             </div>
@@ -120,7 +127,7 @@
                                     <a href="#">
                                         @if ($related_product->image != null)
                                             <img
-                                                src="{{ asset('storage/product-group-images') }}/{{ $related_product->image }}"alt="book" />
+                                                src="{{ asset('/product-group-images') }}/{{ $related_product->image }}"alt="book" />
                                         @else
                                             <img src="{{ asset('assets/images/no-image.png') }}"
                                                 alt="{{ $related_product->seo_title }}" class="primary" width="350"

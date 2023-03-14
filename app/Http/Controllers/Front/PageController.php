@@ -145,7 +145,8 @@ class PageController extends Controller
     }
     public function paymentMethod()
     {
-        return view('web.payment-method');
+        $customer=Customer::find(session('online_customer')->id);
+        return view('web.payment-method', compact('customer'));
     }
 
     // order placing
@@ -195,6 +196,7 @@ class PageController extends Controller
             }
             $order->price=$total_price;
             $order->save();
+            // to send mail
             $request->session()->put('order_placed', $order);
             return redirect('/checkout');
         } else {
@@ -203,13 +205,18 @@ class PageController extends Controller
     }
     public function checkoutSuccess(Request $request)
     {
-        $p_token='checkout';
-        $order=Order::find(session('order_placed')->id);
-        if ($order!=null) {
-            // if ($request->session()->has("cartinfo")) {
-            //     $request->session()->pull("cartinfo");
-            // }
-            return view('web.cart', ['order' => $order, 'p_token' => $p_token])->with('order-placed', 'Your order is on hold Please pay through the selected payment method');
+        if ($request->session()->has("order_placed")) {
+
+            $p_token='checkout';
+            $order=Order::find(session('order_placed')->id);
+            if ($order!=null) {
+                // if ($request->session()->has("cartinfo")) {
+                //     $request->session()->pull("cartinfo");
+                // }
+                return view('web.cart', ['order' => $order, 'p_token' => $p_token])->with('order-placed', 'Your order is on hold Please pay through the selected payment method');
+            }else {
+                return redirect('/');
+            }
         }else {
             return redirect('/');
         }

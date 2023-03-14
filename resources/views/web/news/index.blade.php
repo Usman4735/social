@@ -79,7 +79,7 @@
                         <div class="row mb-50">
                             <div class="col-lg-6 col-md-4 col-12">
                                 <a href="/news/{{ $single_news->GetSlug() }}">
-                                    <img src="{{ asset('storage/news-images') }}/{{ $single_news->image }}" alt="News Image"
+                                    <img src="{{ asset('/news-images') }}/{{ $single_news->image }}" alt="News Image"
                                         class="primary">
                                 </a>
                             </div>
@@ -103,7 +103,7 @@
                                         <div class="">
                                             <a href="/news/{{ $single_news->GetSlug() }}">
 
-                                                <img src="{{ asset('storage/news-images') }}/{{ $single_news->image }}"
+                                                <img src="{{ asset('/news-images') }}/{{ $single_news->image }}"
                                                     height="200px" alt="News Image" class="primary">
                                             </a>
                                         </div>

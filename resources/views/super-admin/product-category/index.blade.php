@@ -19,6 +19,7 @@
                             <tr>
                                 <th>Sr#</th>
                                 <th>Name</th>
+                                <th>Image</th>
                                 <th>Parent Category</th>
                                 <th>Operations</th>
                             </tr>

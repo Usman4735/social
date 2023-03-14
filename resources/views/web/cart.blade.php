@@ -74,21 +74,23 @@
             </div>
         </div>
     </div>
+    @if($p_token != 'checkout')
+
     <x-cart></x-cart>
+    @endif
     @if (!Session::has('online_customer') && Session::get('cartinfo') != null)
         @if ($p_token == null)
             <x-login-register-cart></x-login-register-cart>
         @elseif($p_token == 'buy-without-registration')
             <x-buy-without-registration></x-buy-without-registration>
-        @elseif($p_token == 'checkout')
-        <div class="container">
-
-                <x-checkout-response :order="$order">
-
-                </x-checkout-response>
-            </div>
         @endif
 
+    @endif
+    @if($p_token == 'checkout' && Session::get('cartinfo') != null)
+    <div class="container">
+        <x-checkout-response :order="$order">
+        </x-checkout-response>
+    </div>
     @endif
 
 @endsection

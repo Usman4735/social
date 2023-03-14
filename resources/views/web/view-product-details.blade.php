@@ -48,8 +48,8 @@
                             <div class="col-lg-5 col-md-6 col-12">
                                 <div class="flexslider">
                                     <ul class="slides">
-                                        <li data-thumb="{{ asset('storage/product-group-images') }}/{{ $product->image }}">
-                                            <img src="{{ asset('storage/product-group-images') }}/{{ $product->image }}"
+                                        <li data-thumb="{{ asset('/product-group-images') }}/{{ $product->image }}">
+                                            <img src="{{ asset('/product-group-images') }}/{{ $product->image }}"
                                                 alt="product" class="primary">
                                         </li>
                                     </ul>
@@ -398,7 +398,7 @@
                                             <a href="#">
                                                 @if ($related_product->image != null)
                                                     <img
-                                                        src="{{ asset('storage/product-group-images') }}/{{ $related_product->image }}"alt="book" />
+                                                        src="{{ asset('/product-group-images') }}/{{ $related_product->image }}"alt="book" />
                                                 @else
                                                     <img src="{{ asset('assets/images/no-image.png') }}"
                                                         alt="{{ $related_product->seo_title }}" class="primary"

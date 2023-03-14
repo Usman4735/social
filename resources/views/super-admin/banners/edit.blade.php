@@ -23,7 +23,7 @@
                             </div>
                             @if ($banner->image)
                                 <div class="col-lg-12 mt-2">
-                                    <img src="{{asset('storage/banner-images')}}/{{$banner->image}}" alt="Banner Image" class="img-thumbnail" width="150">
+                                    <img src="{{asset('/banner-images')}}/{{$banner->image}}" alt="Banner Image" class="img-thumbnail" width="150">
                                 </div>
                             @endif
                             <div class="col-12 mt-2">

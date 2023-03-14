@@ -515,6 +515,15 @@
 /* small mobile :320px. */
 
 @media (max-width: 767px) {
+
+
+    /* .header-search{
+        position: absolute;
+        z-index: 99;
+    } */
+    .mobile-logo-section{
+        display: block;
+    }
     .mt_respon{
         margin-top: 25px;    
     }
@@ -1359,6 +1368,9 @@
     }
     .modal-pro-content h3 {
         font-size: 24px;
+    }
+    .w-res-100{
+        width: 100% !important;
     }
     
 }

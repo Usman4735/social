@@ -1,19 +1,22 @@
 @extends('web.layout.template')
 @section('page_title', 'Home')
 <Style>
-    .custom-img-wrapper{
+    .custom-img-wrapper {
         height: 350;
         width: 100%
     }
-    .custom-img{
+
+    .custom-img {
         height: 230px;
         width: 100%;
         object-fit: cover;
     }
-    .fa{
+
+    .fa {
         margin-top: 12px
     }
-    .product-img a img{
+
+    .product-img a img {
         /* padding: 5px 5px 0px 5px; */
     }
 </Style>
@@ -50,13 +53,14 @@
     </div>
     <!-- slider-area-end -->
 
-        <div class="product-area pt-95 xs-mb">
+    <div class="product-area pt-95 xs-mb">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title text-center mb-50">
                         <h2>Top Categorys</h2>
-                        <p>Browse the collection of our best selling and top interresting products. <br /> ll definitely find what you are looking for..</p>
+                        <p>Browse the collection of our best selling and top interresting products. <br /> ll definitely
+                            find what you are looking for..</p>
                     </div>
                 </div>
             </div>
@@ -66,14 +70,18 @@
                         <div class="product-wrapper custom-img-wrapper">
                             <div class="product-img custom-img">
                                 <a href="#">
-                                    @if($group->image!=null)
-                                    <img src="{{ asset('storage/product-group-images') }}/{{ $group->image }}" alt="{{ $group->seo_title }}" class="primary" width="350" width="449">
+                                    @if ($group->image != null)
+                                        <img src="{{ asset('/product-group-images') }}/{{ $group->image }}"
+                                            alt="{{ $group->seo_title }}" class="primary" width="350" width="449">
                                     @else
-                                    <img src="{{ asset('assets/images/no-image.png') }}" alt="{{ $group->seo_title }}" class="primary" width="350" width="449">
+                                        <img src="{{ asset('assets/images/no-image.png') }}" alt="{{ $group->seo_title }}"
+                                            class="primary" width="350" width="449">
                                     @endif
                                 </a>
                                 <div class="quick-view">
-                                    <a class="action-view product_view"  href="javascript:void();"  url="products/quick-view/{{ $group->id }}" data-target="#quickViewProductModal" data-toggle="modal" title="Quick View">
+                                    <a class="action-view product_view" href="javascript:void();"
+                                        url="products/quick-view/{{ $group->id }}" data-target="#quickViewProductModal"
+                                        data-toggle="modal" title="Quick View">
                                         <i class="fa fa-search-plus"></i>
                                     </a>
                                 </div>
@@ -107,7 +115,8 @@
                                 </div>
                                 <div class="add-to-link">
                                     <ul>
-                                        <li><a href="products/view/{{ $group->id }}" title="Details"><i class="fa fa-external-link"></i></a></li>
+                                        <li><a href="products/view/{{ $group->id }}" title="Details"><i
+                                                    class="fa fa-external-link"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -136,13 +145,12 @@
                         <div class="product-wrapper mb-40">
                             <div class="product-img">
                                 <a href="#">
-                                    @if($group->image!=null)
-
-                                    <img src="{{ asset('/product-group-images') }}/{{ $group->image }}"
-                                    alt="{{ $group->seo_title }}" class="primary">
+                                    @if ($group->image != null)
+                                        <img src="{{ asset('/product-group-images') }}/{{ $group->image }}"
+                                            alt="{{ $group->seo_title }}" class="primary">
                                     @else
-                                    <img src="{{ asset('assets/images/no-image.png') }}" alt="{{ $group->seo_title }}" class="primary" width="350" width="449">
-
+                                        <img src="{{ asset('assets/images/no-image.png') }}" alt="{{ $group->seo_title }}"
+                                            class="primary" width="350" width="449">
                                     @endif
                                 </a>
                                 <div class="quick-view">
@@ -178,7 +186,8 @@
                             </div>
                             <div class="product-link">
                                 <div class="product-button">
-                                    <a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                    <a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i>Add to
+                                        cart</a>
                                 </div>
                                 <div class="add-to-link">
                                     <ul>
@@ -207,72 +216,77 @@
                 <div class="col-md-4">
                     <div class="d-flex">
                         <div class="rounded-block my-4">1</div>
-                          <p class="ml-2">
+                        <p class="ml-2">
                             <strong class="text-primary">Determine the right service</strong>
                             <br>
                             Lots of text here...With the four tiers of grids available you're bound to run
-                            into issues where, at certain breakpoints</p>
+                            into issues where, at certain breakpoints
+                        </p>
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="d-flex">
                         <div class="rounded-block my-4">2</div>
-                          <p class="ml-2">
+                        <p class="ml-2">
                             <strong class="text-primary">Determine the right service</strong>
                             <br>
                             Lots of text here...With the four tiers of grids available you're bound to run
-                            into issues where, at certain breakpoints, your columns don't clear .</p>
+                            into issues where, at certain breakpoints, your columns don't clear .
+                        </p>
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="d-flex">
                         <div class="rounded-block my-4">3</div>
-                         <p class="ml-2">
+                        <p class="ml-2">
                             <strong class="text-primary">Determine the right service</strong>
                             <br>
                             Lots of text here...With the four tiers of grids available you're bound to run
-                            into issues where, at certain breakpoints, </p>
+                            into issues where, at certain breakpoints,
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     {{-- testimonials --}}
-    @if(count($testimonials)>0)
+    @if (count($testimonials) > 0)
 
-    <div class="testimonial-area ptb-100 bg-white">
-        <div class="container">
-            <h2 class="text-center">Feedback our clients </h2>
+        <div class="testimonial-area ptb-100 bg-white">
+            <div class="container">
+                <h2 class="text-center">Feedback our clients </h2>
 
-            <div class="row mt-4">
-                <div class="testimonial-active owl-carousel">
-                    @foreach ($testimonials as $feedback)
-                        <div class="col-lg-12">
-                            <div class="single-testimonial text-center">
-                                <div class="testimonial-img">
-                                    <a href="#">
-                                        {{-- <img src="images/profile.jpg" alt=""> --}}
-                                        <img src="{{asset('storage/testimonial-images')}}/{{$feedback->image}}" alt="Testimonial Image" class="testimonial-image" style="owl-carousel: unset">
+                <div class="row mt-4">
+                    <div class="testimonial-active owl-carousel">
+                        @foreach ($testimonials as $feedback)
+                            <div class="col-lg-12">
+                                <div class="single-testimonial text-center">
+                                    <div class="testimonial-img">
+                                        <a href="#">
+                                            {{-- <img src="images/profile.jpg" alt=""> --}}
+                                            <img src="{{ asset('storage/testimonial-images') }}/{{ $feedback->image }}"
+                                                alt="Testimonial Image" class="testimonial-image"
+                                                style="owl-carousel: unset">
 
-                                    </a>
-                                </div>
-                                <div class="testimonial-text">
-                                    <p>{{ $feedback->description }}</p>
-                                    <a href="#"><span>{{ $feedback->name }}</span></a>
+                                        </a>
+                                    </div>
+                                    <div class="testimonial-text">
+                                        <p>{{ $feedback->description }}</p>
+                                        <a href="#"><span>{{ $feedback->name }}</span></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
 
 
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     @endif
-       {{-- recent blog --}}
+    {{-- recent blog --}}
     <div class="recent-post-area pt-95 pb-100">
         <div class="container">
             <div class="row">
@@ -290,19 +304,25 @@
                                         <div class="single-post">
                                             <a href="/news/{{ $blog->GetSlug() }}">
                                                 <div class="post-img">
-                                                    @if($blog->image!=null)
-                                                    <img src="{{ asset('/news-images') }}/{{ $blog->image }}"
-                                                    alt="{{ $blog->seo_title }}" height="200px">
+                                                    @if ($blog->image != null)
+                                                        <img src="{{ asset('/news-images') }}/{{ $blog->image }}"
+                                                            alt="{{ $blog->seo_title }}" height="200px">
                                                     @else
-                                                    <img src="{{ asset('images/no-image.png') }}/{{ $blog->image }}"
-                                                    alt="{{ $blog->seo_title }}" height="200px">
+                                                        <img src="{{ asset('images/no-image.png') }}/{{ $blog->image }}"
+                                                            alt="{{ $blog->seo_title }}" height="200px">
                                                     @endif
                                                 </div>
                                                 <div class="post-content">
                                                     <br>
                                                     <h6>{{ $blog->title }}</h6>
                                                     <p></p>
-                                                    {!! $blog->short_description !!}
+
+                                                    @if (strlen($blog->short_description) > 150)
+                                                        {!! substr($blog->short_description, 0, 150) !!}
+                                                    @else
+                                                        {!! $blog->short_description !!}
+                                                    @endif
+
                                                 </div>
                                             </a>
                                         </div>

@@ -72,7 +72,7 @@
                                     <a href="#">
                                         @if ($related_product->image != null)
                                             <img
-                                                src="{{ asset('storage/product-group-images') }}/{{ $related_product->image }}"alt="book" />
+                                                src="{{ asset('/product-group-images') }}/{{ $related_product->image }}"alt="book" />
                                         @else
                                             <img src="{{ asset('assets/images/no-image.png') }}"
                                                 alt="{{ $related_product->seo_title }}" class="primary" width="350"
