@@ -63,6 +63,9 @@
                         data-feather="users"></i><span class="menu-title text-truncate" data-i18n="User Management">User
                         Management</span></a>
             </li>
+            <li class=" nav-item"><a class="d-flex align-items-center" href="{{ url('sa1991as/chat-groups') }}"><i
+                        data-feather="message-square"></i><span class="menu-title text-truncate" data-i18n="User Management">Chat Groups</span></a>
+            </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="javascript:void(0)"><i
                         data-feather="tool"></i><span class="menu-title text-truncate"
                         data-i18n="Settings">Settings</span></a>

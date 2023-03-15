@@ -15,6 +15,7 @@ use App\Http\Controllers\Manager\ProductGroupController as ManagerProductGroupCo
 use App\Http\Controllers\ProductGoodController;
 use App\Http\Controllers\SuperAdmin\AdminController;
 use App\Http\Controllers\SuperAdmin\BannerController;
+use App\Http\Controllers\SuperAdmin\ChatGroupController;
 use App\Http\Controllers\SuperAdmin\CryptoWalletSettings;
 use App\Http\Controllers\SuperAdmin\MediaGalleryController;
 use App\Http\Controllers\SuperAdmin\NewsController;
@@ -79,6 +80,9 @@ use App\Http\Controllers\SuperAdmin\ProductGoodController as SuperAdminProductGo
 
         // Testimonials
         Route::resource('testimonials', TestimonialController::class);
+
+        // Chat Groups
+        Route::resource('chat-groups', ChatGroupController::class);
 
         // Settings
         Route::prefix('settings')->group(function() {
