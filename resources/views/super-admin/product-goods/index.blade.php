@@ -14,7 +14,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table id="paginate_data_table" class="table data-table ">
+                    {{-- <table id="paginate_data_table" class="table data-table ">
                         <thead>
                             <tr>
                                 <th>Sr#</th>
@@ -31,6 +31,47 @@
                                     <td>{{ $product->name }}</td>
                                     <td>{{@$product->group->name}}</td>
                                     <td>{{ ucwords(str_replace('_', ' ', $product->status)) }}</td>
+                                    <td>
+                                        <a href="{{ url('sa1991as/product-goods') }}/{{ encrypt($product->id) }}/edit"
+                                            class="btn btn-primary btn-sm"><i data-feather="edit"></i></a>
+                                        <form class="d-inline-block delete-btn"
+                                            action="{{ url('sa1991as/product-goods') }}/{{ encrypt($product->id) }}"
+                                            method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-danger btn-sm deleteAlert"><i
+                                                    data-feather="trash"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table> --}}
+                     <table id="paginate_data_table" class="table data-table ">
+                        <thead>
+                            <tr>
+                                <th>Sr#</th>
+                                <th>Date Added</th>
+                                <th>Product Name</th>
+                                <th>Product Groups</th>
+                                <th>Admin/Manager</th>
+                                <th>Activity</th>
+                                <th>Operations</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($product_goods as $product)
+                                <tr class="{{ $product->status==3 ? 'alert alert-danger' : ' ' }}">
+                                    <td>{{ $loop->index + 1 }}</td>
+                                    <td>{{ date('Y-m-d', strtotime($product->created_at)) }}</td>
+                                    <td>{{ @$product->name }}</td>
+                                    <td>{{ @$product->group->name}}</td>
+                                    <td>
+                                        Admin:  {{ @$product->admin->first_name }}&nbsp;{{ @$product->admin->last_name }}<br>
+                                        Manager:  {{ @$product->manager->first_name }}&nbsp;{{ @$product->manager->last_name }}
+                                    </td>
+                                    <td>{{ ucwords(str_replace('_', ' ', $product->product_good_status->name)) }}</td>
+
                                     <td>
                                         <a href="{{ url('sa1991as/product-goods') }}/{{ encrypt($product->id) }}/edit"
                                             class="btn btn-primary btn-sm"><i data-feather="edit"></i></a>

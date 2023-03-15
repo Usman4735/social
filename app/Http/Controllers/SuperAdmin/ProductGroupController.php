@@ -149,7 +149,7 @@ class ProductGroupController extends Controller
             }
         }
         $product->delete();
-        return back()->with("error", "A category has been deleted");
+        return back()->with("error", "A product group has been deleted");
     }
 
     // public function addPermission($manager, $product) {

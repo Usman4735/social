@@ -6,6 +6,7 @@ use App\Models\ProductGood;
 use App\Models\ProductGroup;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\ProductGoodStatus;
 
 class ProductGoodController extends Controller
 {
@@ -16,7 +17,7 @@ class ProductGoodController extends Controller
      */
     public function index()
     {
-        $product_goods = ProductGood::all();
+        $product_goods = ProductGood::where('manager_id', session('online_manager')->id)->get();
         return view("manager.product-goods.index", compact("product_goods"));
     }
 
@@ -27,8 +28,9 @@ class ProductGoodController extends Controller
      */
     public function create()
     {
-        $product_groups = ProductGroup::all();
-        return view("manager.product-goods.add", compact("product_groups"));
+        $product_groups = ProductGroup::where('manager_id', session('online_manager')->id)->get();
+        $statuses=ProductGoodStatus::where('type', 3)->get();
+        return view("manager.product-goods.add", compact("product_groups", "statuses"));
     }
 
     /**
@@ -49,6 +51,8 @@ class ProductGoodController extends Controller
         ]);
         $product = new ProductGood();
         $product->fill($request->all());
+        $product->manager_id=session('online_manager')->id;
+        $product->admin_id=session('online_manager')->admin_id;
         $product->save();
         return redirect("m1001m/product-goods")->with("success", "A Product Good has been saved successfully");
     }
@@ -73,8 +77,9 @@ class ProductGoodController extends Controller
     public function edit($id)
     {
         $product = ProductGood::findOrFail(decrypt($id));
-        $product_groups = ProductGroup::all();
-        return view("manager.product-goods.edit", compact("product", "product_groups"));
+        $product_groups = ProductGroup::where('manager_id', session('online_manager')->id)->get();
+        $statuses=ProductGoodStatus::where('type', 3)->get();
+        return view("manager.product-goods.edit", compact("product", "product_groups", 'statuses'));
     }
 
     /**

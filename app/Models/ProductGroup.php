@@ -40,4 +40,9 @@ class ProductGroup extends Model
     public function total_group_products() {
         return $this->hasMany(ProductGood::class, "group_id");
     }
+    public function total_group_products_left() {
+        // 5=delivered
+        $left_items=ProductGood::where('group_id', $this->id)->whereNot('status', 5)->get();
+        return $left_items;
+    }
 }

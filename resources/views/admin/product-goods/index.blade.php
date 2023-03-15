@@ -18,21 +18,24 @@
                         <thead>
                             <tr>
                                 <th>Sr#</th>
+                                <th>Date Added</th>
                                 <th>Product Name</th>
                                 <th>Product Groups</th>
                                 <th>Manager</th>
-                                <th>Status</th>
+                                <th>Activity</th>
                                 <th>Operations</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($product_goods as $product)
-                                <tr>
+                                <tr class="{{ $product->status==3 ? 'alert alert-danger' : ' ' }}">
                                     <td>{{ $loop->index + 1 }}</td>
+                                    <td>{{ date('Y-m-d', strtotime($product->created_at)) }}</td>
                                     <td>{{ @$product->name }}</td>
                                     <td>{{ @$product->group->name}}</td>
                                     <td>{{ @$product->manager->first_name }}&nbsp;{{ @$product->manager->last_name }}</td>
-                                    <td>{{ ucwords(str_replace('_', ' ', $product->status)) }}</td>
+                                    <td>{{ ucwords(str_replace('_', ' ', $product->product_good_status->name)) }}</td>
+
                                     <td>
                                         <a href="{{ url('a1aa/product-goods') }}/{{ encrypt($product->id) }}/edit"
                                             class="btn btn-primary btn-sm"><i data-feather="edit"></i></a>

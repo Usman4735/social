@@ -5,6 +5,7 @@ use App\Models\Admin;
 use App\Models\ProductGood;
 use App\Models\ProductGroup;
 use Illuminate\Http\Request;
+use App\Models\ProductGoodStatus;
 use App\Http\Controllers\Controller;
 
 class ProductGoodController extends Controller
@@ -30,7 +31,8 @@ class ProductGoodController extends Controller
     {
         $product_groups = ProductGroup::all();
         $admins= Admin::where('status', 1)->where('role', 'admin')->get();
-        return view("super-admin.product-goods.add", compact("product_groups", "admins"));
+        $statuses=ProductGoodStatus::all();
+        return view("super-admin.product-goods.add", compact("product_groups", "admins", "statuses"));
     }
 
     /**
@@ -78,7 +80,9 @@ class ProductGoodController extends Controller
         $product_groups = ProductGroup::all();
         $admins= Admin::where('status', 1)->where('role', 'admin')->get();
         $managers=Admin::where('admin_id', $product->admin_id)->get();
-        return view("super-admin.product-goods.edit", compact("product", "product_groups", "managers"));
+        $statuses=ProductGoodStatus::all();
+
+        return view("super-admin.product-goods.edit", compact("product", "product_groups", "managers", "statuses"));
     }
 
     /**

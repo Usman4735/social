@@ -12,10 +12,11 @@
                         <thead>
                             <tr>
                                 <th>Sr#</th>
+                                <th>Image</th>
                                 <th>Product Group</th>
                                 <th>Salary</th>
-                                <th>Products added</th>
-                                <th>Items left</th>
+                                <th>Products Added</th>
+                                <th>Items Left</th>
                                 <th>Operations</th>
                             </tr>
                         </thead>
@@ -23,10 +24,14 @@
                             @foreach ($products as $product)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
+                                       <td>
+                                         <img src="{{ asset('/product-group-images') }}/{{ @$product->image }}" alt="Product Picture" class="img-thumbnail" height="80" width="80">
+                                    </td>
                                     <td>{{ $product->name }}</td>
-                                    <td>{{ $product->category->name }}</td>
-                                    <td>{{ @session('online_manager')->manager_permission($product->id)->see_price == 1 ? number_format($product->price, 2) : 'N/A'}}</td>
-                                    <td>--</td>
+                                    <td>{{ number_format($product->manager_salary) }} ({{ $product->manager_salary_type }})</td>
+                                    {{-- <td>{{ @session('online_manager')->manager_permission($product->id)->see_price == 1 ? number_format($product->price, 2) : 'N/A'}}</td> --}}
+                                    <td>{{ count($product->total_group_products) }}</td>
+                                    <td>{{ count($product->total_group_products_left()) }}</td>
                                     <td>
                                         <a href="{{ url('m1001m/product-groups') }}/{{ encrypt($product->id) }}/show" class="btn btn-primary btn-sm"><i data-feather="eye"></i></a>
                                     </td>

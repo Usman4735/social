@@ -30,9 +30,10 @@
                             <div class="col-lg-6">
                                 <label for="status" class="col-form-label">Product Status</label>
                                 <select name="status" id="status" class="form-control form-control-sm">
-                                    <option value="draft">Draft</option>
-                                    <option value="reserved">Reserved</option>
-                                    <option value="awaiting_moderation">Awaiting Moderation</option>
+                                    @foreach ($statuses as $status)
+                                        <option value="{{ $status->id }}">
+                                            {{ ucwords(str_replace('_', ' ', $status->name)) }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-lg-12">
@@ -69,7 +70,5 @@
     </div>
 @endsection
 @section('custom_scripts')
-    <script>
-
-    </script>
+    <script></script>
 @endsection

@@ -13,18 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('product_goods', function (Blueprint $table) {
+        Schema::create('product_good_statuses', function (Blueprint $table) {
             $table->id();
-            $table->string("name", 200);
-            $table->text("description");
-            $table->foreignId('group_id')->constrained('product_groups');
-            $table->bigInteger('admin_id')->nullable();
-            $table->bigInteger('manager_id')->nullable();
-            $table->integer("status");
+            $table->text("name")->nullable();
+            $table->integer("status")->nullable();
+            $table->integer("type")->nullable();
             $table->timestamps();
-            $table->softDeletes();
-
-
         });
     }
 
@@ -35,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_goods');
+        Schema::dropIfExists('product_good_statuses');
     }
 };

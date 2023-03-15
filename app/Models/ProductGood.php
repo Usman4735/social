@@ -24,7 +24,13 @@ class ProductGood extends Model
     public function group() {
         return $this->belongsTo(ProductGroup::class, "group_id");
     }
+    public function product_good_status() {
+        return $this->belongsTo(ProductGoodStatus::class, "status");
+    }
     public function manager() {
         return $this->belongsTo(Admin::class, "manager_id");
+    }
+    public function admin() {
+        return $this->belongsTo(Admin::class, "admin_id");
     }
 }

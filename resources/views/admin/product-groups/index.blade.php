@@ -22,6 +22,9 @@
                                 <th>Product Group</th>
                                 <th>Category</th>
                                 <th>Price</th>
+                                <th>Manager Salary</th>
+                                <th>Products Added</th>
+                                <th>Items Left</th>
                                 <th>Manager</th>
                                 <th>Operations</th>
                             </tr>
@@ -36,7 +39,15 @@
                                     <td>{{ @$product->name }}</td>
                                     <td>{{ @$product->category->name }}</td>
                                     <td>{{ number_format(@$product->price, 2) }}</td>
-                                    <td>{{ @$product->manager->first_name }}&nbsp;{{ @$product->manager->last_name }}</td>
+                                    <td>{{ number_format($product->manager_salary) }} ({{ $product->manager_salary_type }})</td>
+                                    <td>{{ count($product->total_group_products) }}</td>
+                                    <td>{{ count($product->total_group_products_left()) }}</td>
+                                    <td>
+                                        @if($product->manager_id!=null)
+                                        {{ @$product->manager->first_name }}&nbsp;{{ @$product->manager->last_name }}</td>
+                                        @else
+                                        Not Assigned Yet
+                                        @endif
                                     <td>
                                         <a href="{{ url('a1aa/product-groups') }}/{{ encrypt($product->id) }}/edit"
                                             class="btn btn-primary btn-sm"><i data-feather="edit"></i></a>

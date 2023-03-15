@@ -28,10 +28,10 @@
                             </div>
                             <div class="col-lg-6">
                                 <label for="status" class="col-form-label">Product Status</label>
-                                <select name="status" id="status" class="form-control form-control-sm">
-                                    <option value="draft" {{$product->status == 'draft' ? 'selected' : ''}}>Draft</option>
-                                    <option value="reserved" {{$product->status == 'reserved' ? 'selected' : ''}}>Reserved</option>
-                                    <option value="awaiting_moderation" {{$product->status == 'awaiting_moderation' ? 'selected' : ''}}>Awaiting Moderation</option>
+                                 <select name="status" id="status" class="form-control form-control-sm">
+                                    @foreach($statuses as $status)
+                                        <option value="{{ $status->id }}" {{ $product->status==$status->id ? "selected" : " " }}>{{ ucwords(str_replace('_', ' ', $status->name)) }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-lg-12">

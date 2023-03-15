@@ -5,6 +5,7 @@ use App\Models\Admin;
 use App\Models\ProductGood;
 use App\Models\ProductGroup;
 use Illuminate\Http\Request;
+use App\Models\ProductGoodStatus;
 use App\Http\Controllers\Controller;
 
 class ProductGoodController extends Controller
@@ -17,7 +18,7 @@ class ProductGoodController extends Controller
      */
     public function index()
     {
-        $product_goods = ProductGood::orderBy('id', 'desc')->get();
+        $product_goods = ProductGood::where('admin_id', session('online_admin')->id)->orderBy('id', 'desc')->get();
         return view("admin.product-goods.index", compact("product_goods"));
     }
 
@@ -28,9 +29,10 @@ class ProductGoodController extends Controller
      */
     public function create()
     {
-        $product_groups = ProductGroup::all();
+        $product_groups = ProductGroup::where('admin_id', session('online_admin')->id)->get();
         $managers=Admin::where('admin_id', session('online_admin')->id)->where('role', 'manager')->get();
-        return view("admin.product-goods.add", compact("product_groups", "managers"));
+        $statuses=ProductGoodStatus::whereIn('type', [2,3])->get();
+        return view("admin.product-goods.add", compact("product_groups", "managers", "statuses"));
     }
 
     /**
@@ -51,6 +53,7 @@ class ProductGoodController extends Controller
         ]);
         $product = new ProductGood();
         $product->fill($request->all());
+        $product->admin_id=session('online_admin')->id;
         $product->save();
         return redirect("a1aa/product-goods")->with("success", "A Product Good has been saved successfully");
     }
@@ -75,9 +78,10 @@ class ProductGoodController extends Controller
     public function edit($id)
     {
         $product = ProductGood::findOrFail(decrypt($id));
-        $product_groups = ProductGroup::all();
+        $product_groups = ProductGroup::where('admin_id', session('online_admin')->id);
         $managers=Admin::where('admin_id', $product->admin_id)->where('role', 'manager')->get();
-        return view("admin.product-goods.edit", compact("product", "product_groups", "managers"));
+        $statuses=ProductGoodStatus::whereIn('type', [2,3])->get();
+        return view("admin.product-goods.edit", compact("product", "product_groups", "managers", "statuses"));
     }
 
     /**
@@ -99,6 +103,7 @@ class ProductGoodController extends Controller
         ]);
         $product = ProductGood::findOrFail(decrypt($id));
         $product->fill($request->all());
+        $product->admin_id=session('online_admin')->id;
         $product->save();
         return redirect("a1aa/product-goods")->with("success", "A Product Good has been updated successfully");
     }
