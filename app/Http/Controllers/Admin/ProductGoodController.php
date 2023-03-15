@@ -18,7 +18,7 @@ class ProductGoodController extends Controller
      */
     public function index()
     {
-        $product_goods = ProductGood::where('admin_id', session('online_admin')->id)->orderBy('id', 'desc')->get();
+        $product_goods = ProductGood::where('admin_id', session('online_admin')->id)->whereNot('status', 1)->orderBy('id', 'desc')->get();
         return view("admin.product-goods.index", compact("product_goods"));
     }
 

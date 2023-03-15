@@ -45,7 +45,10 @@
 {{-- END: Page JS --}}
 
 {{-- BEGIN: custom JS --}}
+
 <script src="{{ asset('backend-assets/js/scripts/custom.js') }}"></script>
+<script src="{{ asset('backend-assets/vendors/js/file-uploaders/dropzone.min.js') }}"></script>
+<script src="{{ asset('backend-assets/js/scripts/forms/form-file-uploader.js') }}"></script>
 {{-- END: custom JS --}}
 <script>
     $(window).on('load', function() {

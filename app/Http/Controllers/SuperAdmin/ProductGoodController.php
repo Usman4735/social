@@ -18,7 +18,7 @@ class ProductGoodController extends Controller
      */
     public function index()
     {
-        $product_goods = ProductGood::orderBy('id', 'desc')->get();
+        $product_goods = ProductGood::orderBy('id', 'desc')->whereNot('status', 1)->get();
         return view("super-admin.product-goods.index", compact("product_goods"));
     }
 
@@ -43,6 +43,7 @@ class ProductGoodController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
         $request->validate([
             "name" => "required",
             "group_id" => "required",

@@ -10,7 +10,7 @@
                 <div class="card-header row">
                     <div class="col-12 text-end">
                         <a href="{{ url('a1aa/product-goods/create') }}" class="btn btn-primary btn-sm mr-2"
-                            title="Add Category"><i data-feather="plus"></i></a>
+                            title="Add New Product In Group"><i data-feather="plus"></i></a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -28,25 +28,29 @@
                         </thead>
                         <tbody>
                             @foreach ($product_goods as $product)
-                                <tr class="{{ $product->status==3 ? 'alert alert-danger' : ' ' }}">
+                                <tr class="{{ $product->status == 2 ? 'alert alert-danger' : ' ' }}">
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td>{{ date('Y-m-d', strtotime($product->created_at)) }}</td>
                                     <td>{{ @$product->name }}</td>
-                                    <td>{{ @$product->group->name}}</td>
+                                    <td>{{ @$product->group->name }}</td>
                                     <td>{{ @$product->manager->first_name }}&nbsp;{{ @$product->manager->last_name }}</td>
                                     <td>{{ ucwords(str_replace('_', ' ', $product->product_good_status->name)) }}</td>
 
                                     <td>
-                                        <a href="{{ url('a1aa/product-goods') }}/{{ encrypt($product->id) }}/edit"
-                                            class="btn btn-primary btn-sm"><i data-feather="edit"></i></a>
-                                        <form class="d-inline-block delete-btn"
-                                            action="{{ url('a1aa/product-goods') }}/{{ encrypt($product->id) }}"
-                                            method="post">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" class="btn btn-danger btn-sm deleteAlert"><i
-                                                    data-feather="trash"></i></button>
-                                        </form>
+                                        @if ($product->status == 2 || $product->status == 3 || $product->status == 4)
+                                            <a href="{{ url('a1aa/product-goods') }}/{{ encrypt($product->id) }}/edit"
+                                                class="btn btn-primary btn-sm"><i data-feather="edit"></i></a>
+                                            <form class="d-inline-block delete-btn"
+                                                action="{{ url('a1aa/product-goods') }}/{{ encrypt($product->id) }}"
+                                                method="post">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="btn btn-danger btn-sm deleteAlert"><i
+                                                        data-feather="trash"></i></button>
+                                            </form>
+                                        @else
+                                            Restricted
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

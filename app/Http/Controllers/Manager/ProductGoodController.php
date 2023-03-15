@@ -17,7 +17,7 @@ class ProductGoodController extends Controller
      */
     public function index()
     {
-        $product_goods = ProductGood::where('manager_id', session('online_manager')->id)->get();
+        $product_goods = ProductGood::where('manager_id', session('online_manager')->id)->orderBy('id', 'desc')->get();
         return view("manager.product-goods.index", compact("product_goods"));
     }
 

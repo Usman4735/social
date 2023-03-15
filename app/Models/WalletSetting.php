@@ -10,6 +10,7 @@ class WalletSetting extends Model
         "name",
         "api_key",
         "secret_key",
-        "wallet_address"
+        "wallet_address",
+        "network",
     ];
 }

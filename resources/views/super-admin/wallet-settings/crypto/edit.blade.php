@@ -17,6 +17,10 @@
                                 <label for="name" class="col-form-label required">Wallet Name</label>
                                 <input type="text" name="name" id="name" value="{{$wallet->name}}" required class="form-control form-control-sm">
                             </div>
+                              <div class="col-lg-12">
+                                <label for="network" class="col-form-label required">Wallet Network</label>
+                                <input type="text" name="network" id="network" value="{{ $wallet->network }}" required class="form-control form-control-sm">
+                            </div>
                             <div class="col-lg-12">
                                 <label for="wallet_address" class="col-form-label required">Wallet Address</label>
                                 <input type="text" name="wallet_address" id="wallet_address" value="{{$wallet->wallet_address}}" required class="form-control form-control-sm">

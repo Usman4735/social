@@ -17,7 +17,7 @@
                                 <th>Salary</th>
                                 <th>Products Added</th>
                                 <th>Items Left</th>
-                                <th>Operations</th>
+                                {{-- <th>Operations</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -32,9 +32,9 @@
                                     {{-- <td>{{ @session('online_manager')->manager_permission($product->id)->see_price == 1 ? number_format($product->price, 2) : 'N/A'}}</td> --}}
                                     <td>{{ count($product->total_group_products) }}</td>
                                     <td>{{ count($product->total_group_products_left()) }}</td>
-                                    <td>
+                                    {{-- <td>
                                         <a href="{{ url('m1001m/product-groups') }}/{{ encrypt($product->id) }}/show" class="btn btn-primary btn-sm"><i data-feather="eye"></i></a>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                             @endforeach
                         </tbody>

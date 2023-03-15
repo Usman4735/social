@@ -15,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('wallet_settings', function (Blueprint $table) {
             $table->id();
-            $table->string("name")->nullable();
-            $table->string("type")->nullable();
-            $table->string("api_key")->nullable();
-            $table->string("secret_key")->nullable();
-            $table->string("wallet_address")->nullable();
+            $table->text("name")->nullable();
+            $table->text("type")->nullable();
+            $table->text("api_key")->nullable();
+            $table->text("secret_key")->nullable();
+            $table->text("wallet_address")->nullable();
+            $table->text("network")->nullable();
             $table->integer("status")->nullable();
             $table->timestamps();
         });

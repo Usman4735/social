@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController as AdminAdminController;
+use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\ProductCategoryController as AdminProductCategoryController;
 use App\Http\Controllers\Admin\ProductGroupController as AdminProductGroupController;
 use App\Http\Controllers\Admin\ProductGoodController as AdminProductGoodController;
@@ -8,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\PageController;
 use App\Http\Controllers\Manager\ManagerController;
+use App\Http\Controllers\Manager\OrderController as ManagerOrderController;
 use App\Http\Controllers\Manager\ProductGoodController as ManagerProductGoodController;
 use App\Http\Controllers\Manager\ProductGroupController as ManagerProductGroupController;
 use App\Http\Controllers\ProductGoodController;
@@ -123,6 +125,9 @@ use App\Http\Controllers\SuperAdmin\ProductGoodController as SuperAdminProductGo
         Route::resource('product-groups', AdminProductGroupController::class);
         Route::resource('product-goods', AdminProductGoodController::class);
         Route::resource('product-categories', AdminProductCategoryController::class);
+        Route::prefix('orders')->group(function() {
+        Route::get('/', [AdminOrderController::class, 'index']);
+        });
     });
 
 // ----------------------------------------------------------------------------------------------------
@@ -150,6 +155,9 @@ use App\Http\Controllers\SuperAdmin\ProductGoodController as SuperAdminProductGo
         // Product Groups
         Route::resource('product-groups', ManagerProductGroupController::class);
         Route::resource('product-goods', ManagerProductGoodController::class);
+        Route::prefix('orders')->group(function() {
+        Route::get('/', [ManagerOrderController::class, 'index']);
+        });
     });
 
 // ----------------------------------------------------------------------------------------------------

@@ -37,6 +37,10 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('backend-assets/vendors/css/forms/wizard/bs-stepper.min.css') }}">
 
 
+<link rel="stylesheet" type="text/css" href="{{ asset('backend-assets/vendors/css/file-uploaders/dropzone.min.css') }}">
+
+
 <!-- BEGIN: Custom CSS-->
+<link rel="stylesheet" type="text/css" href="{{ asset('backend-assets/css/plugins/forms/form-file-uploader.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('backend-assets/css/style.css') }}">
 <!-- END: Custom CSS-->

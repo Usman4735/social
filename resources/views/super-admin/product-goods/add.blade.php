@@ -30,8 +30,9 @@
                             <div class="col-lg-6">
                                 <label for="status" class="col-form-label">Product Status</label>
                                 <select name="status" id="status" class="form-control form-control-sm">
-                                    @foreach($statuses as $status)
-                                        <option value="{{ $status->id }}">{{ ucwords(str_replace('_', ' ', $status->name)) }}</option>
+                                    @foreach ($statuses as $status)
+                                        <option value="{{ $status->id }}">
+                                            {{ ucwords(str_replace('_', ' ', $status->name)) }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -40,6 +41,7 @@
                                 <textarea name="description" id="description" class="form-control form-control-sm"></textarea>
                             </div>
                         </div>
+                       
 
                         <div class="row">
                             <div class="card-title my-3">Permission Settings</div>
@@ -78,6 +80,7 @@
 @endsection
 @section('custom_scripts')
     <script>
+
         $("#admin_id").on('change', function(e) {
             $.ajax({
                 type: "post",
@@ -90,7 +93,7 @@
                     $.each(response, function(index, val) {
                         $("#manager_id").empty();
                         $("#manager_id").append('<option value="' + val.id + '">' +
-                            val.first_name + ' ' +val.last_name +
+                            val.first_name + ' ' + val.last_name +
                             '</option>');
                     });
                 }

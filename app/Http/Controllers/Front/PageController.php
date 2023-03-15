@@ -176,26 +176,24 @@ class PageController extends Controller
                 $customer->save();
                 $user=$customer;
             }
-            $order=new Order();
-            $order->customer_id=$user->id;
-            $order->order_no=rand(666666,999999);
-            $order->status=1;
-            $order->payment_method=$request->payment_method;
-            $order->save();
+
 
             $cartinfo = $request->session()->get("cartinfo");
-            $total_price=0;
+
             foreach ($cartinfo as $item) {
-                $total_price+=$item['product']->price*$item['qty'];
-                $order_details=new OrderDetails();
-                $order_details->order_id=$order->id;
-                $order_details->product_id=$item['product']->id;
-                $order_details->price=$item['product']->price;
-                $order_details->qty=$item['qty'];
-                $order_details->save();
+
+                $order=new Order();
+                $order->customer_id=$user->id;
+                $order->order_no=rand(666666,999999);
+                $order->status=1;
+                $order->payment_method=$request->payment_method;
+                $order->good_id=$item['product']->id;
+                $order->price=$item['product']->price;
+                $order->qty=$item['qty'];
+
+                $order->save();
             }
-            $order->price=$total_price;
-            $order->save();
+            // $order->price=$total_price;
             // to send mail
             $request->session()->put('order_placed', $order);
             return redirect('/checkout');

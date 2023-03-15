@@ -10,7 +10,7 @@
                 <div class="card-header row">
                     <div class="col-12 text-end">
                         <a href="{{ url('a1aa/product-groups/create') }}" class="btn btn-primary btn-sm mr-2"
-                            title="Add Category"><i data-feather="plus"></i></a>
+                            title="Add New Group"><i data-feather="plus"></i></a>
                     </div>
                 </div>
                 <div class="card-body">
