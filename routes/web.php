@@ -84,6 +84,8 @@ use App\Http\Controllers\SuperAdmin\ProductGoodController as SuperAdminProductGo
         // Chat Groups
         Route::resource('chat-groups', ChatGroupController::class);
 
+        Route::get('chats', function() { return view("super-admin.chats.index"); });
+
         // Settings
         Route::prefix('settings')->group(function() {
             Route::get("general", [SettingController::class, "generalSettings"]);
@@ -151,11 +153,12 @@ use App\Http\Controllers\SuperAdmin\ProductGoodController as SuperAdminProductGo
         Route::post('reset-password', [ManagerController::class, "processResetPassword"]);
     });
 
-    Route::prefix('/m1001m')->middleware('IsAdminLogin')->group(function() {
+    Route::prefix('/m1001m')->middleware('IsManagerLogin')->group(function() {
 
         Route::get('logout', [ManagerController::class, "logout"]);
         Route::get('profile', [ManagerController::class, "profile"]);
         Route::put('profile', [ManagerController::class, "updateProfile"]);
+        Route::get('profile/remove-wallet/{id}', [ManagerController::class, "removeWallet"]);
         // Product Groups
         Route::resource('product-groups', ManagerProductGroupController::class);
         Route::resource('product-goods', ManagerProductGoodController::class);

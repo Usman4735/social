@@ -26,6 +26,8 @@
 
 <!-- BEGIN: Page CSS-->
 <link rel="stylesheet" type="text/css" href="{{ asset('backend-assets/css/core/menu/menu-types/vertical-menu.css') }}">
+<link rel="stylesheet" type="text/css" href="{{asset('backend-assets/app-assets/css/pages/app-chat.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('backend-assets/app-assets/css/pages/app-chat-list.css')}}">
 <link rel="stylesheet" type="text/css" href="{{ asset('backend-assets/css/pages/dashboard-ecommerce.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('backend-assets/css/plugins/charts/chart-apex.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('backend-assets/css/plugins/extensions/ext-component-toastr.css') }}">
