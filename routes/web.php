@@ -68,6 +68,7 @@ use App\Http\Controllers\SuperAdmin\ProductGoodController as SuperAdminProductGo
 
         Route::prefix('orders')->group(function() {
             Route::get('/', [OrderController::class, 'index']);
+            Route::get('/view/{id}', [OrderController::class, 'view']);
         });
 
         // User Management

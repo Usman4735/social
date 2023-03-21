@@ -13,4 +13,9 @@ class OrderController extends Controller
         $orders = Order::orderBy('id', 'desc')->get();
         return view('super-admin.orders.index', compact('orders'));
     }
+    public function view($id)
+    {
+        $order=Order::findOrFail(decrypt($id));
+        return view('super-admin.orders.view', compact('order'));
+    }
 }

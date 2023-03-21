@@ -73,6 +73,13 @@ $('.data-table').dataTable({
         feather.replace();
     }
 });
+$('.custom-data-table').dataTable({
+    responsive: true,
+    ordering: false,
+    "drawCallback": function (settings) {
+        feather.replace();
+    }
+});
 $(".only-table").dataTable({
     responsive: true,
     paging: false,
