@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
+    public function messenger()
+    {
+        return view('super-admin.messenger');
+    }
     public function index(Request $request)
     {
         if ($request->session()->has('online_super_admin')) {

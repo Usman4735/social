@@ -133,6 +133,8 @@
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user">
                     <a class="dropdown-item" href="{{ url('sa1991as/profile') }}"><i class="me-50"
                             data-feather="user"></i>Profile</a>
+                    <a class="dropdown-item" href="{{ url('sa1991as/messenger') }}"><i class="me-50"
+                            data-feather="message-square"></i>Chats</a>
                     <a class="dropdown-item" href="{{ url('sa1991as/logout') }}"><i class="me-50"
                             data-feather="power"></i> Logout</a>
                 </div>

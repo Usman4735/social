@@ -44,6 +44,7 @@ use App\Http\Controllers\SuperAdmin\ProductGoodController as SuperAdminProductGo
 
     Route::prefix('/sa1991as')->middleware('IsSuperAdminLogin')->group(function() {
 
+        Route::get('/messenger', [AdminController::class, "messenger"]);
         Route::get('logout', [AdminController::class, "logout"]);
 
         // Profile

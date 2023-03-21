@@ -49,6 +49,8 @@
 <script src="{{ asset('backend-assets/js/scripts/custom.js') }}"></script>
 <script src="{{ asset('backend-assets/vendors/js/file-uploaders/dropzone.min.js') }}"></script>
 <script src="{{ asset('backend-assets/js/scripts/forms/form-file-uploader.js') }}"></script>
+<script src="{{ asset('backend-assets/js/scripts/pages/app-chat.js') }}"></script>
+
 {{-- END: custom JS --}}
 <script>
     $(window).on('load', function() {
