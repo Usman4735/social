@@ -4,11 +4,15 @@ namespace App\Http\Controllers\SuperAdmin;
 
 use Carbon\Carbon;
 use App\Models\Admin;
+use App\Models\Order;
 use App\Models\Mailer;
+use App\Models\Customer;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\PasswordReset;
 use App\Http\Controllers\Controller;
+use App\Models\OrderDetails;
+use App\Models\ProductGood;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -21,7 +25,12 @@ class AdminController extends Controller
     public function index(Request $request)
     {
         if ($request->session()->has('online_super_admin')) {
-            return view("super-admin.dashboard");
+            $sale_orders=Order::count();
+            $customers=Customer::count();
+            $product_goods=ProductGood::count();
+            $revenue=OrderDetails::sum('price');
+            $orders = Order::orderBy('id', 'desc')->get();
+            return view("super-admin.dashboard", compact('sale_orders', 'customers', 'product_goods', 'revenue', 'orders'));
         } else {
             return view("super-admin.login");
         }
