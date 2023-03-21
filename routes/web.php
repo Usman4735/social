@@ -210,7 +210,7 @@ Route::prefix('/')->group(function() {
 
     // cart login page token
     Route::get('cart/{id}', [PageController::class, "viewCart"]);
-    Route::post('cart-buy-without-registration', [PageController::class, "buyWithoutRegistration"]);
+    Route::get('cart-buy-without-registration', [PageController::class, "buyWithoutRegistration"]);
 
     Route::post('cart', [PageController::class, "viewCart"]);
     Route::post('update-cart', [PageController::class, "UpdateCartQuantity"]);

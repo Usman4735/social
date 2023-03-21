@@ -40,19 +40,19 @@
                                              <td class="product-name"><a href="#">{{ $item['product']->name }}</a>
                                              </td>
                                              <td class="product-price"><span
-                                                     class="">{{ $item['product']->price }}</span></td>
+                                                     class="">{{ $item['product']->group->price }}</span></td>
                                              <td class="product-quantity">
                                                 <input type="number"
                                                      name="qty+{{ $item['product']->id }}" value="{{ $item['qty'] }}"
                                                      min="1">
                                                     </td>
-                                             <td class="product-subtotal">{{ $item['qty'] * $item['product']->price }}
+                                             <td class="product-subtotal">{{ $item['qty'] * $item['product']->group->price }}
                                              </td>
                                              <td class="product-remove"><a
                                                      href="{{ url('remove-from-cart') }}/{{ $item['product']->id }}"><i
                                                          class="fa fa-times"></i></a></td>
                                              @php
-                                                 $sub_total += $item['qty'] * $item['product']->price;
+                                                 $sub_total += $item['qty'] * $item['product']->group->price;
                                                  $total_products += $item['qty'];
 
                                              @endphp

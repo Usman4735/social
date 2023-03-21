@@ -105,7 +105,7 @@
                                 <h4><a href="#">{{ $good->name }}</a></h4>
                                 <div class="product-price">
                                     <ul>
-                                        <li>${{ $good->price }}</li>
+                                        <li>${{ $good->group->price }}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -145,13 +145,13 @@
                         <div class="product-wrapper mb-40">
                             <div class="product-img">
                                 <a href="#">
-                                    @if ($good->image != null)
+                                    {{-- @if ($good->image != null)
                                         <img src="{{ asset('/product-group-images') }}/{{ $good->image }}"
                                             alt="{{ $good->seo_title }}" class="primary">
                                     @else
-                                        <img src="{{ asset('assets/images/no-image.png') }}" alt="{{ $good->seo_title }}"
-                                            class="primary" width="350" width="449">
-                                    @endif
+                                    @endif --}}
+                                    <img src="{{ asset('assets/images/no-image.png') }}" alt="{{ $good->seo_title }}"
+                                        class="primary" width="350" width="449">
                                 </a>
                                 <div class="quick-view">
                                     <a class="action-view product_view" href="javascript:void();"
@@ -180,7 +180,7 @@
                                 <h4><a href="#">{{ $good->name }}</a></h4>
                                 <div class="product-price">
                                     <ul>
-                                        <li>{{ $good->price }}</li>
+                                        <li>${{ $good->group->price }}</li>
                                     </ul>
                                 </div>
                             </div>

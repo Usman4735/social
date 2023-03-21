@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('product_goods', function (Blueprint $table) {
             $table->id();
             $table->string("name", 200);
+            $table->text('image')->nullable();
             $table->text("description");
             $table->foreignId('group_id')->constrained('product_groups');
             $table->bigInteger('admin_id')->nullable();

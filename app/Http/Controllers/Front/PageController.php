@@ -4,14 +4,15 @@ namespace App\Http\Controllers\Front;
 
 use App\Models\Cart;
 use App\Models\News;
+use App\Models\Order;
 use App\Models\Customer;
+use App\Models\ProductGood;
 use App\Models\Testimonial;
 use Illuminate\Support\Str;
+use App\Models\OrderDetails;
 use App\Models\ProductGroup;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Order;
-use App\Models\OrderDetails;
 use Illuminate\Support\Facades\Hash;
 
 class PageController extends Controller
@@ -23,15 +24,14 @@ class PageController extends Controller
     }
     public function viewProduct($id)
     {
-        $product=ProductGroup::findOrFail($id);
-        $related_products=ProductGroup::where('category_id', $product->category_id)->get()->where('id','!=', $product->id)->take(4);
+        $product=ProductGood::findOrFail($id);
+        $related_products=ProductGood::where('group_id', $product->group_id)->get()->take(4);
 
         return view('web.view-product-details', compact('product', 'related_products'));
     }
     public function UpdateCartQuantity(Request $request)
     {
         $cartinfo = $request->session()->get("cartinfo");
-        // dd($cartinfo);
         $data = $request->all();
 
         for ($i = 0; $i < count($cartinfo); $i++) {
@@ -69,7 +69,7 @@ class PageController extends Controller
     public function addToCart(Request $request, $id)
     {
 
-        $product=ProductGroup::findOrFail($id);
+        $product=ProductGood::findOrFail($id);
 
         if ($product == null) {
             return url('/');
@@ -113,7 +113,7 @@ class PageController extends Controller
         // dd(decrypt($request->p_token));
         // dd($request->all());
         $p_token=null;
-        $trending_products=ProductGroup::orderBy('id', 'desc')->get();
+        $trending_products=ProductGood::orderBy('id', 'desc')->get();
 
         // if (decrypt($request->id)=='place-order') {
         //     dd("2");
@@ -173,29 +173,50 @@ class PageController extends Controller
                 $customer= new Customer();
                 $customer->fill($request->all());
                 $customer->password=Hash::make($random_password);
-                // $customer->save();
+                $customer->save();
                 $user=$customer;
                 $user->password = $random_password;
             }
 
-            dd($user);
 
 
             $cartinfo = $request->session()->get("cartinfo");
 
+            // foreach ($cartinfo as $item) {
+
+            //     $order=new Order();
+            //     $order->customer_id=$user->id;
+            //     $order->order_no=rand(666666,999999);
+            //     $order->status=1;
+            //     $order->payment_method=$request->payment_method;
+            //     $order->good_id=$item['product']->id;
+            //     $order->price=$item['product']->group->price;
+            //     $order->qty=$item['qty'];
+            //     $order->save();
+            // }
+
+            $order=new Order();
+            $order->customer_id=$user->id;
+            $order->order_no=rand(666666,999999);
+            $order->status=1;
+            $order->payment_method=$request->payment_method;
+            $order->save();
+
+            $cartinfo = $request->session()->get("cartinfo");
+            $total_price=0;
             foreach ($cartinfo as $item) {
-
-                $order=new Order();
-                $order->customer_id=$user->id;
-                $order->order_no=rand(666666,999999);
-                $order->status=1;
-                $order->payment_method=$request->payment_method;
-                $order->good_id=$item['product']->id;
-                $order->price=$item['product']->price;
-                $order->qty=$item['qty'];
-
-                $order->save();
+                $total_price+=$item['product']->group->price*$item['qty'];
+                $order_details=new OrderDetails();
+                $order_details->order_id=$order->id;
+                $order_details->good_id=$item['product']->id;
+                $order_details->group_id=$item['product']->group_id;
+                $order_details->price=$item['product']->group->price;
+                $order_details->qty=$item['qty'];
+                $order_details->save();
             }
+            $order->price=$total_price;
+            $order->save();
+
             // $order->price=$total_price;
             // to send mail
             $request->session()->put('order_placed', $order);

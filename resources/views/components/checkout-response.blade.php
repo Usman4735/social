@@ -1,8 +1,8 @@
 @php
     use Illuminate\Support\Facades\DB;
-    use App\Models\ProductGroup;
+    use App\Models\ProductGood;
     Illuminate\Support\Facades\Session::forget('cartinfo');
-    $trending_products = ProductGroup::all();
+    $trending_products = ProductGood::all();
 
 @endphp
 <style>
@@ -93,7 +93,7 @@
                                     <h4><a href="#">{{ $related_product->name }}</a></h4>
                                     <div class="product-price">
                                         <ul>
-                                            <li>{{ $related_product->price }}</li>
+                                            <li>{{ $related_product->group->price }}</li>
 
                                         </ul>
                                     </div>

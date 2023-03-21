@@ -132,7 +132,7 @@
                             <p class="text-center"><strong>OR</strong></p>
                         </div>
                         <div class="col-lg-12 text-center">
-                            <form action="{{ url('cart-buy-without-registration') }}" method="post">
+                            <form action="{{ url('cart-buy-without-registration') }}" method="get">
                                 @csrf
                                 <input type="hidden" name="p_token"
                                     value="{{ encrypt('buy-without-registration') }}">

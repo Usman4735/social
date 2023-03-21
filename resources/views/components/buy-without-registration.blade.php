@@ -1,8 +1,8 @@
 @php
     use Illuminate\Support\Facades\DB;
-    use App\Models\ProductGroup;
+    use App\Models\ProductGood;
 
-    $trending_products = ProductGroup::all();
+    $trending_products = ProductGood::get()->take(5);
 
 @endphp
 <style>
@@ -68,7 +68,7 @@
                                     <label>Mobile <span class="text-primary">*</span></label>
                                     <input type="text" required name="mobile" value="{{ old('mobile') }}"
                                         placeholder="Please Enter Mobile"
-                                        
+
                                         autocomplete="false">
                                 </div>
                             </div>
@@ -148,7 +148,7 @@
                                     <h4><a href="#">{{ $related_product->name }}</a></h4>
                                     <div class="product-price">
                                         <ul>
-                                            <li>{{ $related_product->price }}</li>
+                                            <li>{{ $related_product->group->price }}</li>
 
                                         </ul>
                                     </div>
