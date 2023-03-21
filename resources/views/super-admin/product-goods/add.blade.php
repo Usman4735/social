@@ -41,7 +41,7 @@
                                 <textarea name="description" id="description" class="form-control form-control-sm"></textarea>
                             </div>
                         </div>
-                       
+
 
                         <div class="row">
                             <div class="card-title my-3">Permission Settings</div>
@@ -60,7 +60,7 @@
                             <div class="col-lg-6">
                                 <label for="manager_id" class="col-form-label">Manager <span
                                         class="text-primary">*</span></label>
-                                <select name="manager_id" id="manager_id" class="form-control form-control-sm select-2"
+                                <select name="manager_id" id="manager_id" class="form-control form-control-sm select-2 form-select"
                                     required>
                                     <option value="">Select Manager</option>
                                 </select>

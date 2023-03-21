@@ -65,22 +65,22 @@
                 </div>
             </div>
             <div class="row">
-                @foreach ($product_groups as $group)
+                @foreach ($product_goods as $good)
                     <div class="col-lg-3 col-md-6 col-sm-12 col-12 mt-4">
                         <div class="product-wrapper custom-img-wrapper">
                             <div class="product-img custom-img">
                                 <a href="#">
-                                    @if ($group->image != null)
-                                        <img src="{{ asset('/product-group-images') }}/{{ $group->image }}"
-                                            alt="{{ $group->seo_title }}" class="primary" width="350" width="449">
+                                    @if ($good->image != null)
+                                        <img src="{{ asset('/product-group-images') }}/{{ $good->image }}"
+                                            alt="{{ $good->seo_title }}" class="primary" width="350" width="449">
                                     @else
-                                        <img src="{{ asset('assets/images/no-image.png') }}" alt="{{ $group->seo_title }}"
+                                        <img src="{{ asset('assets/images/no-image.png') }}" alt="{{ $good->seo_title }}"
                                             class="primary" width="350" width="449">
                                     @endif
                                 </a>
                                 <div class="quick-view">
                                     <a class="action-view product_view" href="javascript:void();"
-                                        url="products/quick-view/{{ $group->id }}" data-target="#quickViewProductModal"
+                                        url="products/quick-view/{{ $good->id }}" data-target="#quickViewProductModal"
                                         data-toggle="modal" title="Quick View">
                                         <i class="fa fa-search-plus"></i>
                                     </a>
@@ -102,10 +102,10 @@
                                         <li><i class="fa fa-star"></i></li>
                                     </ul>
                                 </div>
-                                <h4><a href="#">{{ $group->name }}</a></h4>
+                                <h4><a href="#">{{ $good->name }}</a></h4>
                                 <div class="product-price">
                                     <ul>
-                                        <li>${{ $group->price }}</li>
+                                        <li>${{ $good->price }}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -115,7 +115,7 @@
                                 </div>
                                 <div class="add-to-link">
                                     <ul>
-                                        <li><a href="products/view/{{ $group->id }}" title="Details"><i
+                                        <li><a href="products/view/{{ $good->id }}" title="Details"><i
                                                     class="fa fa-external-link"></i></a></li>
                                     </ul>
                                 </div>
@@ -139,23 +139,23 @@
                 </div>
             </div>
             <div class="tab-active owl-carousel">
-                @foreach ($product_groups as $group)
+                @foreach ($product_goods as $good)
                     <!-- single-product-start -->
                     <div class="tab-total">
                         <div class="product-wrapper mb-40">
                             <div class="product-img">
                                 <a href="#">
-                                    @if ($group->image != null)
-                                        <img src="{{ asset('/product-group-images') }}/{{ $group->image }}"
-                                            alt="{{ $group->seo_title }}" class="primary">
+                                    @if ($good->image != null)
+                                        <img src="{{ asset('/product-group-images') }}/{{ $good->image }}"
+                                            alt="{{ $good->seo_title }}" class="primary">
                                     @else
-                                        <img src="{{ asset('assets/images/no-image.png') }}" alt="{{ $group->seo_title }}"
+                                        <img src="{{ asset('assets/images/no-image.png') }}" alt="{{ $good->seo_title }}"
                                             class="primary" width="350" width="449">
                                     @endif
                                 </a>
                                 <div class="quick-view">
                                     <a class="action-view product_view" href="javascript:void();"
-                                        url="products/quick-view/{{ $group->id }}" data-target="#quickViewProductModal"
+                                        url="products/quick-view/{{ $good->id }}" data-target="#quickViewProductModal"
                                         data-toggle="modal" title="Quick View">
                                         <i class="fa fa-search-plus"></i>
                                     </a>
@@ -177,10 +177,10 @@
                                         <li><a href="#"><i class="fa fa-star"></i></a></li>
                                     </ul>
                                 </div>
-                                <h4><a href="#">{{ $group->name }}</a></h4>
+                                <h4><a href="#">{{ $good->name }}</a></h4>
                                 <div class="product-price">
                                     <ul>
-                                        <li>{{ $group->price }}</li>
+                                        <li>{{ $good->price }}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -191,7 +191,7 @@
                                 </div>
                                 <div class="add-to-link">
                                     <ul>
-                                        <li><a href="products/view/{{ $group->id }}" title="Details"><i
+                                        <li><a href="products/view/{{ $good->id }}" title="Details"><i
                                                     class="fa fa-external-link"></i></a></li>
                                     </ul>
                                 </div>

@@ -10,6 +10,7 @@ use App\Models\PasswordReset;
 use App\Http\Controllers\Controller;
 use App\Models\News;
 use App\Models\Order;
+use App\Models\ProductGood;
 use App\Models\ProductGroup;
 use App\Models\Testimonial;
 use Illuminate\Support\Facades\Hash;
@@ -20,8 +21,9 @@ class HomeController extends Controller
 
         $news=News::orderBy('id', 'desc')->where('is_published', 1)->get()->take(4);
         $testimonials=Testimonial::orderBy('id', 'desc')->get()->take(5);
-        $product_groups=ProductGroup::orderBy('id', 'desc')->get()->take(8);
-        return view("web.index", compact('news', 'testimonials', 'product_groups'));
+        // $product_groups=ProductGroup::orderBy('id', 'desc')->get()->take(8);
+        $product_goods=ProductGood::orderBy('id', 'desc')->get()->take(8);
+        return view("web.index", compact('news', 'testimonials', 'product_goods'));
     }
 
     public function register() {
