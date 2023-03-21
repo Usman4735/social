@@ -173,9 +173,12 @@ class PageController extends Controller
                 $customer= new Customer();
                 $customer->fill($request->all());
                 $customer->password=Hash::make($random_password);
-                $customer->save();
+                // $customer->save();
                 $user=$customer;
+                $user->password = $random_password;
             }
+
+            dd($user);
 
 
             $cartinfo = $request->session()->get("cartinfo");

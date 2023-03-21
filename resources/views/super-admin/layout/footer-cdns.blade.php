@@ -39,6 +39,7 @@
 
 
 {{-- BEGIN: Page JS --}}
+<script src="{{asset('backend-assets/js/scripts/pages/app-chat.js')}}"></script>
 <script src="{{ asset('backend-assets/js/scripts/forms/form-select2.js') }}"></script>
 <script src="{{asset('backend-assets/js/scripts/extensions/ext-component-sweet-alerts.js')}}"></script>
 <script src="{{asset('backend-assets/js/scripts/components/components-tooltips.js')}}"></script>

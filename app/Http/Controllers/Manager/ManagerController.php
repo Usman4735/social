@@ -8,6 +8,8 @@ use App\Models\Mailer;
 use Illuminate\Http\Request;
 use App\Models\PasswordReset;
 use App\Http\Controllers\Controller;
+use App\Models\AdminWallet;
+use App\Models\WalletSetting;
 use Illuminate\Support\Facades\Hash;
 
 class ManagerController extends Controller
@@ -150,7 +152,9 @@ class ManagerController extends Controller
     public function profile()
     {
         $manager = Admin::findOrFail(session('online_manager')->id);
-        return view("manager.profile", compact("manager"));
+        $wallets = WalletSetting::where("status", 1)->get();
+        $manager_wallets = AdminWallet::where("admin_id", session('online_manager')->id)->get();
+        return view("manager.profile", compact("manager", "wallets", "manager_wallets"));
     }
 
     public function updateProfile(Request $request)
@@ -189,7 +193,24 @@ class ManagerController extends Controller
     }
     // Save and return with success
     $manager->save();
+
+    if(isset($request->wallet_id)) {
+        for($i = 0; $i < count($request->wallet_id); $i++) {
+            $wallet = new AdminWallet();
+            $wallet->wallet_id = $request->wallet_id[$i];
+            $wallet->wallet_address = $request->wallet_address[$i];
+            $wallet->admin_id = $manager->id;
+            $wallet->save();
+        }
+    }
+
     $request->session()->put('online_manager', $manager);
     return back()->with("success", "Your Profile has been updated successfully");
+    }
+
+    public function removeWallet( $id) {
+        $wallet = AdminWallet::findOrFail(decrypt($id));
+        $wallet->delete();
+        return back()->with("error", "A wallet has been deleted");
     }
 }

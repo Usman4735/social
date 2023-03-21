@@ -29,4 +29,8 @@ class Admin extends Model
     public function manager_permission($product) {
         return ProductGroupPermission::where('product_group_id', $product)->where('manager_id', $this->id)->first();
     }
+
+    public function wallets() {
+        return $this->hasMany(AdminWallet::class, "admin_id");
+    }
 }
