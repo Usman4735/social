@@ -65,6 +65,7 @@ use App\Http\Controllers\SuperAdmin\ProductGoodController as SuperAdminProductGo
         Route::resource('gallery', MediaGalleryController::class);
         // Product Goods
         Route::resource('product-goods', SuperAdminProductGoodController::class);
+        Route::get('product-goods/delete-product-image/{id}', [SuperAdminProductGoodController::class, "deleteProductImage"]);
 
         Route::prefix('orders')->group(function() {
             Route::get('/', [OrderController::class, 'index']);

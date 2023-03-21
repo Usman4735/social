@@ -43,7 +43,39 @@
                                 <label for="description" class="col-form-label">Description</label>
                                 <textarea name="description" id="description" class="form-control form-control-sm">{{ $product->description }}</textarea>
                             </div>
+                            <div class="col-lg-12">
+                                <label for="image" class="col-form-label">Image</label>
+                                <input type="file" name="image" id="image" class="form-control">
+                            </div>
+                            @if ($product->image)
+                                <div class="col-lg-12 mt-2">
+                                    <img src="{{ asset('product-good-images') }}/{{ $product->image }}" width="150" class="img-thumbnail">
+                                </div>
+                            @endif
                         </div>
+
+                        <div class="row">
+                            <div class="card-title my-2">Gallery Images</div>
+                            <div class="col-lg-12">
+                                <label for="gallery_images" class="col-form-label">Gallery Images <span class="text-danger">Max: 5</span></label>
+                                <input type="file" name="gallery_images[]" id="gallery_images" class="form-control" multiple max="5">
+                            </div>
+                            <div class="col-lg-12 mt-2">
+                                <div class="row">
+                                    @foreach (@$product->product_images as $product_image)
+                                        <div class="col-lg-3 mt-1 text-center">
+                                            <img src="{{ asset('product-good-images') }}/{{ $product_image->image }}" width="150" class="img-thumbnail">
+                                            <div class="mt-1">
+                                                <a href="{{url('sa1991as/product-goods/delete-product-image')}}/{{encrypt($product_image->id)}}" class="btn btn-danger btn-sm confirm_delete">
+                                                    Remove
+                                                </a>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="card-title my-3">Permission Settings</div>
                             <div class="col-lg-6">
@@ -73,7 +105,7 @@
                         </div>
                         <div class="row">
                             <div class="col-12 mt-2">
-                                <input type="submit" value="Update" class="btn btn-primary px-3">
+                                <input type="submit" value="Update" class="save btn btn-primary px-3">
                             </div>
                         </div>
 
@@ -102,6 +134,24 @@
                     });
                 }
             });
+        });
+
+        $(".save").click(function(){
+            var $gallery_images = $("#gallery_images");
+            if (parseInt($gallery_images.get(0).files.length) > 5){
+                Swal.fire({
+                    title: 'Gallery Max Files: 5',
+                    text: "You can only upload a maximum of 5 files",
+                    icon: 'warning',
+                    showCancelButton: false,
+                    confirmButtonText: 'OK',
+                    customClass: {
+                        confirmButton: 'btn btn-primary',
+                        cancelButton: 'btn btn-outline-danger ms-1'
+                    },
+                    buttonsStyling: false
+                })
+            }
         });
     </script>
 @endsection

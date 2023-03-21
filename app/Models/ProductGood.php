@@ -33,4 +33,8 @@ class ProductGood extends Model
     public function admin() {
         return $this->belongsTo(Admin::class, "admin_id");
     }
+
+    public function product_images() {
+        return $this->hasMany(ProductGoodImage::class, "good_id");
+    }
 }

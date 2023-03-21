@@ -7,6 +7,7 @@ use App\Models\ProductGroup;
 use Illuminate\Http\Request;
 use App\Models\ProductGoodStatus;
 use App\Http\Controllers\Controller;
+use App\Models\ProductGoodImage;
 
 class ProductGoodController extends Controller
 
@@ -43,18 +44,37 @@ class ProductGoodController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
         $request->validate([
             "name" => "required",
             "group_id" => "required",
-            "description" => "required"
+            "description" => "required",
+            "image" => "mimes:png,jpg,jpeg"
         ],
         [
             "group_id.required" => "Please select a Product Group"
         ]);
         $product = new ProductGood();
         $product->fill($request->all());
+        if($file = $request->hasFile('image')) {
+            $file = $request->file('image') ;
+            $file_name = $file->getClientOriginalName() ;
+            $destination_path = public_path().'/product-good-images' ;
+            $file->move($destination_path,$file_name);
+            $product->image = $file_name;
+        }
         $product->save();
+        if(isset($request->gallery_images)) {
+            for($i = 0; $i < count($request->gallery_images); $i++) {
+                $product_gallery = new ProductGoodImage();
+                $product_gallery->good_id = $product->id;
+                $gallery_image = $request->file('gallery_images')[$i] ;
+                $gallery_image_name = $gallery_image->getClientOriginalName() ;
+                $gallery_path = public_path().'/product-good-images' ;
+                $gallery_image->move($gallery_path,$gallery_image_name);
+                $product_gallery->image = $gallery_image_name;
+                $product_gallery->save();
+            }
+        }
         return redirect("sa1991as/product-goods")->with("success", "A Product Good has been saved successfully");
     }
 
@@ -98,14 +118,40 @@ class ProductGoodController extends Controller
         $request->validate([
             "name" => "required",
             "group_id" => "required",
-            "description" => "required"
+            "description" => "required",
+            "image" => "mimes:png,jpg,jpeg"
         ],
         [
             "group_id.required" => "Please select a Product Group"
         ]);
         $product = ProductGood::findOrFail(decrypt($id));
         $product->fill($request->all());
+        if($file = $request->hasFile('image')) {
+            if ($product->image != null) {
+                $image_path = public_path() . '/product-good-images' .'/'. $product->image;
+                if (file_exists($image_path)) {
+                    unlink($image_path);
+                }
+            }
+            $file = $request->file('image') ;
+            $file_name = $file->getClientOriginalName() ;
+            $destinationPath = public_path().'/product-good-images' ;
+            $file->move($destinationPath,$file_name);
+            $product->image = $file_name;
+        }
         $product->save();
+        if(isset($request->gallery_images)) {
+            for($i = 0; $i < count($request->gallery_images); $i++) {
+                $product_gallery = new ProductGoodImage();
+                $product_gallery->good_id = $product->id;
+                $gallery_image = $request->file('gallery_images')[$i] ;
+                $gallery_image_name = $gallery_image->getClientOriginalName() ;
+                $gallery_path = public_path().'/product-good-images' ;
+                $gallery_image->move($gallery_path,$gallery_image_name);
+                $product_gallery->image = $gallery_image_name;
+                $product_gallery->save();
+            }
+        }
         return redirect("sa1991as/product-goods")->with("success", "A Product Good has been updated successfully");
     }
 
@@ -120,5 +166,11 @@ class ProductGoodController extends Controller
         $product = ProductGood::findOrFail(decrypt($id));
         $product->delete();
         return redirect("sa1991as/product-goods")->with("error", "A Product Good has been deleted");
+    }
+
+    public function deleteProductImage($id) {
+        $product_image = ProductGoodImage::findOrFail(decrypt($id));
+        $product_image->delete();
+        return back()->with("error", "A Product Image has been deleted");
     }
 }

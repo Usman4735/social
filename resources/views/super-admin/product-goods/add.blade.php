@@ -40,11 +40,22 @@
                                 <label for="description" class="col-form-label">Description</label>
                                 <textarea name="description" id="description" class="form-control form-control-sm"></textarea>
                             </div>
+                            <div class="col-lg-12">
+                                <label for="image" class="col-form-label">Image</label>
+                                <input type="file" name="image" id="image" class="form-control">
+                            </div>
                         </div>
 
+                        <div class="row">
+                            <div class="card-title my-2">Gallery Images</div>
+                            <div class="col-lg-12">
+                                <label for="gallery_images" class="col-form-label">Gallery Images <span class="text-danger">Max: 5</span></label>
+                                <input type="file" name="gallery_images[]" id="gallery_images" class="form-control" multiple max="5">
+                            </div>
+                        </div>
 
                         <div class="row">
-                            <div class="card-title my-3">Permission Settings</div>
+                            <div class="card-title my-2">Permission Settings</div>
                             <div class="col-lg-6">
                                 <label for="admin_id" class="col-form-label">Admin <span
                                         class="text-primary">*</span></label>
@@ -68,7 +79,7 @@
                         </div>
                         <div class="row">
                             <div class="col-12 mt-2">
-                                <input type="submit" value="Save" class="btn btn-primary px-3">
+                                <input type="submit" value="Save" class="save btn btn-primary px-3">
                             </div>
                         </div>
 
@@ -98,6 +109,24 @@
                     });
                 }
             });
+        });
+
+        $(".save").click(function(){
+            var $gallery_images = $("#gallery_images");
+            if (parseInt($gallery_images.get(0).files.length) > 5){
+                Swal.fire({
+                    title: 'Gallery Max Files: 5',
+                    text: "You can only upload a maximum of 5 files",
+                    icon: 'warning',
+                    showCancelButton: false,
+                    confirmButtonText: 'OK',
+                    customClass: {
+                        confirmButton: 'btn btn-primary',
+                        cancelButton: 'btn btn-outline-danger ms-1'
+                    },
+                    buttonsStyling: false
+                })
+            }
         });
     </script>
 @endsection
