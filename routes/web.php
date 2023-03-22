@@ -47,6 +47,12 @@ use App\Http\Controllers\SuperAdmin\ProductGoodController as SuperAdminProductGo
         Route::get('/messenger', [AdminController::class, "messenger"]);
         Route::get('logout', [AdminController::class, "logout"]);
 
+        Route::get('notifications', [AdminController::class, "notifications"]);
+        Route::get('notifications/change-status/{id}', [AdminController::class, "ChangeNotificationStatus"]);
+        Route::delete('notifications/delete/{id}', [AdminController::class, "deleteNotification"]);
+        Route::post('fetch-notifications', [AdminController::class, "fetchNotifications"]);
+        Route::get('view-notification/{id}', [AdminController::class, "viewNotification"]);
+
         // Profile
         Route::get('profile', [AdminController::class, "profile"]);
         Route::put('profile', [AdminController::class, "updateProfile"]);

@@ -33,4 +33,9 @@ class Admin extends Model
     public function wallets() {
         return $this->hasMany(AdminWallet::class, "admin_id");
     }
+    public function notifications()
+    {
+        $notifications = Notification::where("type", 2)->where("seen", 0)->orderBy("id", "desc")->get();
+        return $notifications;
+    }
 }
