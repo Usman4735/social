@@ -72,6 +72,24 @@
     $(document).on('select2:open', () => {
         document.querySelector('.select2-search__field').focus();
     });
+
+    let noti_interval = setInterval(function(){
+        $.ajax({
+            url:"{{url('sa1991as/fetch-notifications')}}",
+            type: "POST",
+            success:function(data){
+                $(".notifications-list").html("");
+                $(".notify-badge-notifications").html(data.length);
+                if(data.length>0){
+                data.map(notification => {
+                    $('.notifications-list').append(`<a class="d-flex" href="${notification.action_url}"><div class="list-item d-flex align-items-start"><div class="flex-grow-1"><p class="mb-0 media-heading"><strong>${notification.title}</strong><span class="msg-time float-end text-secondary">${notification.last_seen}</span></p><small class="notification-text">${notification.message.length>35?notification.message.substr(0,35)+'...':notification.message}</small></div></div></a>`);
+                });
+                }else{
+                    $(".notifications-list").append(`<div class="text-center pb-2 pt-2">No notification found</div>`);
+                }
+            }
+        })
+    },15000);
 </script>
 @yield('custom_scripts')
 

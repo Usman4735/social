@@ -9,6 +9,7 @@ use App\Models\Customer;
 use App\Models\ProductGood;
 use App\Models\Testimonial;
 use Illuminate\Support\Str;
+use App\Models\Notification;
 use App\Models\OrderDetails;
 use App\Models\ProductGroup;
 use Illuminate\Http\Request;
@@ -216,6 +217,20 @@ class PageController extends Controller
             }
             $order->price=$total_price;
             $order->save();
+
+            $message = "Customer placed the Order";
+            $title = "New Order";
+            $action_url = "#";
+            $action_url = url('sa1991as/orders/view') . "/" . encrypt($order->id);
+            
+            $notification = new Notification();
+            $notification->title = $title;
+            $notification->message = $message;
+            $notification->action_url = $action_url;
+            $notification->type = 2;
+            $notification->user_id = 1;
+            $notification->seen = 0;
+            $notification->save();
 
             // $order->price=$total_price;
             // to send mail

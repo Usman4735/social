@@ -7,12 +7,13 @@ use App\Models\Admin;
 use App\Models\Order;
 use App\Models\Mailer;
 use App\Models\Customer;
+use App\Models\ProductGood;
 use Illuminate\Support\Str;
+use App\Models\Notification;
+use App\Models\OrderDetails;
 use Illuminate\Http\Request;
 use App\Models\PasswordReset;
 use App\Http\Controllers\Controller;
-use App\Models\OrderDetails;
-use App\Models\ProductGood;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -207,5 +208,50 @@ class AdminController extends Controller
     public function adminManagers(Request $request)
     {
         return Admin::where('admin_id', $request->admin_id)->where('role', 'manager')->get();
+    }
+
+
+    public function notifications()
+    {
+        $notifications = Notification::where("type", 2)->get();
+        return view("super-admin.notifications", compact("notifications"));
+    }
+
+    public function ChangeNotificationStatus($id)
+    {
+        $notification = Notification::findOrFail(decrypt($id));
+        $notification->seen = !$notification->seen;
+        $notification->save();
+        return back()->with("success", "Notification Status has been changed");
+    }
+
+    public function deleteNotification($id)
+    {
+        $notification = Notification::findOrFail(decrypt(($id)));
+        $notification->delete();
+        return back()->with("error", "A notification has been deleted");
+    }
+
+    public function fetchNotifications(Request $request)
+    {
+        $notifications = Notification::where("type", 2)->where('seen', 0)->orderBy("id", "desc")->get();
+        return $notifications->map(function ($notification) {
+            return [
+                'title' => $notification->title,
+                'message' => $notification->message,
+                'action_url' => $notification->action_url,
+                'seen' => $notification->seen,
+                'last_seen' => $notification->created_at->diffForHumans(),
+            ];
+        });
+    }
+
+    // View Notification (Mark notification as Read)
+    public function viewNotification($id)
+    {
+        $notification = Notification::findOrFail(decrypt($id));
+        $notification->seen = 1;
+        $notification->save();
+        return redirect($notification->action_url);
     }
 }
