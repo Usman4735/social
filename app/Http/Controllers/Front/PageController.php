@@ -14,6 +14,7 @@ use App\Models\OrderDetails;
 use App\Models\ProductGroup;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Mailer;
 use Illuminate\Support\Facades\Hash;
 
 class PageController extends Controller
@@ -222,7 +223,7 @@ class PageController extends Controller
             $title = "New Order";
             $action_url = "#";
             $action_url = url('sa1991as/orders/view') . "/" . encrypt($order->id);
-            
+
             $notification = new Notification();
             $notification->title = $title;
             $notification->message = $message;
@@ -234,6 +235,14 @@ class PageController extends Controller
 
             // $order->price=$total_price;
             // to send mail
+            // dd($cartinfo);
+            $user_credentials = null;
+            if($exists_customer == null) {
+                $user_credentials = $random_password;
+            }
+            $view = view("mails.order-placed-mail", compact("user_credentials", "user", "cartinfo"))->render();
+            Mailer::Send("Order Placed", $view, $user->email);
+
             $request->session()->put('order_placed', $order);
             return redirect('/checkout');
         } else {
