@@ -99,16 +99,6 @@
                                 </div>
 
                             </div>
-
-                            <div class="card-title my-3">Similar Products</div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <label for="similar_products" class="col-form-label">Similar Products</label>
-                                    <select name="similar_products[]" id="similar_products" class="select-2" multiple>
-                                        <option value="">Select Produtcs</option>
-                                    </select>
-                                </div>
-                            </div>
                         </div>
 
                 </div>

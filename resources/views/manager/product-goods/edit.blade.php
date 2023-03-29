@@ -38,6 +38,17 @@
                                 <label for="description" class="col-form-label">Description</label>
                                 <textarea name="description" id="description" class="form-control form-control-sm">{{$product->description}}</textarea>
                             </div>
+
+                            <div class="card-title my-3">Similar Products</div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label for="similar_products" class="col-form-label">Similar Products</label>
+                                    <select name="similar_products[]" id="similar_products" class="select-2" multiple>
+                                        <option value="">Select Produtcs</option>
+                                    </select>
+                                </div>
+                            </div>
+
                             <div class="col-12 mt-2">
                                 <input type="submit" value="Update" class="btn btn-primary px-3">
                             </div>
